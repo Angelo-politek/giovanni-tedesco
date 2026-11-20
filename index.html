@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Giovanni Esteban Tedesco, astrofotografo di 18 anni da Brindisi: galassie, nebulose, la Luna e le eclissi. Portfolio, viaggio nel tempo ed edizioni d'artista firmate.">
+<meta name="description" content="Giovanni Esteban Tedesco, an 18-year-old astrophotographer from Brindisi, Italy: galaxies, nebulae, the Moon and eclipses. Portfolio, a journey back in time and signed artist editions.">
 <meta name="theme-color" content="#08080a">
-<link rel="icon" type="image/png" sizes="32x32" href="img/icon-32.png">
-<link rel="apple-touch-icon" href="img/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/icon-32.png">
+<link rel="apple-touch-icon" href="/img/icon-180.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Giovanni Esteban Tedesco · Astrofotografo a Brindisi">
-<meta property="og:description" content="Luce partita milioni di anni fa, fotografata da Brindisi. Portfolio ed edizioni d'artista.">
+<meta property="og:title" content="Giovanni Esteban Tedesco · Astrophotographer in Brindisi, Italy">
+<meta property="og:description" content="Light that left millions of years ago, photographed from Brindisi. Portfolio and artist editions.">
 <meta property="og:image" content="https://giovannitedesco.it/img/og.jpg">
 <meta property="og:url" content="https://giovannitedesco.it/">
 <link rel="canonical" href="https://giovannitedesco.it/">
+<link rel="alternate" hreflang="en" href="https://giovannitedesco.it/">
+<link rel="alternate" hreflang="it" href="https://giovannitedesco.it/it/">
+<link rel="alternate" hreflang="x-default" href="https://giovannitedesco.it/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://giovannitedesco.it/#giovanni", "name": "Giovanni Esteban Tedesco", "alternateName": ["Giovanni Tedesco", "Giovanni Tedesco Esteban"], "jobTitle": "Astrofotografo", "url": "https://giovannitedesco.it/", "image": "https://giovannitedesco.it/img/og.jpg", "sameAs": ["https://www.instagram.com/g.tedesco_/"], "homeLocation": {"@type": "Place", "name": "Brindisi, Italia"}}, {"@type": "WebSite", "@id": "https://giovannitedesco.it/#site", "url": "https://giovannitedesco.it/", "name": "Giovanni Esteban Tedesco", "inLanguage": "it", "publisher": {"@id": "https://giovannitedesco.it/#giovanni"}}]}</script>
 <meta name="twitter:card" content="summary_large_image">
-<title>Giovanni Esteban Tedesco · Astrofotografo a Brindisi</title>
+<title>Giovanni Esteban Tedesco · Astrophotographer in Brindisi, Italy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -59,7 +62,7 @@ main,footer{position:relative;z-index:1}
 /* nav */
 header{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;gap:20px;padding:10px max(4vw,16px);transition:background .4s}
 header.solid{background:linear-gradient(color-mix(in srgb,var(--bg) 90%,transparent),transparent)}
-header .sig{width:78px;height:44px;background:url(img/firma.png) center/contain no-repeat;flex:none}
+header .sig{width:78px;height:44px;background:url(/img/firma.png) center/contain no-repeat;flex:none}
 header nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
 header nav a{text-decoration:none;font-size:14px;color:var(--mute);padding:10px 12px;--c:transparent}
 header nav a:hover,header nav a.on{color:var(--ink);--c:var(--ha)}
@@ -74,7 +77,7 @@ header nav a:hover,header nav a.on{color:var(--ink);--c:var(--ha)}
 
 /* hero */
 .hero{min-height:100svh;display:grid;align-items:end;position:relative;overflow:hidden;padding:0 max(5vw,16px) clamp(40px,8vh,90px)}
-.hero .bg{position:absolute;inset:-6%;background:url(img/andromeda.jpg) 50% 50%/cover;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse 70% 65% at 52% 50%,#000 35%,transparent 100%);mask-image:radial-gradient(ellipse 70% 65% at 52% 50%,#000 35%,transparent 100%);will-change:transform}
+.hero .bg{position:absolute;inset:-6%;background:url(/img/andromeda.jpg) 50% 50%/cover;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse 70% 65% at 52% 50%,#000 35%,transparent 100%);mask-image:radial-gradient(ellipse 70% 65% at 52% 50%,#000 35%,transparent 100%);will-change:transform}
 .hero .ret{width:min(44vh,40vw);left:46.5%;top:48%;transform:translate(-50%,-50%);opacity:.75}
 .hero .copy{position:relative;z-index:2;max-width:760px}
 .hero h1{font-size:calc(clamp(46px,9vw,112px)*var(--ds));text-shadow:0 4px 40px rgba(0,0,0,.7)}
@@ -154,7 +157,7 @@ header nav a:hover,header nav a.on{color:var(--ink);--c:var(--ha)}
 .frame{background:#13100d;padding:12px;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px #2b241d;width:min(78%,330px)}
 .mat{background:#f4f1ea;padding:12% 12% 17%;position:relative}
 .mat .no{position:absolute;bottom:5%;left:12%;font-size:10px;color:#555}
-.mat .s{position:absolute;bottom:3%;right:10%;width:64px;height:34px;background:url(img/firma.png) center/contain no-repeat;filter:brightness(0) opacity(.75)}
+.mat .s{position:absolute;bottom:3%;right:10%;width:64px;height:34px;background:url(/img/firma.png) center/contain no-repeat;filter:brightness(0) opacity(.75)}
 .ed ul{padding:0;list-style:none;margin:22px 0 30px}.ed li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:14px}
 .ed li b{color:var(--oiii);font-weight:600;min-width:7em}
 .fud{font-size:13px;color:var(--mute);margin-top:14px}
@@ -205,7 +208,7 @@ footer p{color:var(--mute);font-size:14px}
 #vinfo .lede{font-size:18px;line-height:1.55;color:var(--ink)}
 #vinfo p{font-size:15px;color:#cfccc4}
 #vinfo blockquote{margin:26px 0;padding:0;font-family:var(--fd);font-style:italic;font-size:calc(24px*var(--ds));line-height:1.3;color:var(--oiii)}
-#vinfo blockquote::after{content:"";display:block;width:70px;height:36px;margin-top:10px;background:url(img/firma.png) left center/contain no-repeat;opacity:.8}
+#vinfo blockquote::after{content:"";display:block;width:70px;height:36px;margin-top:10px;background:url(/img/firma.png) left center/contain no-repeat;opacity:.8}
 #vinfo h3{font:600 13px var(--fb);color:var(--mute);margin:30px 0 4px}
 .spec{margin:0 0 30px}
 .spec div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
@@ -222,6 +225,20 @@ footer p{color:var(--mute);font-size:14px}
  .vhint{display:none}
  .vstats b{font-size:calc(19px*var(--ds));white-space:nowrap}.vstats div{padding:12px 10px 8px}
 }
+/* header extras */
+.langs{display:flex;gap:2px;margin-left:4px}
+.langs a{min-height:40px;min-width:40px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;color:var(--mute);text-decoration:none;--c:transparent}
+.langs a:hover{color:var(--ink);--c:var(--line)}.langs a.on{color:var(--ink);--c:var(--ha)}
+.moon{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:13px;color:var(--mute);white-space:nowrap}
+.moon .md{width:26px;height:26px;border-radius:50%;background:url(/img/moon-96.png) center/cover;box-shadow:0 0 12px rgba(233,233,236,.18);overflow:hidden;flex:none}
+.moon svg{width:100%;height:100%;display:block}.moon path{fill:rgba(6,6,9,.86)}
+.moon .mt b{color:var(--ink);font-weight:500}
+header nav{margin-left:18px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 8px}
+.bdg{display:inline-flex;align-items:center;gap:10px;min-height:40px;padding:0 16px;font-size:14px;--c:var(--ha);background:color-mix(in srgb,var(--bg) 45%,transparent)}
+.bdg svg{width:14px;height:14px}
+.bnote{font-size:13px!important;color:var(--mute)!important;margin:0 0 24px!important}
+a.pc{color:inherit;text-decoration:none}
 /* views */
 .view[hidden]{display:none}
 .acts{display:flex;flex-wrap:wrap;gap:10px 14px}
@@ -332,9 +349,10 @@ h2.big{font-size:calc(clamp(40px,5.6vw,72px)*var(--ds));margin:14px 0 20px}
 body[data-view=viaggio] footer,body[data-view=viaggio] #gauge{display:none}
 @media(max-width:700px){.jctl{left:0;right:0;justify-content:center;gap:2px}.jd{width:24px}.jr .cap{bottom:78px}.jr .art{padding:64px 0 46vh}.jr .art img{max-height:calc(54vh - 80px)}.jr .ret{top:calc(32px + 27vh);width:min(80vw,calc(54vh - 50px))}}
 /* phone */
-.menu{display:none;margin-left:auto;min-height:44px;padding:0 16px;font-size:14px;--c:var(--line)}
+.menu{display:none;min-height:44px;padding:0 16px;font-size:14px;--c:var(--line)}
 header nav a{min-height:44px;display:inline-flex;align-items:center}
 @media(max-width:700px){
+ .moon .mt{display:none}.moon{margin-left:auto;margin-right:4px}.langs{margin-left:2px}header nav{margin-left:0}
  header.solid{background:linear-gradient(var(--bg) 70%,transparent)}
  header{padding:6px 12px}header .sig{width:64px;height:40px}
  .menu{display:inline-flex;align-items:center}
@@ -358,13 +376,15 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
 </head>
 <body>
 <canvas id="sky" aria-hidden="true"></canvas>
-<div id="intro" role="presentation"><video id="sigv" src="img/firma.mp4" muted playsinline autoplay preload="auto" aria-hidden="true"></video><small>Tocca per entrare</small></div>
+<div id="intro" role="presentation"><video id="sigv" src="/img/firma.mp4" muted playsinline autoplay preload="auto" aria-hidden="true"></video><small>Tap to enter</small></div>
 
 <header id="top">
   <a class="sig" href="#home" aria-label="Home"></a>
+  <div class="langs" role="navigation" aria-label="Language"><a class="fr" hreflang="en" lang="en" href="/" data-lang="en">EN</a><a class="fr" hreflang="it" lang="it" href="/it/" data-lang="it">IT</a></div>
+  <div class="moon" id="moon" role="img" aria-label="Moon"><span class="md"><svg viewBox="-1 -1 2 2" aria-hidden="true"><path id="moonP" d=""/></svg></span><span class="mt" id="moonT"></span></div>
   <button class="menu fr" id="menu" aria-expanded="false" aria-controls="mnav">Menu</button>
   <nav id="mnav">
-    <a href="#home" class="fr" data-nav="home">Home</a><a href="#portfolio" class="fr keep" data-nav="portfolio">Portfolio</a><a href="#viaggio" class="fr" data-nav="viaggio">Viaggio nel tempo</a><a href="#edizioni" class="fr" data-nav="edizioni">Edizioni</a><a href="#contatti" class="fr" data-nav="contatti">Contatti</a>
+    <a href="#home" class="fr" data-nav="home">Home</a><a href="#portfolio" class="fr keep" data-nav="portfolio">Portfolio</a><a href="#viaggio" class="fr" data-nav="viaggio">Journey in time</a><a href="#edizioni" class="fr" data-nav="edizioni">Editions</a><a href="#contatti" class="fr" data-nav="contatti">Contact</a>
   </nav>
 </header>
 
@@ -374,51 +394,52 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
     <div class="bg" id="herobg"></div>
     <div class="ret" id="heroret" aria-hidden="true"></div>
     <div class="copy">
-      <div class="lbl">Astrofotografia da Brindisi</div>
+      <div class="lbl">Astrophotography from Brindisi</div>
       <h1>Giovanni Esteban <i>Tedesco</i></h1>
-      <p>Ha diciotto anni e fotografa il cielo con un telescopio Newton e una montatura del 2004.</p>
-      <div class="acts"><a class="btn fr" href="#portfolio">ICON Guarda il portfolio</a><a class="btn fr quiet" href="#viaggio">Viaggio nel tempo</a></div>
+      <div class="badges"><span class="bdg fr">ICON Brindisi, Italy</span><span class="bdg fr">Bortle 4 sky</span></div>
+      <p class="bnote">Bortle scale: from 1, a perfectly dark sky, to 9, a city sky.</p>
+      <div class="acts"><a class="btn fr" href="#portfolio">ICON View the portfolio</a><a class="btn fr quiet" href="#viaggio">Journey in time</a></div>
     </div>
   </section>
 
   <section class="band">
     <div class="wrap">
-      <div class="head"><div class="lbl">L'archivio</div><h2>Galassie, nebulose, la Luna, Saturno, le eclissi.</h2><p>Quasi tutte le foto sono scattate dalla sua postazione a Brindisi, con strumentazione amatoriale.</p></div>
+      <div class="head"><div class="lbl">The archive</div><h2>Galaxies, nebulae, the Moon, Saturn, eclipses.</h2><p>Almost every photo is taken from his observing spot in Brindisi, with amateur equipment.</p></div>
       <div class="stats">
-        <div class="fr"><b>21 h</b><span>di esposizione sul cielo profondo</span></div>
-        <div class="fr"><b>230.000+</b><span>fotogrammi elaborati</span></div>
-        <div class="fr"><b>23 mln</b><span>di anni luce: M51, l'oggetto più lontano</span></div>
-        <div class="fr"><b>APOD</b><span>una foto ripubblicata dalla NASA su Instagram</span></div>
+        <div class="fr"><b>21 h</b><span>of deep-sky exposure</span></div>
+        <div class="fr"><b>230.000+</b><span>frames processed</span></div>
+        <div class="fr"><b>23 mln</b><span>light years: M51, the most distant object</span></div>
+        <div class="fr"><b>APOD</b><span>a photo reposted by NASA on Instagram</span></div>
       </div>
     </div>
   </section>
 
   <section class="band" aria-labelledby="evid">
     <div class="wrap">
-      <div class="head"><div class="lbl">In evidenza</div><h2 id="evid">Tre opere.</h2></div>
+      <div class="head"><div class="lbl">Featured</div><h2 id="evid">Three works.</h2></div>
       <div id="feat"></div>
-      <div style="margin-top:48px"><a class="btn fr" href="#portfolio">ICON Tutte le 13 opere</a></div>
+      <div style="margin-top:48px"><a class="btn fr" href="#portfolio">ICON All 13 works</a></div>
     </div>
   </section>
 
   <section class="band tease">
     <div class="wrap">
-      <div class="head"><div class="lbl">Viaggio nel tempo</div><h2>Nove opere in ordine di distanza.</h2><p>Un percorso a schermo intero: da un'opera alla successiva, la luce che vedi è sempre più antica.</p></div>
+      <div class="head"><div class="lbl">Journey in time</div><h2>Nine works in order of distance.</h2><p>A full-screen sequence: from one work to the next, the light you see is older and older.</p></div>
       <div class="ruler" id="ruler" aria-hidden="true"></div>
-      <a class="btn fr" href="#viaggio">ICON Inizia il viaggio</a><p class="fud">Consigliato su computer o tablet.</p>
+      <a class="btn fr" href="#viaggio">ICON Start the journey</a><p class="fud">Best on a computer or tablet.</p>
     </div>
   </section>
 
   <section class="band" id="dietro">
     <div class="wrap">
-      <div class="head"><div class="lbl">Dietro lo scatto</div><h2>Strumenti e software.</h2></div>
+      <div class="head"><div class="lbl">Behind the shot</div><h2>Equipment and software.</h2></div>
       <div class="behind">
-        <figure><img src="img/setup.jpg" alt="Giovanni al portatile sotto gli alberi, accanto al telescopio puntato verso il cielo stellato, illuminato da luce rossa" loading="lazy" width="1600" height="900"><figcaption>Una sessione di ripresa.</figcaption></figure>
+        <figure><img src="/img/setup.jpg" alt="Giovanni at his laptop under the trees, next to the telescope pointed at the starry sky, lit by red light" loading="lazy" width="1600" height="900"><figcaption>An imaging session.</figcaption></figure>
         <div>
-          <p>Per il cielo profondo usa una Canon EOS 500D modificata full-spectrum su un Newton 150/750 e una montatura Celestron CG5 GT del 2004. Per la Luna e Saturno, una camera planetaria ZWO ASI120.</p>
-          <p>Durante la ripresa un portatile gestisce l'acquisizione e l'autoguida. Poi le singole pose vengono sommate ed elaborate.</p>
+          <p>For the deep sky he uses a full-spectrum modified Canon EOS 500D on a 150/750 Newtonian and a 2004 Celestron CG5 GT mount. For the Moon and Saturn, a ZWO ASI120 planetary camera.</p>
+          <p>During a session a laptop runs the acquisition and the autoguiding. The individual exposures are then stacked and processed.</p>
           <div class="gear">
-            <div><h3>Strumenti</h3><ul><li>Newton 150/750 mm</li><li>Celestron CG5 GT</li><li>Canon EOS 500D full-spectrum</li><li>Filtro Optolong L-Pro</li><li>Correttore Baader MPCC Mark II</li><li>Guida 60 mm + ZWO ASI120</li></ul></div>
+            <div><h3>Equipment</h3><ul><li>Newtonian 150/750 mm</li><li>Celestron CG5 GT</li><li>Canon EOS 500D full-spectrum</li><li>Optolong L-Pro filter</li><li>Baader MPCC Mark II corrector</li><li>60 mm guide scope + ZWO ASI120</li></ul></div>
             <div><h3>Software</h3><ul><li>N.I.N.A. · PHD2</li><li>Siril</li><li>FireCapture · PIPP</li><li>AutoStakkert! · RegiStax</li><li>Photoshop · GIMP</li><li>RawTherapee · Microsoft ICE</li></ul></div>
           </div>
         </div>
@@ -428,17 +449,17 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
 
   <section class="band" id="ed-home">
     <div class="wrap ed">
-      <div class="wall" aria-hidden="true"><div class="frame"><div class="mat"><img src="img/pleiadi.jpg" alt=""><span class="no">1 / 30</span><span class="s"></span></div></div></div>
+      <div class="wall" aria-hidden="true"><div class="frame"><div class="mat"><img src="/img/pleiadi.jpg" alt=""><span class="no">1 / 30</span><span class="s"></span></div></div></div>
       <div>
-        <div class="lbl">Edizioni d'artista</div>
-        <h2 style="margin-top:14px">Stampe fine art in tiratura limitata.</h2>
+        <div class="lbl">Artist editions</div>
+        <h2 style="margin-top:14px">Limited-edition fine art prints.</h2>
         <ul>
-          <li><b>Tiratura</b><span>Numerata, diversa per ogni formato</span></li>
-          <li><b>Firma</b><span>A mano, sul margine della stampa</span></li>
-          <li><b>Opere</b><span>Otto soggetti nella prima edizione</span></li>
+          <li><b>Edition</b><span>Numbered, different for each size</span></li>
+          <li><b>Signature</b><span>By hand, on the margin of the print</span></li>
+          <li><b>Works</b><span>Eight subjects in the first edition</span></li>
         </ul>
-        <a class="btn fr" href="#edizioni">ICON Scopri le edizioni</a>
-        <p class="fud">Si prenota con un messaggio, senza pagamento anticipato.</p>
+        <a class="btn fr" href="#edizioni">ICON Discover the editions</a>
+        <p class="fud">Reserve with a message, no payment up front.</p>
       </div>
     </div>
   </section>
@@ -447,10 +468,10 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
  <div class="view" data-view="portfolio" hidden>
   <section class="band phead">
     <div class="wrap">
-      <div class="head"><div class="lbl">Portfolio</div><h2>Tredici opere.</h2><p>Tocca un'opera per vederla a schermo intero e leggerne la scheda.</p></div>
+      <div class="head"><div class="lbl">Portfolio</div><h2>Thirteen works.</h2><p>Open a work to see it in full and read its story.</p></div>
       <div class="tools">
-        <div class="chips" role="group" aria-label="Filtra per tipo" id="chips"></div>
-        <div class="chips" role="group" aria-label="Ordina" id="sort"></div>
+        <div class="chips" role="group" aria-label="Filter by type" id="chips"></div>
+        <div class="chips" role="group" aria-label="Sort" id="sort"></div>
       </div>
       <div class="grid" id="grid"></div>
     </div>
@@ -461,202 +482,165 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
   <section class="band edh">
    <div class="wrap edgrid">
     <div>
-     <div class="lbl">Prima edizione</div>
-     <h2 class="big">Edizioni d'artista.</h2>
-     <p class="lede">Stampe fine art in tiratura limitata, numerate e firmate a mano da Giovanni.</p>
-     <div class="acts"><a class="btn fr" href="#ed-coll">ICON Scegli la tua stampa</a></div>
+     <div class="lbl">First edition</div>
+     <h2 class="big">Artist editions.</h2>
+     <p class="lede">Limited-edition fine art prints, numbered and signed by hand by Giovanni.</p>
+     <div class="acts"><a class="btn fr" href="#ed-coll">ICON Choose your print</a></div>
          </div>
-    <div class="wall big" aria-hidden="true"><div class="frame"><div class="mat"><img src="img/andromeda.jpg" alt=""><span class="no">3 / 15</span><span class="s"></span></div></div><span class="wl">Andromeda · formato A3, cornice esclusa</span></div>
+    <div class="wall big" aria-hidden="true"><div class="frame"><div class="mat"><img src="/img/andromeda.jpg" alt=""><span class="no">3 / 15</span><span class="s"></span></div></div><span class="wl">Andromeda · A3 size, frame not included</span></div>
    </div>
   </section>
 
   <section class="band">
    <div class="wrap">
-    <div class="head"><h2>Cosa ricevi.</h2></div>
+    <div class="head"><h2>What you get.</h2></div>
     <div class="incl">
-     <div class="fr"><h3>Stampa fine art</h3><p>Stampa giclée con inchiostri a pigmento su carta fine art, con un margine bianco pronto per la cornice.</p></div>
-     <div class="fr"><h3>Firma e numero</h3><p>Scritti a mano sul margine: il numero della copia sulla tiratura e la firma di Giovanni.</p></div>
+     <div class="fr"><h3>Fine art print</h3><p>Giclée print with pigment inks on fine art paper, with a white margin ready for framing.</p></div>
+     <div class="fr"><h3>Signature and number</h3><p>Handwritten on the margin: the copy number within the edition and Giovanni’s signature.</p></div>
     </div>
    </div>
   </section>
 
   <section class="band" id="ed-coll">
    <div class="wrap">
-    <div class="head"><div class="lbl">La collezione</div><h2>Otto opere.</h2><p>Tocca un'opera per vedere formati, tirature e dimensioni su una parete.</p></div>
+    <div class="head"><div class="lbl">The collection</div><h2>Eight works.</h2><p>Open a work to see sizes, edition numbers and how it looks on a wall.</p></div>
     <div class="grid" id="edgrid"></div>
    </div>
   </section>
 
   <section class="band">
    <div class="wrap">
-    <div class="head"><div class="lbl">Formati e tirature</div><h2>Più è grande, meno copie esistono.</h2></div>
+    <div class="head"><div class="lbl">Sizes and editions</div><h2>The larger the print, the fewer copies exist.</h2></div>
     <div class="ladder" id="ladder"></div>
-    <p class="fud">Prezzi della prima edizione, stampa senza cornice. Spedizione esclusa, calcolata alla conferma.</p>
+    <p class="fud">First-edition prices, unframed print. Shipping not included, quoted on confirmation.</p>
    </div>
   </section>
 
   <section class="band">
    <div class="wrap faqw">
-    <div class="head"><h2>Domande.</h2></div>
+    <div class="head"><h2>Questions.</h2></div>
     <div class="faq">
-     <details><summary>Come funziona la prenotazione?</summary><p>Scegli opera e formato, copi la richiesta già scritta e la mandi a Giovanni su Instagram. Lui ti risponde con la disponibilità e il numero della tua copia. Si paga solo dopo la conferma.</p></details>
-     <details><summary>Quando arriva la stampa?</summary><p>Ogni copia viene stampata su ordinazione, poi firmata e numerata. Giovanni ti indica tempi e costo di spedizione quando conferma la prenotazione.</p></details>
-     <details><summary>Cosa succede quando una tiratura finisce?</summary><p>Quel formato non verrà più stampato. Gli altri formati della stessa opera restano disponibili fino al loro esaurimento.</p></details>
-     <details><summary>La stampa è incorniciata?</summary><p>No, arriva senza cornice e con un margine bianco, pronta da incorniciare. Il margine serve anche per firma e numero, che restano visibili sotto il passe-partout.</p></details>
+     <details><summary>How does reserving work?</summary><p>Choose a work and a size, copy the ready-made request and send it to Giovanni on Instagram. He replies with availability and the number of your copy. You pay only after confirmation.</p></details>
+     <details><summary>When will the print arrive?</summary><p>Each copy is printed to order, then signed and numbered. Giovanni gives you timing and shipping cost when he confirms the reservation.</p></details>
+     <details><summary>What happens when an edition sells out?</summary><p>That size will never be printed again. The other sizes of the same work remain available until they sell out.</p></details>
+     <details><summary>Is the print framed?</summary><p>No, it arrives unframed with a white margin, ready to frame. The margin also carries the signature and number, which stay visible under the mount.</p></details>
     </div>
    </div>
   </section>
 
-  <section class="band" style="text-align:center"><div class="acts" style="justify-content:center"><a class="btn fr" href="#ed-coll">ICON Scegli la tua stampa</a></div></section>
+  <section class="band" style="text-align:center"><div class="acts" style="justify-content:center"><a class="btn fr" href="#ed-coll">ICON Choose your print</a></div></section>
  </div>
 
- <div class="view jr" data-view="viaggio" hidden aria-roledescription="presentazione" aria-label="Viaggio nel tempo">
+ <div class="view jr" data-view="viaggio" hidden aria-roledescription="presentation" aria-label="Journey in time">
   <div class="stage jl" id="jA"></div><div class="stage jl" id="jB"></div>
-  <div class="jscr" id="jintro"><div><div class="lbl" style="justify-content:center">Viaggio nel tempo</div><h2>Più vai avanti, più indietro nel tempo.</h2><p>Dalla Luna, a poco più di un secondo luce, fino a M51, la cui luce è partita 23 milioni di anni fa.</p><button class="btn fr" id="jstart">ICON Parti dalla Luna</button><p class="fud">Scorri o usa le frecce per passare all'opera successiva.</p></div></div>
-  <div class="jscr" id="jend" hidden><div><div class="lbl" style="justify-content:center">Fine del viaggio</div><h2>Sei arrivato a M51.</h2><div class="acts" style="justify-content:center;margin-top:26px"><a class="btn fr" href="#portfolio">ICON Vai al portfolio</a><button class="btn fr quiet" id="jagain">Ricomincia</button></div></div></div>
-  <div class="jctl"><button class="vb fr" id="jprev" aria-label="Opera precedente">↑</button><div class="jdots" id="jdots"></div><button class="vb fr" id="jnext" aria-label="Opera successiva">↓</button></div>
+  <div class="jscr" id="jintro"><div><div class="lbl" style="justify-content:center">Journey in time</div><h2>The further you go, the further back in time.</h2><p>From the Moon, just over one light second away, to M51, whose light set off 23 million years ago.</p><button class="btn fr" id="jstart">ICON Start from the Moon</button><p class="fud">Scroll or use the arrow keys to move to the next work.</p></div></div>
+  <div class="jscr" id="jend" hidden><div><div class="lbl" style="justify-content:center">End of the journey</div><h2>You have reached M51.</h2><div class="acts" style="justify-content:center;margin-top:26px"><a class="btn fr" href="#portfolio">ICON Go to the portfolio</a><button class="btn fr quiet" id="jagain">Start again</button></div></div></div>
+  <div class="jctl"><button class="vb fr" id="jprev" aria-label="Previous work">↑</button><div class="jdots" id="jdots"></div><button class="vb fr" id="jnext" aria-label="Next work">↓</button></div>
  </div>
 </main>
 
 <footer id="contatti">
-  <video id="sigf" src="img/firma.mp4" muted playsinline preload="none" aria-hidden="true"></video>
-  <h2 style="font-size:clamp(30px,4vw,44px)">Contatti</h2>
-  <p style="margin:16px 0 26px">Per collaborazioni, mostre e stampe, Giovanni risponde su Instagram.</p>
-  <a class="btn fr" href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">ICON @g.tedesco_ su Instagram</a>
-  <p style="margin-top:44px">© 2026 Giovanni Esteban Tedesco · Brindisi, Puglia · Tutte le immagini sono dell'autore.</p>
+  <video id="sigf" src="/img/firma.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+  <h2 style="font-size:clamp(30px,4vw,44px)">Contact</h2>
+  <p style="margin:16px 0 26px">For collaborations, exhibitions and prints, Giovanni replies on Instagram.</p>
+  <a class="btn fr" href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">ICON @g.tedesco_ on Instagram</a>
+  <p style="margin-top:44px">© 2026 Giovanni Esteban Tedesco · Brindisi, Apulia, Italy · All images by the author.</p>
 </footer>
 
-<div id="tm" aria-hidden="true"><div class="in"><div class="ago">la luce che stai per vedere è partita</div><div class="num" id="tmn">0</div><div class="unit" id="tmu">secondi fa</div><div class="ev" id="tme"></div></div></div>
+<div id="tm" aria-hidden="true"><div class="in"><div class="ago">the light you are about to see set off</div><div class="num" id="tmn">0</div><div class="unit" id="tmu">seconds ago</div><div class="ev" id="tme"></div></div></div>
 <div id="gauge" aria-hidden="true"><div class="rail"></div><div id="ticks"></div><div class="dot" id="gdot"></div></div>
 
 <div id="sheet" role="dialog" aria-modal="true" aria-labelledby="shT" hidden>
   <div class="sveil" data-close></div>
   <div class="spanel">
-   <button class="vb fr sclose" data-close aria-label="Chiudi">✕</button>
+   <button class="vb fr sclose" data-close aria-label="Close">✕</button>
    <div class="sroom"><span class="scale" id="sscale"></span><div class="scene" id="swall"><div class="sframe" id="sframe"><div class="smat"><img id="simg" alt=""></div></div><svg class="sofa" viewBox="0 0 200 85" preserveAspectRatio="none" aria-hidden="true"><rect x="10" y="10" width="180" height="48" rx="8"/><rect x="0" y="30" width="24" height="45" rx="7"/><rect x="176" y="30" width="24" height="45" rx="7"/><rect x="18" y="50" width="164" height="25" rx="5" opacity=".8"/><rect x="22" y="75" width="5" height="10"/><rect x="173" y="75" width="5" height="10"/></svg></div></div>
    <div class="sinfo">
     <div class="lbl" id="sK"></div><h2 id="shT"></h2><p class="sdesc" id="sD"></p>
-    <h3>Formato</h3><div class="fmts" id="sF" role="radiogroup" aria-label="Formato"></div>
+    <h3>Size</h3><div class="fmts" id="sF" role="radiogroup" aria-label="Size"></div>
     <div class="sum" id="sS"></div>
-    <div class="sbar"><span class="sbp" id="sBp"></span><a class="btn fr" id="sCta" href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">ICON Prenota la mia copia</a></div>
-    <p class="fud" id="sNote">Il pulsante copia un messaggio già pronto da incollare su Instagram a @g.tedesco_.</p>
-    <ul class="sinc"><li>Stampa fine art a pigmenti</li><li>Firmata e numerata a mano</li><li>Spedizione calcolata alla conferma</li></ul>
+    <div class="sbar"><span class="sbp" id="sBp"></span><a class="btn fr" id="sCta" href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">ICON Reserve my copy</a></div>
+    <p class="fud" id="sNote">The button copies a ready-made message to paste on Instagram to @g.tedesco_.</p>
+    <ul class="sinc"><li>Pigment fine art print</li><li>Signed and numbered by hand</li><li>Shipping quoted on confirmation</li></ul>
    </div>
   </div>
 </div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<div id="viewer" role="dialog" aria-modal="true" aria-label="Opera a schermo intero">
+<div id="viewer" role="dialog" aria-modal="true" aria-label="Work in full screen">
   <div class="veil"></div>
   <div id="vp"><img id="vimg" alt=""></div>
   <div id="vring" class="ret" aria-hidden="true"></div>
-  <div class="vbar vui"><span id="vzoom" aria-live="polite">1,0×</span><button class="vb fr" id="vout" aria-label="Riduci">−</button><button class="vb fr" id="vin" aria-label="Ingrandisci">+</button><button class="vb fr" id="vinfob" aria-pressed="true">Scheda</button><button class="vb fr" id="vclose" aria-label="Chiudi">✕</button></div>
-  <button class="vb fr vnav vui" id="vprev" aria-label="Opera precedente">‹</button><button class="vb fr vnav vui" id="vnext" aria-label="Opera successiva">›</button>
+  <div class="vbar vui"><span id="vzoom" aria-live="polite">1,0×</span><button class="vb fr" id="vout" aria-label="Zoom out">−</button><button class="vb fr" id="vin" aria-label="Zoom in">+</button><button class="vb fr" id="vinfob" aria-pressed="true">Details</button><button class="vb fr" id="vclose" aria-label="Close">✕</button></div>
+  <button class="vb fr vnav vui" id="vprev" aria-label="Previous work">‹</button><button class="vb fr vnav vui" id="vnext" aria-label="Next work">›</button>
   <aside id="vinfo"></aside>
-  <div class="vhint vui">Rotella o pizzico per ingrandire · trascina per muoverti · frecce per sfogliare</div>
+  <div class="vhint vui">Scroll or pinch to zoom · drag to move · arrow keys to browse</div>
 </div>
 
 <script>
 {
-const Y=3.156e7;
-const W=[
- {id:'luna',img:'luna-colori.jpg',w:1564,h:1600,t:'I colori minerali della Luna',k:'Mosaico lunare',d:'24 ottobre 2026',secs:1.3,look:'1,3 secondi',then:'',
-  dl:[['Pannelli','52'],['Fotogrammi','182.000'],['Lavoro','~1 settimana']],
-  tab:[['Mosaico','52 pannelli da 650 × 450 px'],['Fotogrammi','~3.500 per pannello, 182.000 in totale'],['Camera','ZWO ASI120'],['Telescopio','Newton 150/750 su CG5 GT'],['Software','PIPP, AutoStakkert, RegiStax, RawTherapee, Microsoft ICE, GIMP']],
-  p:[`Le diverse tonalità corrispondono alla composizione minerale del suolo lunare.`,`I video sono stati registrati con la Luna alla massima altezza, per ridurre la turbolenza dell'atmosfera. Ogni pannello è stato stabilizzato e sommato, poi tutti e 52 sono stati uniti in un unico mosaico. L'elaborazione ha richiesto circa una settimana.`]},
- {id:'saturno',img:'saturno.jpg',w:448,h:448,t:'Saturno',k:'Gigante gassoso',d:'17 ottobre 2026',secs:4300,look:'poco più di un\'ora',then:'',
-  dl:[['Video','22 min'],['Fotogrammi','~50.000'],['Barlow','3×']],
-  tab:[['Tecnica','Lucky imaging da circa 22 minuti di video'],['Fotogrammi','circa 50.000'],['Ottica','Newton 150/750 con Barlow 3×'],['Camera','ZWO ASI120'],['Software','FireCapture, PIPP, AutoStakkert!, RegiStax, Photoshop']],
-  p:[`Gli anelli di Saturno sono fatti soprattutto di particelle di ghiaccio, polvere e detriti rocciosi.`,`Da circa 50.000 fotogrammi sono stati scelti e sommati solo i più nitidi: è la tecnica del lucky imaging.`]},
- {id:'pleiadi',img:'pleiadi.jpg',w:1053,h:1536,t:'Le Pleiadi · M45',k:'Ammasso aperto · Toro',d:'13 novembre 2026',secs:444*Y,look:'circa 440 anni',then:'In Europa entrava in vigore il <b>calendario gregoriano</b>.',
-  dl:[['Pose','110 × 180 s'],['ISO','800'],['Totale','5 h 30 min']],
-  tab:[['Pose','110 da 180 s, ISO 800'],['Integrazione','5 ore e 30 minuti'],['Elaborazione','Siril, separazione starless'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro']],
-  p:[`Le Sette Sorelle sono uno degli ammassi aperti più riconoscibili del cielo. Le loro stelle blu illuminano la polvere intorno, creando le nebulose a riflessione azzurre.`,`Stelle e nebulosità sono state separate ed elaborate in modo indipendente: così le nubi più deboli emergono senza snaturare le stelle.`]},
- {id:'velo',img:'velo.jpg',w:1065,h:1600,t:'Nebulosa Velo Orientale · C33',k:'Resto di supernova · Cigno',d:'1 luglio 2026',secs:2400*Y,look:'circa 2.400 anni',then:'Ad Atene <b>Platone</b> insegnava nella sua Accademia.',
-  dl:[['Oggetto','NGC 6992'],['Distanza','~2.400 a.l.']],
-  tab:[['Oggetto','C33 · NGC 6992'],['Costellazione','Cigno'],['Distanza','circa 2.400 anni luce'],['Ottica','Newton 150/750 su CG5 GT, Canon 500D full-spectrum, Optolong L-Pro']],
-  p:[`Questi filamenti sono ciò che resta di una stella massiccia esplosa migliaia di anni fa. L'onda d'urto continua ancora oggi ad avanzare nel gas interstellare.`]},
- {id:'ic1396',img:'ic1396.jpg',w:986,h:1600,t:'Proboscide d’Elefante · IC 1396',k:'Regione di formazione stellare · Cefeo',d:'5 luglio 2026',secs:2400*Y,look:'circa 2.400 anni',then:'Qui in Salento fiorivano le città dei <b>Messapi</b>.',
-  dl:[['Pose','20 × 300 s'],['ISO','1600'],['Totale','1 h 40 min']],
-  tab:[['Pose','20 da 300 s, ISO 1600'],['Integrazione','1 ora e 40 minuti'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro'],['Guida','60 mm + ZWO ASI120, N.I.N.A. e PHD2']],
-  p:[`Una densa nube di gas e polveri a forma di proboscide, dentro una vasta regione dove nascono nuove stelle.`,`Il rosso è l'idrogeno ionizzato dalla luce delle stelle più calde; le strutture scure sono polvere che si staglia contro la nebulosa.`]},
- {id:'andromeda',img:'andromeda.jpg',w:1600,h:1005,t:'La Galassia di Andromeda · M31',k:'Galassia a spirale · Andromeda',d:'24 agosto 2026',secs:2.5e6*Y,look:'circa 2,5 milioni di anni',then:'In Africa comparivano i primi esseri del <b>genere Homo</b>.',
-  dl:[['Pose','300 × 120 s'],['ISO','400'],['Totale','10 h']],
-  tab:[['Pose','300 da 2 minuti, ISO 400'],['Integrazione','10 ore'],['Elaborazione','Siril, rifinitura in Photoshop'],['Ottica','Newton 150/750 su CG5 GT (2004), Optolong L-Pro']],
-  p:[`Una delle grandi galassie più vicine alla Via Lattea. Dieci ore di posa hanno fatto emergere le regioni esterne più deboli, le bande di polvere e le strutture del disco.`,`«Per me, fotografare Andromeda significa molto più che immortalare una galassia lontana.»`]},
- {id:'m81',img:'m81-m82.jpg',w:842,h:535,t:'Galassia di Bode e Galassia Sigaro · M81 e M82',k:'Coppia di galassie · Orsa Maggiore',d:'14 giugno 2026',secs:12e6*Y,look:'circa 12 milioni di anni',then:'Gli antenati dell’uomo non si erano ancora separati da quelli degli scimpanzé.',
-  dl:[['Pose','35 × 60 s'],['ISO','800'],['Totale','35 min']],
-  tab:[['Pose','35 da 60 s, ISO 800'],['Integrazione','35 minuti'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro'],['Guida','60 mm + ZWO ASI120, N.I.N.A. e PHD2']],
-  p:[`Due galassie molto diverse nella stessa inquadratura: M81, spirale regolare dal nucleo luminoso, e M82, allungata e irregolare, dove le stelle nascono a un ritmo molto più alto che nella Via Lattea.`,`Le loro interazioni gravitazionali hanno acceso l'intensa formazione stellare di M82.`]},
- {id:'m101',img:'m101.jpg',w:1600,h:1042,t:'Galassia Girandola · M101',k:'Galassia a spirale · Orsa Maggiore',d:'25 luglio 2026',secs:21e6*Y,look:'circa 21 milioni di anni',then:'Le <b>Alpi</b> stavano ancora sollevandosi.',
-  dl:[['Pose','14 × 300 s'],['ISO','800'],['Totale','1 h 10 min']],
-  tab:[['Pose','14 da 300 s, ISO 800'],['Integrazione','1 ora e 10 minuti'],['Diametro','circa 170.000 anni luce'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro']],
-  p:[`Più grande della Via Lattea e vista quasi di fronte: per questo mostra così bene i suoi bracci, ricchi di regioni rossastre di idrogeno e di stelle giovani azzurre.`]},
- {id:'m51',img:'m51.jpg',w:1600,h:1135,t:'Galassia Vortice · M51',k:'Galassie in interazione · Cani da Caccia',d:'16 luglio 2026',secs:23e6*Y,look:'circa 23 milioni di anni',then:'',
-  dl:[['Pose','25 × 300 s'],['ISO','800'],['Totale','2 h 05 min']],
-  tab:[['Pose','25 da 300 s, ISO 800'],['Integrazione','2 ore e 5 minuti'],['Oggetti','NGC 5194 e la compagna NGC 5195'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro']],
-  p:[`Due grandi bracci a spirale attorno a un nucleo luminoso, e accanto la piccola NGC 5195. La loro attrazione reciproca ha accentuato la spirale e acceso nuove stelle.`,`«La luce raccolta dal sensore della mia fotocamera ha viaggiato attraverso lo spazio per circa 23 milioni di anni.»`]}
-];
-const E=[
- {id:'eclissi',img:'eclissi-lunare.jpg',w:1590,h:1590,c:'c1',t:'Le fasi di un’eclissi lunare parziale',k:'Brindisi · 28 agosto 2026',badge:'Ripubblicata da NASA APOD',
-  tab:[['Scatto','Canon EOS 500D su Newton 150/750, montatura motorizzata'],['Composizione','Fasi in ordine cronologico, disposte in cerchio, in Photoshop'],['Riconoscimento','Ripubblicata dal profilo Instagram ufficiale APOD NASA il 31 agosto 2026']],
-  p:[`Durante un'eclissi lunare la Terra si mette tra il Sole e la Luna, e la sua ombra copre parte della superficie lunare.`,`Giovanni ha scelto gli scatti più nitidi di ogni fase, ha scontornato la Luna e li ha disposti in cerchio per raccontare l'eclissi dall'inizio alla fine.`]},
- {id:'sahagun',img:'eclissi-sahagun.jpg',w:828,h:858,c:'c2',t:'Sahagún, 12 agosto',k:'León, Spagna',
-  tab:[['Dispositivo','iPhone 11 su treppiede con bastone da selfie'],['Elaborazione','Solo Adobe Photoshop, nessuna intelligenza artificiale']],
-  p:[`Scattata con un iPhone 11 su un treppiede con bastone da selfie.`]},
- {id:'collage',img:'luna-collage.jpg',w:1440,h:1080,c:'c3',t:'Collage lunare',k:'',
-  tab:[],
-  p:[]},
- {id:'decorazione',img:'decorazione.jpg',w:1600,h:1044,c:'c4',t:'Decorazione natalizia',k:'Brindisi · 27 settembre',
-  tab:[['Fotocamera','Canon EOS 500D'],['Elaborazione','Photoshop']],
-  p:[`La Luna, rosata, sospesa tra i rami come una decorazione appesa a un grande albero.`,`Giovanni ha studiato il luogo e aspettato che la Luna arrivasse nel punto esatto tra la vegetazione.`]}
-];
-
-const RD={luna:['Luna','384.400 km'],saturno:['Saturno',''],pleiadi:['AR 03h 47m','Dec +24° 07′'],velo:['AR 20h 56m','Dec +31° 43′'],ic1396:['AR 21h 39m','Dec +57° 30′'],andromeda:['AR 00h 42m','Dec +41° 16′'],m81:['AR 09h 55m','Dec +69° 04′'],m101:['AR 14h 03m','Dec +54° 21′'],m51:['AR 13h 30m','Dec +47° 12′']};
+const LANG='en',WBASE='/works/',SLUG={"luna": "moon-mineral-colours", "saturno": "saturn", "pleiadi": "pleiades-m45", "velo": "eastern-veil-nebula-c33", "ic1396": "elephants-trunk-nebula-ic1396", "andromeda": "andromeda-galaxy-m31", "m81": "bode-and-cigar-galaxies-m81-m82", "m101": "pinwheel-galaxy-m101", "m51": "whirlpool-galaxy-m51", "eclissi": "partial-lunar-eclipse-phases", "sahagun": "sahagun-12-august", "collage": "lunar-collage", "decorazione": "christmas-ornament"};
+const WU=id=>WBASE+SLUG[id]+'/';
+const Y=31560000.0;
+const W=[{"id": "luna", "img": "luna-colori.jpg", "w": 1564, "h": 1600, "t": "The Mineral Colours of the Moon", "k": "Lunar mosaic", "d": "24 October 2026", "look": "1.3 seconds", "then": "", "tab": [["Mosaic", "52 panels at 650 × 450 px"], ["Frames", "~3,500 per panel, 182,000 in total"], ["Camera", "ZWO ASI120"], ["Telescope", "Newtonian 150/750 on Celestron CG5 GT"], ["Software", "PIPP, AutoStakkert, RegiStax, RawTherapee, Microsoft Image Composite Editor, GIMP"]], "p": ["A mosaic of 52 panels, each captured at 650 × 450 pixels with a ZWO ASI120 camera on a 150/750 Newtonian telescope. Each panel is the sum of about 3,500 frames, 182,000 in total. The hues correspond to the mineral composition of the lunar surface.", "To keep atmospheric turbulence to a minimum, every video was recorded when the Moon was at its highest point in the sky.", "The videos were stabilised and processed with PIPP and AutoStakkert, then sharpened in RegiStax with the same treatment applied to all 52 panels. RawTherapee matched their sizes, Microsoft Image Composite Editor merged them into a single mosaic and GIMP refined the final image.", "“The whole processing took about a week of work.”"], "cat": "sole", "iso": "2026-10-24", "dl": [["Panels", "52"], ["Frames", "182,000"], ["Work", "~1 week"]], "secs": 1.3}, {"id": "saturno", "img": "saturno.jpg", "w": 448, "h": 448, "t": "Saturn", "k": "Gas giant", "d": "17 October 2026", "look": "just over an hour", "then": "", "tab": [["Technique", "Lucky imaging from about 22 minutes of video"], ["Frames", "about 50,000"], ["Optics", "Newtonian 150/750 with 3× Barlow lens"], ["Mount", "Celestron CG5 GT"], ["Camera", "ZWO ASI120"], ["Software", "FireCapture, PIPP, AutoStakkert!, RegiStax, Photoshop"]], "p": ["The gas giant of the Solar System, with its ring system made mostly of ice particles, dust and rocky debris.", "The image comes from a high-resolution planetary imaging session: about 22 minutes of video, roughly 50,000 frames in total.", "The footage was processed with lucky imaging, selecting and stacking only the sharpest frames to bring out the detail of the planet and its rings."], "cat": "sole", "iso": "2026-10-17", "dl": [["Video", "22 min"], ["Frames", "~50,000"], ["Barlow", "3×"]], "secs": 4300}, {"id": "pleiadi", "img": "pleiadi.jpg", "w": 1053, "h": 1536, "t": "The Pleiades · M45", "k": "Open cluster · Taurus", "d": "13 November 2026", "look": "about 440 years", "then": "In Europe the <b>Gregorian calendar</b> was coming into use.", "tab": [["Exposures", "110 × 180 s, ISO 800"], ["Integration", "5 hours 30 minutes"], ["Processing", "Siril, starless separation"], ["Telescope", "Newtonian 150/750 mm"], ["Mount", "Celestron CG5 GT"], ["Camera", "Canon EOS 500D, full-spectrum modified"], ["Filter", "Optolong L-Pro"], ["Corrector", "Baader MPCC Mark II"], ["Guiding", "60 mm guide scope, ZWO ASI120 camera"], ["Software", "N.I.N.A., PHD2"]], "p": ["In the constellation of Taurus, the Pleiades, also known as the Seven Sisters, are one of the most recognisable open star clusters in the night sky. Their blue stars light up the surrounding interstellar dust, creating the pale blue reflection nebulae.", "The image is the sum of 110 exposures of 180 seconds at ISO 800, for a total integration time of 5 hours 30 minutes.", "Post-processing was done in Siril with a starless technique: stars and interstellar clouds were separated and processed independently. This brings out the faint structures of the reflection nebulae while keeping the stars natural."], "cat": "deep", "iso": "2026-11-13", "dl": [["Exposures", "110 × 180 s"], ["ISO", "800"], ["Total", "5 h 30 min"]], "secs": 14012640000.0}, {"id": "velo", "img": "velo.jpg", "w": 1065, "h": 1600, "t": "Eastern Veil Nebula · C33", "k": "Supernova remnant · Cygnus", "d": "1 July 2026", "look": "about 2,400 years", "then": "In Athens, <b>Plato</b> was teaching at his Academy.", "tab": [["Object", "C33 · NGC 6992"], ["Constellation", "Cygnus"], ["Distance", "about 2,400 light years"], ["Telescope", "Newtonian 150/750 mm"], ["Mount", "Celestron CG5 GT"]], "p": ["In the constellation of Cygnus, C33 (NGC 6992), the Eastern Veil Nebula, is part of the Veil Nebula, a vast supernova remnant about 2,400 light years from Earth.", "Its glowing filaments of gas are what remains of a massive star that exploded thousands of years ago. The shock wave from the explosion is still travelling through the surrounding interstellar medium."], "cat": "deep", "iso": "2026-07-01", "dl": [["Object", "NGC 6992"], ["Distance", "~2,400 ly"]], "secs": 75744000000.0}, {"id": "ic1396", "img": "ic1396.jpg", "w": 986, "h": 1600, "t": "Elephant’s Trunk · IC 1396", "k": "Star-forming region · Cepheus", "d": "5 July 2026", "look": "about 2,400 years", "then": "Here in Salento, the cities of the <b>Messapians</b> were flourishing.", "tab": [["Exposures", "20 × 300 s, ISO 1600"], ["Integration", "1 hour 40 minutes"], ["Telescope", "Newtonian 150/750 mm"], ["Mount", "Celestron CG5 GT"], ["Camera", "Canon EOS 500D, full-spectrum modified"], ["Filter", "Optolong L-Pro"], ["Corrector", "Baader MPCC Mark II"], ["Guiding", "60 mm guide scope, ZWO ASI120 camera"], ["Software", "N.I.N.A., PHD2"]], "p": ["In the constellation of Cepheus, IC 1396 is a vast region of ionised gas and interstellar dust about 2,400 light years from Earth. Inside it lies the Elephant’s Trunk Nebula (IC 1396A), a dense cloud of gas and dust shaped like an elephant’s trunk.", "It is a place where stars are born, inside dense molecular clouds. Ultraviolet light from the most massive stars ionises the gas and produces the reddish glow of hydrogen, while the dust forms dark structures that stand out against the bright nebula.", "The image is the sum of 20 exposures of 5 minutes at ISO 1600, 1 hour 40 minutes of integration: enough to bring out the nebular structures and the contrast between the bright regions and the clouds of dust."], "cat": "deep", "iso": "2026-07-05", "dl": [["Exposures", "20 × 300 s"], ["ISO", "1600"], ["Total", "1 h 40 min"]], "secs": 75744000000.0}, {"id": "andromeda", "img": "andromeda.jpg", "w": 1600, "h": 1005, "t": "The Andromeda Galaxy · M31", "k": "Spiral galaxy · Andromeda", "d": "24 August 2026", "look": "about 2.5 million years", "then": "In Africa, the first members of the <b>genus Homo</b> were appearing.", "tab": [["Exposures", "300 × 2 minutes, ISO 400"], ["Integration", "10 hours"], ["Processing", "Siril, finished in Photoshop"], ["Telescope", "Newtonian 150/750 mm"], ["Mount", "Celestron CG5 GT"], ["Camera", "Canon EOS 500D, full-spectrum modified"], ["Filter", "Optolong L-Pro"], ["Guiding", "60 mm guide scope, ZWO ASI120 camera"]], "p": ["Messier 31, the Andromeda Galaxy, is one of the large galaxies closest to the Milky Way and one of the most fascinating objects in the night sky.", "“For me, photographing Andromeda means much more than capturing a distant galaxy. It is a way of bringing amateur astrophotography together with one of the most spectacular objects you can see from Earth.”", "The final image is made of 300 exposures of 2 minutes at ISO 400, 10 hours of integration. That long acquisition time captured the faint outer regions of the galaxy, its dust lanes and the structures along its disc.", "The frames were calibrated, stacked and processed in Siril; Photoshop was used for the final adjustments to contrast, colour and detail."], "cat": "deep", "iso": "2026-08-24", "dl": [["Exposures", "300 × 120 s"], ["ISO", "400"], ["Total", "10 h"]], "secs": 78900000000000.0}, {"id": "m81", "img": "m81-m82.jpg", "w": 842, "h": 535, "t": "Bode’s Galaxy and the Cigar Galaxy · M81 and M82", "k": "Galaxy pair · Ursa Major", "d": "14 June 2026", "look": "about 12 million years", "then": "The ancestors of humans had not yet split from those of chimpanzees.", "tab": [["Exposures", "35 × 60 s, ISO 800"], ["Integration", "35 minutes"], ["Telescope", "Newtonian 150/750 mm"], ["Mount", "Celestron CG5 GT"], ["Camera", "Canon EOS 500D, full-spectrum modified"], ["Filter", "Optolong L-Pro"], ["Corrector", "Baader MPCC Mark II"], ["Guiding", "60 mm guide scope, ZWO ASI120 camera"], ["Software", "N.I.N.A., PHD2"]], "p": ["In the constellation of Ursa Major, about 12 million light years away, M81 and M82 are one of the most fascinating galaxy pairs in the sky. Both belong to the M81 group.", "M81, Bode’s Galaxy, is a spiral with a very bright core and elegant arms rich in stars, gas and dust. M82, the Cigar Galaxy, is elongated and irregular: a starburst galaxy, forming stars at a much higher rate than the Milky Way, with powerful flows of gas above and below its disc.", "Gravitational interactions between the galaxies of the group have played a key role in their evolution, and especially in the intense star formation of M82.", "The image is the sum of 35 exposures of 1 minute at ISO 800. Despite only 35 minutes of integration, it shows the contrast between the regular spiral of M81 and the elongated shape of M82."], "cat": "deep", "iso": "2026-06-14", "dl": [["Exposures", "35 × 60 s"], ["ISO", "800"], ["Total", "35 min"]], "secs": 378720000000000.0}, {"id": "m101", "img": "m101.jpg", "w": 1600, "h": 1042, "t": "Pinwheel Galaxy · M101", "k": "Spiral galaxy · Ursa Major", "d": "25 July 2026", "look": "about 21 million years", "then": "The <b>Alps</b> were still rising.", "tab": [["Exposures", "14 × 300 s, ISO 800"], ["Integration", "1 hour 10 minutes"], ["Diameter", "about 170,000 light years"], ["Telescope", "Newtonian 150/750 mm"], ["Mount", "Celestron CG5 GT"], ["Camera", "Canon EOS 500D, full-spectrum modified"], ["Filter", "Optolong L-Pro"], ["Corrector", "Baader MPCC Mark II"], ["Guiding", "60 mm guide scope, ZWO ASI120 camera"], ["Software", "N.I.N.A., PHD2"]], "p": ["In the constellation of Ursa Major, M101, the Pinwheel Galaxy, is a spiral galaxy about 21 million light years away. We see it almost face-on, which is why its spiral structure shows so clearly.", "At about 170,000 light years across, it is larger than the Milky Way. Its arms host many H II regions, where young massive stars ionise the gas and create reddish nebulae, while the youngest, hottest stars give the bluish tones.", "The image is the sum of 14 exposures of 5 minutes at ISO 800. Despite 1 hour 10 minutes of integration and the galaxy’s faint surface brightness, it shows the core and part of the arms."], "cat": "deep", "iso": "2026-07-25", "dl": [["Exposures", "14 × 300 s"], ["ISO", "800"], ["Total", "1 h 10 min"]], "secs": 662760000000000.0}, {"id": "m51", "img": "m51.jpg", "w": 1600, "h": 1135, "t": "Whirlpool Galaxy · M51", "k": "Interacting galaxies · Canes Venatici", "d": "16 July 2026", "look": "about 23 million years", "then": "", "tab": [["Exposures", "25 × 300 s, ISO 800"], ["Integration", "2 hours 5 minutes"], ["Objects", "NGC 5194 and its companion NGC 5195"], ["Telescope", "Newtonian 150/750 mm"], ["Mount", "Celestron CG5 GT"], ["Camera", "Canon EOS 500D, full-spectrum modified"], ["Filter", "Optolong L-Pro"], ["Corrector", "Baader MPCC Mark II"], ["Guiding", "60 mm guide scope, ZWO ASI120 camera"], ["Software", "N.I.N.A., PHD2"]], "p": ["In the constellation of Canes Venatici, M51, the Whirlpool Galaxy, is one of the most recognisable spiral galaxies in the sky, about 23 million light years away.", "Two large arms rich in stars, gas and dust wind around a bright core. The bluish regions host young massive stars; the reddish ones are vast star-forming regions.", "Next to it is the companion galaxy NGC 5195. Their mutual pull has sharpened the spiral structure of M51, compressing clouds of gas and triggering new star formation.", "The image is the sum of 25 exposures of 5 minutes at ISO 800, 2 hours 5 minutes of integration: enough to show the core, the arms, the dust lanes and the companion NGC 5195.", "“The light collected by my camera’s sensor travelled through space for about 23 million years.”"], "cat": "deep", "iso": "2026-07-16", "dl": [["Exposures", "25 × 300 s"], ["ISO", "800"], ["Total", "2 h 05 min"]], "secs": 725880000000000.0}];
+const E=[{"id": "eclissi", "img": "eclissi-lunare.jpg", "w": 1590, "h": 1590, "t": "The Phases of a Partial Lunar Eclipse", "k": "Brindisi · 28 August 2026", "d": "", "look": "", "then": "", "tab": [["Camera", "Canon EOS 500D"], ["Telescope", "Newtonian 150/750 on a motorised equatorial mount"], ["Composition", "Phases in chronological order, arranged in a circle, in Photoshop"], ["Recognition", "Reposted by NASA’s official APOD Instagram account on 31 August 2026"]], "p": ["The phases of the partial lunar eclipse of 28 August, photographed in Brindisi, combined into a single collage and arranged in a circle to show how it progressed.", "During a lunar eclipse the Earth sits between the Sun and the Moon, and its shadow covers part of the lunar surface.", "Giovanni picked the sharpest frames, cut out the Moon in Photoshop to remove the black background, resized the images and placed them in chronological order. Finally he adjusted brightness, contrast and spacing.", "On 31 August 2026 the photo was reposted by the official Instagram account of NASA’s APOD, Astronomy Picture of the Day, and it is still in its highlighted stories about the Moon."], "cat": "sole", "iso": "2026-08-28", "badge": "NASA APOD"}, {"id": "sahagun", "img": "eclissi-sahagun.jpg", "w": 828, "h": 858, "t": "Sahagún, 12 August", "k": "León, Spain", "d": "", "look": "", "then": "", "tab": [["Device", "iPhone 11 on a tripod with a selfie stick"], ["Processing", "Adobe Photoshop only, no artificial intelligence"]], "p": ["Taken on 12 August in Sahagún, in the province of León, Spain, with an iPhone 11 and a tripod with a selfie stick.", "No artificial intelligence was used: only traditional processing techniques in Adobe Photoshop."], "cat": "terra", "iso": "2026-08-12"}, {"id": "collage", "img": "luna-collage.jpg", "w": 1440, "h": 1080, "t": "Lunar Collage", "k": "", "d": "", "look": "", "then": "", "tab": [], "p": [], "cat": "sole", "iso": ""}, {"id": "decorazione", "img": "decorazione.jpg", "w": 1600, "h": 1044, "t": "Christmas Ornament", "k": "Brindisi · 27 September", "d": "", "look": "", "then": "", "tab": [["Camera", "Canon EOS 500D"], ["Processing", "Photoshop"]], "p": ["A night scene turned into a small composition inspired by Christmas. The Moon, hanging among the branches and lit with a soft pink tone, looks like an ornament on a great tree.", "The dark silhouettes of the trees framing the sky become the branches of an imaginary Christmas tree, with the Moon as the glowing ornament at its centre.", "Giovanni studied the location and waited for the right moment to catch the Moon in exactly that spot among the leaves."], "cat": "terra", "iso": "2026-09-27"}];
+const RD={"luna": ["Moon", "384,400 km"], "saturno": ["Saturn", ""], "pleiadi": ["RA 03h 47m", "Dec +24° 07′"], "velo": ["RA 20h 56m", "Dec +31° 43′"], "ic1396": ["RA 21h 39m", "Dec +57° 30′"], "andromeda": ["RA 00h 42m", "Dec +41° 16′"], "m81": ["RA 09h 55m", "Dec +69° 04′"], "m101": ["RA 14h 03m", "Dec +54° 21′"], "m51": ["RA 13h 30m", "Dec +47° 12′"]};
 const ALL=[...W,...E];
 const $=s=>document.querySelector(s);
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const ICON='<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor"/><path d="M8 0v4M8 12v4M0 8h4M12 8h4" stroke="currentColor"/></svg>';
-document.querySelectorAll('.btn').forEach(b=>b.innerHTML=b.innerHTML.replace('ICON',ICON));
+document.querySelectorAll('.btn,.bdg').forEach(b=>b.innerHTML=b.innerHTML.replace('ICON',ICON));
 const ring=(a,b)=>`<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="99" opacity=".35"/><circle cx="100" cy="100" r="93" opacity=".12"/>
  ${Array.from({length:72},(_,i)=>{const t=i*5*Math.PI/180,l=i%18===0?8:i%6===0?4:2;return`<line x1="${100+99*Math.sin(t)}" y1="${100-99*Math.cos(t)}" x2="${100+(99-l)*Math.sin(t)}" y2="${100-(99-l)*Math.cos(t)}" opacity=".5"/>`}).join('')}
  <line x1="100" y1="-6" x2="100" y2="10" class="ha"/><line x1="100" y1="190" x2="100" y2="206" class="ha"/><line x1="-6" y1="100" x2="10" y2="100" class="ha"/><line x1="190" y1="100" x2="206" y2="100" class="ha"/>
  <text x="106" y="-7" style="font-size:4.6px">${a}</text><text x="106" y="211" style="font-size:4.6px">${b}</text></svg>`;
 $('#heroret').innerHTML=ring('M31 · AR 00h 42m · Dec +41° 16′','');
 
+/* language switch: keep the current view */
+document.querySelectorAll('.langs a').forEach(a=>{a.classList.toggle('on',a.dataset.lang===LANG);if(a.dataset.lang===LANG)a.setAttribute('aria-current','true');
+ a.addEventListener('click',()=>{if(location.hash)a.href=a.getAttribute('href').split('#')[0]+location.hash})});
+/* moon: today's illumination (Meeus, low precision) */
+{const d2r=Math.PI/180,T=(Date.now()/864e5+2440587.5-2451545)/36525,n=x=>((x%360)+360)%360;
+ const D=n(297.8501921+445267.1114034*T),M=n(357.5291092+35999.0502909*T),Mp=n(134.9633964+477198.8675055*T);
+ const i=180-D-6.289*Math.sin(Mp*d2r)+2.1*Math.sin(M*d2r)-1.274*Math.sin((2*D-Mp)*d2r)-.658*Math.sin(2*D*d2r)-.214*Math.sin(2*Mp*d2r)-.11*Math.sin(D*d2r);
+ const k=(1+Math.cos(i*d2r))/2,wax=D<180,pc=Math.round(k*100),rx=Math.abs(1-2*k).toFixed(3);
+ const p=wax?`M0,-1 A1,1 0 0 0 0,1 A${rx},1 0 0 ${k<.5?0:1} 0,-1Z`:`M0,-1 A1,1 0 0 1 0,1 A${rx},1 0 0 ${k<.5?1:0} 0,-1Z`;
+ document.getElementById('moonP').setAttribute('d',p);
+ const ph=pc>=99?'full':pc<=1?'new':wax?'waxing':'waning';
+ document.getElementById('moonT').innerHTML=`Moon <b>${pc}%</b> · ${ph}`;document.getElementById('moon').setAttribute('aria-label',`Moon today: ${pc}% illuminated, ${ph}`)}
 /* chapters */
 
 let VIEW='home';
 /* catalogue */
 const Yr=3.156e7,lg=s=>Math.max(0,Math.log10(s))/15*100;
-const META={luna:['sole','2026-10-24'],saturno:['sole','2026-10-17'],pleiadi:['deep','2026-11-13'],velo:['deep','2026-07-01'],ic1396:['deep','2026-07-05'],andromeda:['deep','2026-08-24'],m81:['deep','2026-06-14'],m101:['deep','2026-07-25'],m51:['deep','2026-07-16'],eclissi:['sole','2026-08-28'],sahagun:['terra','2026-08-12'],collage:['sole',''],decorazione:['terra','2026-09-27']};
-ALL.forEach(x=>{x.cat=META[x.id][0];x.iso=META[x.id][1]});
-const CATS=[['all','Tutte'],['deep','Cielo profondo'],['sole','Luna e pianeti'],['terra','Paesaggi notturni']];
+
+const CATS=[['all','All'],['deep','Deep sky'],['sole','Moon and planets'],['terra','Night landscapes']];
 let F='all',SO='date';
-const card=x=>`<button class="pc" data-open="${x.id}" aria-label="Apri ${x.t}"><span class="ph"><img src="img/${x.img}" alt="${x.t}, foto di Giovanni Esteban Tedesco" loading="lazy" width="${x.w}" height="${x.h}"></span>
- <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${x.k}${x.d?' · '+x.d:''}</span>${x.look?`<i>Luce partita ${x.look} fa</i>`:''}</span></button>`;
+const card=x=>`<a class="pc" href="${WU(x.id)}"><span class="ph"><img src="/img/${x.img}" alt="${x.t}, photo by Giovanni Esteban Tedesco" loading="lazy" width="${x.w}" height="${x.h}"></span>
+ <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${x.k}${x.d?' · '+x.d:''}</span>${x.look?`<i>Light set off ${x.look} ago</i>`:''}</span></a>`;
 const renderGrid=()=>{let L=ALL.filter(x=>F==='all'||x.cat===F);
  L=SO==='date'?L.sort((a,b)=>(b.iso||'').localeCompare(a.iso||'')):L.sort((a,b)=>(b.secs||0)-(a.secs||0));
  $('#grid').innerHTML=L.map(card).join('');
  $('#chips').innerHTML=CATS.map(([k,l])=>`<button class="chip fr${k===F?' on':''}" data-f="${k}" aria-pressed="${k===F}">${l} <small>${k==='all'?ALL.length:ALL.filter(x=>x.cat===k).length}</small></button>`).join('');
- $('#sort').innerHTML=[['date','Più recenti'],['dist','Più lontane']].map(([k,l])=>`<button class="chip fr${k===SO?' on':''}" data-s="${k}" aria-pressed="${k===SO}">${l}</button>`).join('')};
+ $('#sort').innerHTML=[['date','Most recent'],['dist','Most distant']].map(([k,l])=>`<button class="chip fr${k===SO?' on':''}" data-s="${k}" aria-pressed="${k===SO}">${l}</button>`).join('')};
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(b){F=b.dataset.f;renderGrid()}});
 $('#sort').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b){SO=b.dataset.s;renderGrid()}});
 renderGrid();
-const FT=[['andromeda','Trecento pose da due minuti, dieci ore in tutto: la grande galassia a spirale più vicina alla Via Lattea.'],['eclissi','Le fasi dell’eclissi del 28 agosto, disposte in cerchio. Il profilo Instagram di APOD della NASA l’ha ripubblicata.'],['luna','Un mosaico di 52 pannelli e 182.000 fotogrammi. Le tonalità corrispondono ai minerali del suolo.']];
-$('#feat').innerHTML=FT.map(([id,t],k)=>{const x=ALL.find(y=>y.id===id);return`<article class="ft${k%2?' rev':''}"><button class="ph" data-open="${id}" aria-label="Apri ${x.t}"><img src="img/${x.img}" alt="${x.t}" loading="lazy" width="${x.w}" height="${x.h}"></button>
- <div class="ftx"><div class="lbl">${x.k}</div><h3>${x.t}</h3><p>${t}</p>${x.dl?`<dl>${x.dl.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>`:''}<button class="btn fr quiet" data-open="${id}">${ICON} Apri l’opera</button></div></article>`}).join('');
-$('#ruler').innerHTML='<div class="rl"></div>'+W.map((w,k)=>`<div class="rd ${['up','dn','up2'][k%3]}" style="left:${(lg(w.secs)/lg(W[W.length-1].secs)*100).toFixed(2)}%"><span>${['Luna','Saturno','M45','C33','IC 1396','M31','M81','M101','M51'][k]}</span></div>`).join('')+'<div class="rt"><span>1,3 secondi fa</span><span>23 milioni di anni fa</span></div>';
+const FT=[['andromeda','Three hundred two-minute exposures, ten hours in all: the large spiral galaxy closest to the Milky Way.'],['eclissi','The phases of the 28 August eclipse, arranged in a circle. NASA’s APOD Instagram account reposted it.'],['luna','A mosaic of 52 panels and 182,000 frames. The hues match the minerals of the lunar surface.']];
+$('#feat').innerHTML=FT.map(([id,t],k)=>{const x=ALL.find(y=>y.id===id);return`<article class="ft${k%2?' rev':''}"><a class="ph" href="${WU(id)}" tabindex="-1" aria-hidden="true"><img src="/img/${x.img}" alt="${x.t}" loading="lazy" width="${x.w}" height="${x.h}"></a>
+ <div class="ftx"><div class="lbl">${x.k}</div><h3>${x.t}</h3><p>${t}</p>${x.dl?`<dl>${x.dl.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>`:''}<a class="btn fr quiet" href="${WU(id)}">${ICON} Open the work</a></div></article>`}).join('');
+$('#ruler').innerHTML='<div class="rl"></div>'+W.map((w,k)=>`<div class="rd ${['up','dn','up2'][k%3]}" style="left:${(lg(w.secs)/lg(W[W.length-1].secs)*100).toFixed(2)}%"><span>${['Moon','Saturn','M45','C33','IC 1396','M31','M81','M101','M51'][k]}</span></div>`).join('')+'<div class="rt"><span>1.3 seconds ago</span><span>23 million years ago</span></div>';
 
 const BG='#08080a';
 /* menu */
-const hd=$('#top'),mb=$('#menu');mb.onclick=()=>{const o=hd.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Chiudi':'Menu'};
+const hd=$('#top'),mb=$('#menu');mb.onclick=()=>{const o=hd.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Close':'Menu'};
 document.querySelectorAll('#mnav a').forEach(a=>a.addEventListener('click',()=>{hd.classList.remove('open');mb.textContent='Menu';mb.setAttribute('aria-expanded','false')}));
 
 /* intro */
 const intro=$('#intro'),v=$('#sigv');
 const enter=()=>{intro.classList.add('gone');setTimeout(()=>{try{v.pause()}catch(e){}},1300)};
-if(reduce)intro.remove();else{intro.addEventListener('click',enter);v.addEventListener('ended',()=>setTimeout(enter,500));v.addEventListener('error',()=>setTimeout(enter,800));setTimeout(enter,6500)}
+let seen=false;try{seen=sessionStorage.getItem('gt-intro')==='1';sessionStorage.setItem('gt-intro','1')}catch(e){}
+if(reduce||seen)intro.remove();else{intro.addEventListener('click',enter);v.addEventListener('ended',()=>setTimeout(enter,500));v.addEventListener('error',()=>setTimeout(enter,800));setTimeout(enter,6500)}
 const vf=$('#sigf');new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){vf.currentTime=0;vf.play().catch(()=>{})}}),{threshold:.6}).observe(vf);
 
 /* reticle motion: gentle tilt from the device or the pointer, spring-smoothed */
@@ -691,11 +675,11 @@ const sky=()=>{const dy=scrollY-lastY;lastY=scrollY;vel+=(Math.abs(dy)-vel)*.1;w
 sky();
 
 /* time formatting */
-const fmt=s=>{const n=(x,d=0)=>x.toLocaleString('it-IT',{maximumFractionDigits:d,minimumFractionDigits:d});
- if(s<60)return[n(s,1),'secondi fa'];if(s<7200)return[n(s/60),'minuti fa'];if(s<86400*2)return[n(s/3600),'ore fa'];if(s<Y)return[n(s/86400),'giorni fa'];
- if(s<1e6*Y)return[n(s/Y),'anni fa'];return[n(s/Y/1e6,1),'milioni di anni fa']};
+const fmt=s=>{const n=(x,d=0)=>x.toLocaleString('en-GB',{maximumFractionDigits:d,minimumFractionDigits:d});
+ if(s<60)return[n(s,1),'seconds ago'];if(s<7200)return[n(s/60),'minutes ago'];if(s<86400*2)return[n(s/3600),'hours ago'];if(s<Y)return[n(s/86400),'days ago'];
+ if(s<1e6*Y)return[n(s/Y),'years ago'];return[n(s/Y/1e6,1),'million years ago']};
 const MAXL=15,pos=s=>Math.max(0,Math.log10(s))/MAXL*100;
-$('#ticks').innerHTML=[[1,'1 s'],[3600,'1 ora'],[1000*Y,'1.000 anni'],[1e6*Y,'1 mln'],[2e7*Y,'20 mln']].map(([s,l])=>`<div class="tick" style="top:${pos(s)}%">${l}</div>`).join('');
+$('#ticks').innerHTML=[[1,'1 s'],[3600,'1 ora'],[1000*Y,'1,000 years'],[1e6*Y,'1 mln'],[2e7*Y,'20 mln']].map(([s,l])=>`<div class="tick" style="top:${pos(s)}%">${l}</div>`).join('');
 
 /* scroll choreography */
 const hb=$('#herobg'),hr=$('#heroret'),hdr=$('#top'),chs=[...document.querySelectorAll('.ch')],tm=$('#tm'),tmn=$('#tmn'),tmu=$('#tmu'),tme=$('#tme'),gauge=$('#gauge'),gdot=$('#gdot');
@@ -736,10 +720,10 @@ addEventListener('scroll',onS,{passive:true});addEventListener('resize',onS);add
 /* journey: one gesture, one artwork */
 const jA=$('#jA'),jB=$('#jB'),jI=$('#jintro'),jE=$('#jend');let jIdx=-1,jBusy=false,jCur=jA,jNext=jB,jLock=0;
 const coarse=matchMedia('(pointer:coarse)').matches;
-const lay=(el,w)=>{el.innerHTML=`<div class="art"><img src="img/${w.img}" width="${w.w}" height="${w.h}" alt="${w.t}" data-open="${w.id}" class="${w.w<600?'small':''}"></div>
+const lay=(el,w)=>{el.innerHTML=`<div class="art"><img src="/img/${w.img}" width="${w.w}" height="${w.h}" alt="${w.t}" data-open="${w.id}" class="${w.w<600?'small':''}"></div>
  <div class="ret">${ring(...RD[w.id])}</div>
- <div class="cap"><div class="lbl">${w.k} · ${w.d}</div><h3>${w.t}</h3><p class="then">Luce partita <b>${w.look}</b> fa.${w.then?' '+w.then:''}</p>
- <dl>${w.dl.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl><button class="btn fr quiet" data-open="${w.id}">${ICON} Esplora da vicino</button></div>`};
+ <div class="cap"><div class="lbl">${w.k} · ${w.d}</div><h3>${w.t}</h3><p class="then">Light set off <b>${w.look}</b> ago.${w.then?' '+w.then:''}</p>
+ <dl>${w.dl.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl><button class="btn fr quiet" data-open="${w.id}">${ICON} Explore up close</button></div>`};
 const set=(el,{sc=1,op=1,r=100,bl=0,ro=1,rs=1,rr=0,co=1,cy=0})=>{const a=el.querySelector('.art');if(!a)return;const i=a.querySelector('img'),g=el.querySelector('.ret'),c=el.querySelector('.cap');
  a.style.transform=`scale(${sc})`;a.style.opacity=op;a.style.filter=bl&&!coarse?`blur(${bl}px)`:'none';i.style.setProperty('--r',r);
  g.style.opacity=ro*.7;g.style.transform=`translate(-50%,-50%) rotate(calc(var(--h,0deg) + ${rr}deg)) scale(${rs})`;c.style.opacity=co;c.style.transform=`translateY(${cy}px)`};
@@ -776,27 +760,27 @@ $('#jdots').addEventListener('click',e=>{const d=e.target.closest('[data-j]');if
 /* editions */
 const FMT=[{k:'A4',cm:[21,29.7],n:30,p:45},{k:'A3',cm:[29.7,42],n:15,p:85},{k:'A2',cm:[42,59.4],n:5,p:160}];
 const ED=[['andromeda',3],['luna',3],['eclissi',3],['pleiadi',3],['m51',2],['ic1396',2],['velo',2],['m81',2]];
-const eur=n=>n.toLocaleString('it-IT')+' €';
-$('#edgrid').innerHTML=ED.map(([id,m])=>{const x=ALL.find(y=>y.id===id);return`<button class="pc" data-ed="${id}" aria-label="Formati e tirature di ${x.t}"><span class="ph"><img src="img/${x.img}" alt="" loading="lazy" width="${x.w}" height="${x.h}"></span>
- <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${FMT.slice(0,m).map(f=>f.k).join(' · ')} · tirature da ${FMT[m-1].n} a ${FMT[0].n} copie</span><i>da ${eur(FMT[0].p)}</i></span></button>`}).join('');
-$('#ladder').innerHTML=FMT.map((f,i)=>`<div class="rung fr"><div class="rsz" style="--w:${f.cm[0]/42*100}%;--h:${f.cm[1]/59.4*100}%"><i></i></div><div><b>${f.k}</b><span>${String(f.cm[0]).replace('.',',')} × ${String(f.cm[1]).replace('.',',')} cm</span></div><div><b>${f.n}</b><span>copie in tutto</span></div><div><b>${eur(f.p)}</b><span>${i===2?'solo per quattro opere':''}</span></div></div>`).join('');
+const eur=n=>'€'+n.toLocaleString('en-GB');
+$('#edgrid').innerHTML=ED.map(([id,m])=>{const x=ALL.find(y=>y.id===id);return`<button class="pc" data-ed="${id}" aria-label="Sizes and editions of ${x.t}"><span class="ph"><img src="/img/${x.img}" alt="" loading="lazy" width="${x.w}" height="${x.h}"></span>
+ <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${FMT.slice(0,m).map(f=>f.k).join(' · ')} · editions of ${FMT[m-1].n} to ${FMT[0].n} copies</span><i>from ${eur(FMT[0].p)}</i></span></button>`}).join('');
+$('#ladder').innerHTML=FMT.map((f,i)=>`<div class="rung fr"><div class="rsz" style="--w:${f.cm[0]/42*100}%;--h:${f.cm[1]/59.4*100}%"><i></i></div><div><b>${f.k}</b><span>${String(f.cm[0]).replace('.',',')} × ${String(f.cm[1]).replace('.',',')} cm</span></div><div><b>${f.n}</b><span>copies in total</span></div><div><b>${eur(f.p)}</b><span>${i===2?'only for four works':''}</span></div></div>`).join('');
 const sheet=$('#sheet');let sId=null,sF=1,sLast=null;
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),3200)};
 const sRender=()=>{const x=ALL.find(y=>y.id===sId),m=ED.find(e=>e[0]===sId)[1],f=FMT[sF],land=x.w>x.h;
- $('#sF').innerHTML=FMT.map((g,i)=>`<button class="fmt fr${i===sF?' on':''}" role="radio" aria-checked="${i===sF}" data-fi="${i}" ${i>=m?'disabled':''}><b>${g.k}</b><span>${i>=m?'non disponibile':g.n+' copie'}</span></button>`).join('');
+ $('#sF').innerHTML=FMT.map((g,i)=>`<button class="fmt fr${i===sF?' on':''}" role="radio" aria-checked="${i===sF}" data-fi="${i}" ${i>=m?'disabled':''}><b>${g.k}</b><span>${i>=m?'not available':g.n+' copies'}</span></button>`).join('');
  const L=land?f.cm[1]:f.cm[0],H=land?f.cm[0]:f.cm[1];
  const fr=$('#sframe');fr.style.setProperty('--fw',(L+8)/260*100+'%');fr.style.setProperty('--fb',(150-(H+8)/2)/200*100+'%');fr.style.aspectRatio=`${L+8}/${H+8}`;$('#sBp').textContent=eur(f.p);
- $('#sscale').textContent=`${String(L).replace('.',',')} × ${String(H).replace('.',',')} cm sopra un divano da 2 metri`;
- $('#sS').innerHTML=`<div><span>Tiratura</span><b>${f.n} copie</b></div><div><span>Formato</span><b>${f.k} · ${String(L).replace('.',',')} × ${String(H).replace('.',',')} cm</b></div><div class="tot"><span>Prima edizione</span><b>${eur(f.p)}</b></div>`};
+ $('#sscale').textContent=`${String(L).replace('.',',')} × ${String(H).replace('.',',')} cm above a 2-metre sofa`;
+ $('#sS').innerHTML=`<div><span>Edition</span><b>${f.n} copies</b></div><div><span>Size</span><b>${f.k} · ${String(L).replace('.',',')} × ${String(H).replace('.',',')} cm</b></div><div class="tot"><span>First edition</span><b>${eur(f.p)}</b></div>`};
 const sOpen=id=>{sLast=document.activeElement;sId=id;const x=ALL.find(y=>y.id===id),m=ED.find(e=>e[0]===id)[1];sF=Math.min(1,m-1);
- $('#simg').src='img/'+x.img;$('#simg').alt=x.t;$('#sK').textContent=x.k;$('#shT').textContent=x.t;
- $('#sD').innerHTML=x.look?`Luce partita <b>${x.look}</b> fa. ${x.d?'Scattata il '+x.d+'.':''}`:`${x.k}.`;
+ $('#simg').src='/img/'+x.img;$('#simg').alt=x.t;$('#sK').textContent=x.k;$('#shT').textContent=x.t;
+ $('#sD').innerHTML=x.look?`Light set off <b>${x.look}</b> ago. ${x.d?'Taken on '+x.d+'.':''}`:`${x.k}.`;
  sRender();sheet.hidden=false;document.documentElement.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>sheet.classList.add('on')));setTimeout(()=>sheet.querySelector('.sclose').focus({preventScroll:true}),50)};
 const sClose=()=>{sheet.classList.remove('on');setTimeout(()=>{sheet.hidden=true;if(VIEW!=='viaggio')document.documentElement.style.overflow='';sLast&&sLast.focus({preventScroll:true})},450)};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-ed]');if(b)sOpen(b.dataset.ed);if(e.target.closest('[data-close]'))sClose()});
 $('#sF').addEventListener('click',e=>{const b=e.target.closest('[data-fi]');if(b&&!b.disabled){sF=+b.dataset.fi;sRender()}});
-$('#sCta').addEventListener('click',()=>{const x=ALL.find(y=>y.id===sId),f=FMT[sF];const msg=`Ciao Giovanni! Vorrei prenotare una copia di "${x.t}" in formato ${f.k} (tiratura di ${f.n} copie, ${eur(f.p)}). Mi dici disponibilità e tempi? Grazie!`;
- try{navigator.clipboard.writeText(msg).then(()=>toast('Richiesta copiata: incollala nel messaggio a @g.tedesco_'),()=>toast('Scrivi a @g.tedesco_: "'+msg+'"'))}catch(err){toast('Scrivi a @g.tedesco_ indicando opera e formato')}});
+$('#sCta').addEventListener('click',()=>{const x=ALL.find(y=>y.id===sId),f=FMT[sF];const msg=`Hi Giovanni! I would like to reserve a copy of "${x.t}" in ${f.k} size (edition of ${f.n} copies, ${eur(f.p)}). Could you tell me availability and timing? Thank you!`;
+ try{navigator.clipboard.writeText(msg).then(()=>toast('Request copied: paste it in your message to @g.tedesco_'),()=>toast('Write to @g.tedesco_: "'+msg+'"'))}catch(err){toast('Write to @g.tedesco_ with the work and the size')}});
 addEventListener('keydown',e=>{if(!sheet.hidden&&e.key==='Escape')sClose()});
 /* views */
 const VIEWS=['home','portfolio','viaggio','edizioni'],INHOME=['dietro','ed-home','hero'],INED=['ed-coll'];
@@ -811,7 +795,7 @@ addEventListener('hashchange',route);route();
 const V=$('#viewer'),vp=$('#vp'),vi=$('#vimg'),info=$('#vinfo'),vr=$('#vring'),vz=$('#vzoom');let cur=0,sc=1,tx=0,ty=0,fit=1,src=null,busy=false;
 const mob=()=>innerWidth<=900;
 const area=()=>{const r=vp.getBoundingClientRect(),inf=V.classList.contains('info');return{w:r.width-(inf&&!mob()?480:0),h:r.height-(inf&&mob()?r.height*.5:0)}};
-const apply=()=>{vi.style.transform=`translate(${tx}px,${ty}px) scale(${sc})`;const z=sc/fit;vz.textContent=z.toLocaleString('it-IT',{minimumFractionDigits:1,maximumFractionDigits:1})+'×';V.classList.toggle('zoomed',z>1.15)};
+const apply=()=>{vi.style.transform=`translate(${tx}px,${ty}px) scale(${sc})`;const z=sc/fit;vz.textContent=z.toLocaleString('en-GB',{minimumFractionDigits:1,maximumFractionDigits:1})+'×';V.classList.toggle('zoomed',z>1.15)};
 const target=()=>{const a=area(),it=ALL[cur];const f=Math.min(a.w/it.w,a.h/it.h)*(mob()?.96:.9);return{f,x:(a.w-it.w*f)/2,y:(a.h-it.h*f)/2}};
 const placeRing=()=>{const t=target(),it=ALL[cur],w=it.w*t.f,h=it.h*t.f,d=Math.min(Math.max(w,h)*.92,Math.min(area().w,area().h)*.96);vr.style.width=d+'px';vr.style.left=(t.x+w/2)+'px';vr.style.top=(t.y+h/2)+'px'};
 const reset=(anim)=>{const t=target();fit=t.f;sc=t.f;tx=t.x;ty=t.y;vi.classList.toggle('fly',!!anim);apply();placeRing()};
@@ -819,26 +803,26 @@ const zoomAt=(k,px,py)=>{vi.classList.remove('fly');const n=cl(sc*k,fit*.8,fit*8
 const fill=()=>{const it=ALL[cur],coord=RD[it.id];let i=0;const n=()=>`style="--i:${i++}"`;
  const quotes=it.p.filter(x=>x.startsWith('«')),paras=it.p.filter(x=>!x.startsWith('«'));
  info.innerHTML=`<div class="lbl" ${n()}>${it.k}${it.d?' · '+it.d:''}</div><h2 ${n()}>${it.t}</h2>
- ${it.look?`<div class="vlight" ${n()}><span>la luce che vedi è partita</span><b>${it.look} fa</b>${it.then?`<em>${it.then}</em>`:''}</div>`:''}
+ ${it.look?`<div class="vlight" ${n()}><span>the light you see set off</span><b>${it.look} ago</b>${it.then?`<em>${it.then}</em>`:''}</div>`:''}
  ${coord&&coord[0].startsWith('AR')?`<div class="vcoord" ${n()}>${ICON}${coord[0]} · ${coord[1]}</div>`:''}
  ${it.dl?`<div class="vstats" ${n()}>${it.dl.map(([a,b])=>`<div class="fr"><b>${b}</b><span>${a}</span></div>`).join('')}</div>`:''}
- ${it.badge?`<div class="vlight" ${n()}><span>riconoscimento</span><b>NASA APOD</b><em>Ripubblicata dal profilo Instagram ufficiale il 31 agosto 2026</em></div>`:''}
+ ${it.badge?`<div class="vlight" ${n()}><span>recognition</span><b>NASA APOD</b><em>Reposted by the official Instagram account on 31 August 2026</em></div>`:''}
  ${paras.map((x,j)=>`<p class="${j?'':'lede'}" ${n()}>${x}</p>`).join('')}
  ${quotes.map(x=>`<blockquote ${n()}>${x}</blockquote>`).join('')}
- ${it.tab.length?`<h3 ${n()}>Scheda tecnica</h3>`:''}<dl class="spec" ${n()}>${it.tab.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>
- <a class="btn fr" ${n()} href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">${ICON} Scrivi a Giovanni</a>`;
+ ${it.tab.length?`<h3 ${n()}>Technical details</h3>`:''}<dl class="spec" ${n()}>${it.tab.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>
+ <div class="acts" ${n()}><a class="btn fr" href="${WU(it.id)}">${ICON} Work page</a><a class="btn fr quiet" href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">Write to Giovanni</a></div>`;
  info.scrollTop=0;vr.innerHTML=ring(...(coord||[it.k,'']))};
 const srcRect=id=>{const c=[...document.querySelectorAll(`img[data-open="${id}"],[data-open="${id}"] img`)].find(e=>{const r=e.getBoundingClientRect();return r.width>40&&r.bottom>0&&r.top<innerHeight});return c?c.getBoundingClientRect():null};
 const load=()=>new Promise(r=>{if(vi.complete&&vi.naturalWidth)r();else{vi.onload=vi.onerror=()=>r()}});
 let ORDER=null;const step=d=>{const L=ORDER||ALL.map(x=>x.id);const k=L.indexOf(ALL[cur].id);const n=L[(k+d+L.length)%L.length];show(ALL.findIndex(x=>x.id===n),d)};
 const show=async(i,dir)=>{if(busy)return;busy=true;vi.classList.remove('fly');vi.classList.add('fade');await new Promise(r=>setTimeout(r,300));
- cur=(i+ALL.length)%ALL.length;const it=ALL[cur];vi.src='img/'+it.img;vi.width=it.w;vi.height=it.h;vi.alt=it.t;await load();
+ cur=(i+ALL.length)%ALL.length;const it=ALL[cur];vi.src='/img/'+it.img;vi.width=it.w;vi.height=it.h;vi.alt=it.t;await load();
  const t=target();fit=t.f;sc=t.f*.96;tx=t.x+(dir||0)*40;ty=t.y;apply();fill();
  requestAnimationFrame(()=>{vi.classList.add('fly','solid');vi.classList.remove('fade');reset(true);busy=false})};
 let lastFocus=null;
 const open=async id=>{if(V.classList.contains('open'))return;lastFocus=document.activeElement;cur=ALL.findIndex(x=>x.id===id);const it=ALL[cur];
  src=srcRect(id);ORDER=VIEW==='portfolio'?[...document.querySelectorAll('#grid [data-open]')].map(e=>e.dataset.open):VIEW==='viaggio'?W.map(x=>x.id):ALL.map(x=>x.id);V.classList.add('open','info');$('#vinfob').setAttribute('aria-pressed','true');document.body.style.overflow='hidden';
- vi.classList.remove('fly','solid','fade');vi.src='img/'+it.img;vi.width=it.w;vi.height=it.h;vi.alt=it.t;fill();
+ vi.classList.remove('fly','solid','fade');vi.src='/img/'+it.img;vi.width=it.w;vi.height=it.h;vi.alt=it.t;fill();
  if(src&&!reduce){const k=src.width/it.w;sc=k;fit=target().f;tx=src.left;ty=src.top;apply()}else{reset();vi.classList.add('fade')}
  await load();
  requestAnimationFrame(()=>requestAnimationFrame(()=>{V.classList.add('show');vi.classList.remove('fade');reset(!reduce);setTimeout(()=>vi.classList.add('solid'),500)}));
