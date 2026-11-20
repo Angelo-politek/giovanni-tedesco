@@ -184,9 +184,9 @@ WORKS = [
 
 # Collezione Luna: scatti singoli e collage, in una sola pagina
 MOON = dict(id='moon', slug={'it': 'luna', 'en': 'moon'}, cover='luna-piena.jpg',
-  it=dict(t='Luna', k='Collezione', intro='Scatti singoli della Luna: Canon EOS 500D con filtro Optolong L-Pro, telescopio Newton 150/750 e montatura equatoriale.',
+  it=dict(t='Luna', k='Collezione', intro='Scatti singoli della Luna: Canon EOS 500D modificata full-spectrum con filtro Optolong L-Pro, telescopio Newton 150/750 e montatura equatoriale.',
           related='Altre opere sulla Luna', tonight='La Luna stasera', count='{n} scatti'),
-  en=dict(t='The Moon', k='Collection', intro='Single shots of the Moon: Canon EOS 500D with an Optolong L-Pro filter, a 150/750 Newtonian telescope and an equatorial mount.',
+  en=dict(t='The Moon', k='Collection', intro='Single shots of the Moon: full-spectrum modified Canon EOS 500D with an Optolong L-Pro filter, a 150/750 Newtonian telescope and an equatorial mount.',
           related='More works on the Moon', tonight='The Moon tonight', count='{n} shots'),
   items=[
     dict(img='luna-piena.jpg', w=908, h=1600, it='Luna piena', en='Full Moon'),
