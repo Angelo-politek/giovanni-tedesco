@@ -615,7 +615,7 @@ const Yr=3.156e7,lg=s=>Math.max(0,Math.log10(s))/15*100;
 
 const CATS=[['all','Tutte'],['deep','Cielo profondo'],['sole','Luna e pianeti'],['terra','Paesaggi notturni']];
 let F='all',SO='date';
-const card=x=>`<a class="pc" href="${WU(x.id)}"><span class="ph"><img src="/img/${x.img}" alt="${x.t}, foto di Giovanni Esteban Tedesco" loading="lazy" width="${x.w}" height="${x.h}"></span>
+const card=x=>`<a class="pc" href="${WU(x.id)}"><span class="ph"><img src="/img/t/${x.img}" alt="${x.t}, foto di Giovanni Esteban Tedesco" loading="lazy" width="${x.w}" height="${x.h}"></span>
  <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${x.k}${x.d?' · '+x.d:''}</span>${x.look?`<i>Luce partita ${x.look} fa</i>`:''}</span></a>`;
 const renderGrid=()=>{let L=ALL.filter(x=>F==='all'||x.cat===F);
  L=SO==='date'?L.sort((a,b)=>(b.iso||'').localeCompare(a.iso||'')):L.sort((a,b)=>(b.secs||0)-(a.secs||0));
@@ -626,7 +626,7 @@ $('#chips').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if
 $('#sort').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b){SO=b.dataset.s;renderGrid()}});
 renderGrid();
 const FT=[['andromeda','Trecento pose da due minuti, dieci ore in tutto: la grande galassia a spirale più vicina alla Via Lattea.'],['eclissi','Le fasi dell’eclissi del 28 agosto, disposte in cerchio. Il profilo Instagram di APOD della NASA l’ha ripubblicata.'],['luna','Un mosaico di 52 pannelli e 182.000 fotogrammi. Le tonalità corrispondono ai minerali del suolo.']];
-$('#feat').innerHTML=FT.map(([id,t],k)=>{const x=ALL.find(y=>y.id===id);return`<article class="ft${k%2?' rev':''}"><a class="ph" href="${WU(id)}" tabindex="-1" aria-hidden="true"><img src="/img/${x.img}" alt="${x.t}" loading="lazy" width="${x.w}" height="${x.h}"></a>
+$('#feat').innerHTML=FT.map(([id,t],k)=>{const x=ALL.find(y=>y.id===id);return`<article class="ft${k%2?' rev':''}"><a class="ph" href="${WU(id)}" tabindex="-1" aria-hidden="true"><img src="/img/t/${x.img}" alt="${x.t}" loading="lazy" width="${x.w}" height="${x.h}"></a>
  <div class="ftx"><div class="lbl">${x.k}</div><h3>${x.t}</h3><p>${t}</p>${x.dl?`<dl>${x.dl.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>`:''}<a class="btn fr quiet" href="${WU(id)}">${ICON} Apri l’opera</a></div></article>`}).join('');
 $('#ruler').innerHTML='<div class="rl"></div>'+W.map((w,k)=>`<div class="rd ${['up','dn','up2'][k%3]}" style="left:${(lg(w.secs)/lg(W[W.length-1].secs)*100).toFixed(2)}%"><span>${['Luna','Saturno','M45','C33','IC 1396','M31','M81','M101','M51'][k]}</span></div>`).join('')+'<div class="rt"><span>1,3 secondi fa</span><span>23 milioni di anni fa</span></div>';
 
@@ -761,7 +761,7 @@ const FMT=[{k:'A4',cm:[21,29.7],n:30,p:45},{k:'A3',cm:[29.7,42],n:15,p:85},{k:'A
 const ED=[['andromeda',3],['luna',3]];
 const eur=n=>n.toLocaleString('it-IT')+' €';
 const eurH=n=>eur(n).replace('€','<span class="cur">€</span>');
-$('#edgrid').innerHTML=ED.map(([id,m])=>{const x=ALL.find(y=>y.id===id);return`<button class="pc" data-ed="${id}" aria-label="Formati e tirature di ${x.t}"><span class="ph"><img src="/img/${x.img}" alt="" loading="lazy" width="${x.w}" height="${x.h}"></span>
+$('#edgrid').innerHTML=ED.map(([id,m])=>{const x=ALL.find(y=>y.id===id);return`<button class="pc" data-ed="${id}" aria-label="Formati e tirature di ${x.t}"><span class="ph"><img src="/img/t/${x.img}" alt="" loading="lazy" width="${x.w}" height="${x.h}"></span>
  <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${FMT.slice(0,m).map(f=>f.k).join(' · ')} </span><i>tirature da ${FMT[m-1].n} a ${FMT[0].n} copie</i></span></button>`}).join('');
 $('#ladder').innerHTML=FMT.map((f,i)=>`<div class="rung fr"><div class="rsz" style="--w:${f.cm[0]/42*100}%;--h:${f.cm[1]/59.4*100}%"><i></i></div><div><b>${f.k}</b><span>${String(f.cm[0]).replace('.',',')} × ${String(f.cm[1]).replace('.',',')} cm</span></div><div><b>${f.n}</b><span>copie in tutto</span></div><div><b>${eurH(f.p)}</b><span></span></div></div>`).join('');
 const sheet=$('#sheet');let sId=null,sF=1,sLast=null;

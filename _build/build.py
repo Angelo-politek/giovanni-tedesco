@@ -188,7 +188,7 @@ def work_page(w, lang, prev, nxt):
     if lang == 'en' and w['id'] == 'luna': ra = ('Moon', '384,400 km')
     if lang == 'en' and w['id'] == 'saturno': ra = ('Saturn', '')
     if lang == 'en': ra = tuple(x.replace('AR ', 'RA ') for x in ra)
-    navl = lambda x, cls, lab: f'<a class="fr {cls}" href="{work_url(x, lang)}"><img src="/img/{x["img"]}" alt="" loading="lazy"><span><small>{lab}</small><b>{esc(strip(x[lang]["t"]))}</b></span></a>'
+    navl = lambda x, cls, lab: f'<a class="fr {cls}" href="{work_url(x, lang)}"><img src="/img/t/{x["img"]}" alt="" loading="lazy"><span><small>{lab}</small><b>{esc(strip(x[lang]["t"]))}</b></span></a>'
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Photograph", "@id": url + "#photo", "name": strip(t['t']), "url": url, "image": SITE + '/img/' + w['img'],
          "description": first, "inLanguage": lang, "creator": {"@id": SITE + "/#giovanni"},
