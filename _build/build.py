@@ -262,7 +262,9 @@ def work_page(w, lang, prev, nxt):
 const $=s=>document.querySelector(s),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 requestAnimationFrame(()=>$('#hero').classList.add('in'));
 /* menu */
-const hd=$('#top'),mb=$('#menu');mb.onclick=()=>{{const o=hd.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'{l['close']}':'Menu'}};
+const mp=document.createElement('nav');mp.id='mpanel';mp.setAttribute('aria-label','Menu');mp.innerHTML=[...document.querySelectorAll('#mnav a')].map(a=>a.outerHTML.replace(' keep','')).join('');document.body.appendChild(mp);
+const hd=$('#top'),mb=$('#menu');mb.onclick=()=>{{const o=hd.classList.toggle('open');mp.classList.toggle('on',o);mb.setAttribute('aria-expanded',o);mb.textContent=o?'{l['close']}':'Menu'}};
+mp.addEventListener('click',e=>{{if(e.target.closest('a')){{mp.classList.remove('on');hd.classList.remove('open');mb.textContent='Menu'}}}});
 /* moon */
 {{const d2r=Math.PI/180,T=(Date.now()/864e5+2440587.5-2451545)/36525,n=x=>((x%360)+360)%360;
  const D=n(297.8501921+445267.1114034*T),M=n(357.5291092+35999.0502909*T),Mp=n(134.9633964+477198.8675055*T);
