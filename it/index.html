@@ -239,6 +239,8 @@ header nav{margin-left:18px}
 .bdg svg{width:14px;height:14px}
 .bnote{font-size:13px!important;color:var(--mute)!important;margin:0 0 24px!important}
 a.pc{color:inherit;text-decoration:none}
+.cur{font-family:var(--fb);font-size:.86em;font-weight:400;margin:0 .08em}
+#edgrid{columns:2 300px;max-width:980px}
 /* views */
 .view[hidden]{display:none}
 .acts{display:flex;flex-wrap:wrap;gap:10px 14px}
@@ -449,14 +451,14 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
 
   <section class="band" id="ed-home">
     <div class="wrap ed">
-      <div class="wall" aria-hidden="true"><div class="frame"><div class="mat"><img src="/img/pleiadi.jpg" alt=""><span class="no">1 / 30</span><span class="s"></span></div></div></div>
+      <div class="wall" aria-hidden="true"><div class="frame"><div class="mat"><img src="/img/luna-colori.jpg" alt=""><span class="no">1 / 30</span><span class="s"></span></div></div></div>
       <div>
         <div class="lbl">Edizioni d'artista</div>
         <h2 style="margin-top:14px">Stampe fine art in tiratura limitata.</h2>
         <ul>
           <li><b>Tiratura</b><span>Numerata, diversa per ogni formato</span></li>
           <li><b>Firma</b><span>A mano, sul margine della stampa</span></li>
-          <li><b>Opere</b><span>Otto soggetti nella prima edizione</span></li>
+          <li><b>Opere</b><span>Due soggetti nella prima edizione</span></li>
         </ul>
         <a class="btn fr" href="#edizioni">ICON Scopri le edizioni</a>
         <p class="fud">Si prenota con un messaggio, senza pagamento anticipato.</p>
@@ -503,7 +505,7 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
 
   <section class="band" id="ed-coll">
    <div class="wrap">
-    <div class="head"><div class="lbl">La collezione</div><h2>Otto opere.</h2><p>Tocca un'opera per vedere formati, tirature e dimensioni su una parete.</p></div>
+    <div class="head"><div class="lbl">La collezione</div><h2>Due opere.</h2><p>Tocca un'opera per vedere formati, tirature e dimensioni su una parete.</p></div>
     <div class="grid" id="edgrid"></div>
    </div>
   </section>
@@ -759,19 +761,20 @@ $('#jnext').onclick=()=>can()&&go(jIdx+1);$('#jprev').onclick=()=>can()&&go(jIdx
 $('#jdots').addEventListener('click',e=>{const d=e.target.closest('[data-j]');if(d&&can())go(+d.dataset.j)});
 /* editions */
 const FMT=[{k:'A4',cm:[21,29.7],n:30,p:45},{k:'A3',cm:[29.7,42],n:15,p:85},{k:'A2',cm:[42,59.4],n:5,p:160}];
-const ED=[['andromeda',3],['luna',3],['eclissi',3],['pleiadi',3],['m51',2],['ic1396',2],['velo',2],['m81',2]];
+const ED=[['andromeda',3],['luna',3]];
 const eur=n=>n.toLocaleString('it-IT')+' €';
+const eurH=n=>eur(n).replace('€','<span class="cur">€</span>');
 $('#edgrid').innerHTML=ED.map(([id,m])=>{const x=ALL.find(y=>y.id===id);return`<button class="pc" data-ed="${id}" aria-label="Formati e tirature di ${x.t}"><span class="ph"><img src="/img/${x.img}" alt="" loading="lazy" width="${x.w}" height="${x.h}"></span>
- <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${FMT.slice(0,m).map(f=>f.k).join(' · ')} · tirature da ${FMT[m-1].n} a ${FMT[0].n} copie</span><i>da ${eur(FMT[0].p)}</i></span></button>`}).join('');
-$('#ladder').innerHTML=FMT.map((f,i)=>`<div class="rung fr"><div class="rsz" style="--w:${f.cm[0]/42*100}%;--h:${f.cm[1]/59.4*100}%"><i></i></div><div><b>${f.k}</b><span>${String(f.cm[0]).replace('.',',')} × ${String(f.cm[1]).replace('.',',')} cm</span></div><div><b>${f.n}</b><span>copie in tutto</span></div><div><b>${eur(f.p)}</b><span>${i===2?'solo per quattro opere':''}</span></div></div>`).join('');
+ <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${FMT.slice(0,m).map(f=>f.k).join(' · ')} </span><i>tirature da ${FMT[m-1].n} a ${FMT[0].n} copie</i></span></button>`}).join('');
+$('#ladder').innerHTML=FMT.map((f,i)=>`<div class="rung fr"><div class="rsz" style="--w:${f.cm[0]/42*100}%;--h:${f.cm[1]/59.4*100}%"><i></i></div><div><b>${f.k}</b><span>${String(f.cm[0]).replace('.',',')} × ${String(f.cm[1]).replace('.',',')} cm</span></div><div><b>${f.n}</b><span>copie in tutto</span></div><div><b>${eurH(f.p)}</b><span></span></div></div>`).join('');
 const sheet=$('#sheet');let sId=null,sF=1,sLast=null;
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),3200)};
 const sRender=()=>{const x=ALL.find(y=>y.id===sId),m=ED.find(e=>e[0]===sId)[1],f=FMT[sF],land=x.w>x.h;
  $('#sF').innerHTML=FMT.map((g,i)=>`<button class="fmt fr${i===sF?' on':''}" role="radio" aria-checked="${i===sF}" data-fi="${i}" ${i>=m?'disabled':''}><b>${g.k}</b><span>${i>=m?'non disponibile':g.n+' copie'}</span></button>`).join('');
  const L=land?f.cm[1]:f.cm[0],H=land?f.cm[0]:f.cm[1];
- const fr=$('#sframe');fr.style.setProperty('--fw',(L+8)/260*100+'%');fr.style.setProperty('--fb',(150-(H+8)/2)/200*100+'%');fr.style.aspectRatio=`${L+8}/${H+8}`;$('#sBp').textContent=eur(f.p);
+ const fr=$('#sframe');fr.style.setProperty('--fw',(L+8)/260*100+'%');fr.style.setProperty('--fb',(150-(H+8)/2)/200*100+'%');fr.style.aspectRatio=`${L+8}/${H+8}`;$('#sBp').innerHTML=eurH(f.p);
  $('#sscale').textContent=`${String(L).replace('.',',')} × ${String(H).replace('.',',')} cm sopra un divano da 2 metri`;
- $('#sS').innerHTML=`<div><span>Tiratura</span><b>${f.n} copie</b></div><div><span>Formato</span><b>${f.k} · ${String(L).replace('.',',')} × ${String(H).replace('.',',')} cm</b></div><div class="tot"><span>Prima edizione</span><b>${eur(f.p)}</b></div>`};
+ $('#sS').innerHTML=`<div><span>Tiratura</span><b>${f.n} copie</b></div><div><span>Formato</span><b>${f.k} · ${String(L).replace('.',',')} × ${String(H).replace('.',',')} cm</b></div><div class="tot"><span>Prima edizione</span><b>${eurH(f.p)}</b></div>`};
 const sOpen=id=>{sLast=document.activeElement;sId=id;const x=ALL.find(y=>y.id===id),m=ED.find(e=>e[0]===id)[1];sF=Math.min(1,m-1);
  $('#simg').src='/img/'+x.img;$('#simg').alt=x.t;$('#sK').textContent=x.k;$('#shT').textContent=x.t;
  $('#sD').innerHTML=x.look?`Luce partita <b>${x.look}</b> fa. ${x.d?'Scattata il '+x.d+'.':''}`:`${x.k}.`;

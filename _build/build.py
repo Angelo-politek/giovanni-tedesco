@@ -64,7 +64,7 @@ def build_main(lang):
 L = {
  'it': dict(home='Home', portfolio='Portfolio', journey='Viaggio nel tempo', editions='Edizioni', contact='Contatti', lang='Lingua', moon='Luna',
             light='la luce che vedi è partita', ago='fa', details='Scheda tecnica', zoom='Ingrandisci', prev='Opera precedente', next='Opera successiva',
-            edition='Disponibile in edizione limitata', from_='da', ed_cta='Vedi formati e tirature', ig='Scrivi a Giovanni', back='Tutte le opere',
+            edition='Disponibile in edizione limitata', from_='da', ed_cta='Scopri le edizioni', ig='Scrivi a Giovanni', back='Tutte le opere',
             by='foto di Giovanni Esteban Tedesco', contact_h='Contatti', contact_p='Per collaborazioni, mostre e stampe, Giovanni risponde su Instagram.',
             ig_btn='@g.tedesco_ su Instagram', copy="© 2026 Giovanni Esteban Tedesco · Brindisi, Puglia · Tutte le immagini sono dell'autore.",
             close='Chiudi', hint='Rotella o pizzico per ingrandire · trascina per muoverti', apod='Ripubblicata da NASA APOD', creator_job='Astrofotografo',
@@ -72,7 +72,7 @@ L = {
             title_suffix='Giovanni Esteban Tedesco, astrofotografo'),
  'en': dict(home='Home', portfolio='Portfolio', journey='Journey in time', editions='Editions', contact='Contact', lang='Language', moon='Moon',
             light='the light you see set off', ago='ago', details='Technical details', zoom='Zoom', prev='Previous work', next='Next work',
-            edition='Available as a limited edition', from_='from', ed_cta='See sizes and editions', ig='Write to Giovanni', back='All works',
+            edition='Available as a limited edition', from_='from', ed_cta='Discover the editions', ig='Write to Giovanni', back='All works',
             by='photo by Giovanni Esteban Tedesco', contact_h='Contact', contact_p='For collaborations, exhibitions and prints, Giovanni replies on Instagram.',
             ig_btn='@g.tedesco_ on Instagram', copy='© 2026 Giovanni Esteban Tedesco · Brindisi, Apulia, Italy · All images by the author.',
             close='Close', hint='Scroll or pinch to zoom · drag to move', apod='Reposted by NASA APOD', creator_job='Astrophotographer',
@@ -181,7 +181,7 @@ def work_page(w, lang, prev, nxt):
     edbox = ''
     if w.get('ed'):
         sizes = ' · '.join(f for _, f in FMT[:w['ed']])
-        edbox = f'<div class="edbox fr"><span>{l["edition"]}</span><b>{l["from_"]} {l["eur"](FMT[0][0])}</b><span>{sizes}</span><div style="margin-top:14px"><a class="btn fr" href="{h}#edizioni">{ICON} {l["ed_cta"]}</a></div></div>'
+        edbox = f'<div class="edbox fr"><span>{l["edition"]}</span><b>{sizes}</b><div style="margin-top:6px"><a class="btn fr" href="{h}#edizioni">{ICON} {l["ed_cta"]}</a></div></div>'
     ig = f'<div><a class="btn fr quiet" href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">{l["ig"]}</a></div>'
     small = ' class="small"' if w['w'] < 600 else ''
     ra = w.get('ra') or (t['t'], '')
