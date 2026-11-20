@@ -8,13 +8,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="img/icon-32.png">
 <link rel="apple-touch-icon" href="img/icon-180.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Giovanni Esteban Tedesco · Astrofotografia">
+<meta property="og:title" content="Giovanni Esteban Tedesco · Astrofotografo a Brindisi">
 <meta property="og:description" content="Luce partita milioni di anni fa, fotografata da Brindisi. Portfolio ed edizioni d'artista.">
 <meta property="og:image" content="https://giovannitedesco.it/img/og.jpg">
 <meta property="og:url" content="https://giovannitedesco.it/">
 <link rel="canonical" href="https://giovannitedesco.it/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://giovannitedesco.it/#giovanni", "name": "Giovanni Esteban Tedesco", "alternateName": ["Giovanni Tedesco", "Giovanni Tedesco Esteban"], "jobTitle": "Astrofotografo", "url": "https://giovannitedesco.it/", "image": "https://giovannitedesco.it/img/og.jpg", "sameAs": ["https://www.instagram.com/g.tedesco_/"], "homeLocation": {"@type": "Place", "name": "Brindisi, Italia"}}, {"@type": "WebSite", "@id": "https://giovannitedesco.it/#site", "url": "https://giovannitedesco.it/", "name": "Giovanni Esteban Tedesco", "inLanguage": "it", "publisher": {"@id": "https://giovannitedesco.it/#giovanni"}}]}</script>
 <meta name="twitter:card" content="summary_large_image">
-<title>Giovanni Esteban Tedesco · Astrofotografia</title>
+<title>Giovanni Esteban Tedesco · Astrofotografo a Brindisi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -632,7 +633,7 @@ const META={luna:['sole','2026-10-24'],saturno:['sole','2026-10-17'],pleiadi:['d
 ALL.forEach(x=>{x.cat=META[x.id][0];x.iso=META[x.id][1]});
 const CATS=[['all','Tutte'],['deep','Cielo profondo'],['sole','Luna e pianeti'],['terra','Paesaggi notturni']];
 let F='all',SO='date';
-const card=x=>`<button class="pc" data-open="${x.id}" aria-label="Apri ${x.t}"><span class="ph"><img src="img/${x.img}" alt="" loading="lazy" width="${x.w}" height="${x.h}"></span>
+const card=x=>`<button class="pc" data-open="${x.id}" aria-label="Apri ${x.t}"><span class="ph"><img src="img/${x.img}" alt="${x.t}, foto di Giovanni Esteban Tedesco" loading="lazy" width="${x.w}" height="${x.h}"></span>
  <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${x.k}${x.d?' · '+x.d:''}</span>${x.look?`<i>Luce partita ${x.look} fa</i>`:''}</span></button>`;
 const renderGrid=()=>{let L=ALL.filter(x=>F==='all'||x.cat===F);
  L=SO==='date'?L.sort((a,b)=>(b.iso||'').localeCompare(a.iso||'')):L.sort((a,b)=>(b.secs||0)-(a.secs||0));
