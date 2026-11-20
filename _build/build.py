@@ -89,7 +89,7 @@ def main_css():
     return re.search(r'<style>(.*?)</style>', s, re.S).group(1)
 
 WORK_CSS = """
-.wk-page header.solid{background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px)}
+.wk-page header.solid{background:color-mix(in srgb,var(--bg) 96%,transparent)}
 .wk-hero{position:relative;height:min(86svh,980px);min-height:420px;overflow:hidden;display:grid;place-items:center;padding:80px 4vw 20px}
 .wk-hero button{padding:0;cursor:zoom-in;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%}
 .wk-hero img{width:auto;height:auto;max-width:92vw;max-height:calc(min(86svh,980px) - 110px);mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse closest-side,#000 62%,transparent);mask-image:radial-gradient(ellipse closest-side,#000 62%,transparent);opacity:0;transform:scale(.94);transition:opacity 1.2s ease,transform 1.6s cubic-bezier(.22,.8,.2,1)}

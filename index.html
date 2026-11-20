@@ -362,8 +362,9 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
  header.solid{background:linear-gradient(var(--bg) 70%,transparent)}
  header{padding:6px 12px}header .sig{width:64px;height:40px}
  .menu{display:inline-flex;align-items:center}
- header nav{display:none;position:fixed;inset:0;background:color-mix(in srgb,var(--bg) 97%,transparent);flex-direction:column;justify-content:center;align-items:center;gap:8px;z-index:-1}
- header.open nav{display:flex}header nav a,header nav a:not(.keep){display:inline-flex;font-size:22px;color:var(--ink);font-family:var(--fd)}
+ header nav{display:none;position:fixed;inset:0;height:100dvh;width:100vw;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:8px;z-index:-1}
+ header.open nav{display:flex;flex-direction:column}
+ header.open{background:var(--bg)}header nav a,header nav a:not(.keep){display:inline-flex;font-size:22px;color:var(--ink);font-family:var(--fd)}
  .ch{height:240vh}.ch:last-child{height:180vh}
  .intro-band{padding-bottom:18vh}
  .cap h3{margin:6px 0 8px}.cap dl{gap:2px 16px;margin-bottom:12px;padding-top:8px}.cap .then{margin-bottom:10px}
