@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Giovanni Esteban Tedesco, astrofotografo di 18 anni da Brindisi: galassie, nebulose, la Luna e le eclissi. Portfolio, viaggio nel tempo ed edizioni d'artista firmate.">
+<meta name="theme-color" content="#08080a">
+<link rel="icon" type="image/png" sizes="32x32" href="img/icon-32.png">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Giovanni Esteban Tedesco · Astrofotografia">
+<meta property="og:description" content="Luce partita milioni di anni fa, fotografata da Brindisi. Portfolio ed edizioni d'artista.">
+<meta property="og:image" content="https://giovannitedesco.it/img/og.jpg">
+<meta property="og:url" content="https://giovannitedesco.it/">
+<link rel="canonical" href="https://giovannitedesco.it/">
+<meta name="twitter:card" content="summary_large_image">
+<title>Giovanni Esteban Tedesco · Astrofotografia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: quiet, nocturnal; the photos speak, the interface whispers like an instrument.
+   IDEA: everything is seen through the eyepiece: an iris that opens on each object, a finder reticle with real coordinates, bracketed framing marks as the only UI shape.
+   PICTURE: photos have no edges: feathered and screen-blended into one shared sky; between works you fly through each object while a huge counter winds time back.
+   COLOUR and TYPE: Selene: lunar night #08080a, silver ink #e9e9ec, white accent, grey-blue support. Bodoni Moda (star-atlas engraving) + Jost, tabular figures.
+   LAYOUT: signature intro, hero through the reticle, journey chapters, earth gallery, behind the scenes, editions, signed footer. */
+:root{--fd:"Bodoni Moda",Didot,Georgia,serif;--fb:Jost,system-ui,sans-serif;--ds:.9;--dw:400;--dl:-.01em;--glow:rgba(244,244,246,.28);color-scheme:dark;--bg:#08080a;--bg2:#0d0d10;--ink:#e9e9ec;--mute:#9a9caa;--line:rgba(233,233,236,.16);--ha:#f4f4f6;--oiii:#a9adbb}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--fb);overflow-x:clip;font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--fd);font-weight:var(--dw);letter-spacing:var(--dl);line-height:1.05;text-wrap:balance;margin:0}
+h2{font-size:calc(clamp(34px,5vw,52px)*var(--ds))}
+p{margin:0 0 1em}a{color:inherit}img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:1px solid var(--ha);outline-offset:4px}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,footer{position:relative;z-index:1}
+
+/* the one shape: framing brackets */
+.fr{position:relative}
+.fr::before,.fr::after{content:"";position:absolute;width:10px;height:10px;border:1px solid var(--c,var(--ink));transition:width .35s cubic-bezier(.2,.7,.2,1),height .35s cubic-bezier(.2,.7,.2,1),border-color .3s;pointer-events:none}
+.fr::before{top:0;left:0;border-right:0;border-bottom:0}.fr::after{bottom:0;right:0;border-left:0;border-top:0}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:46px;padding:0 22px;font-weight:500;font-size:15px;text-decoration:none;--c:var(--ha)}
+.btn svg{width:16px;height:16px;flex:none;transition:transform .5s}
+.btn:hover::before,.btn:hover::after,.btn:focus-visible::before,.btn:focus-visible::after{width:100%;height:100%}
+.btn:hover svg{transform:rotate(90deg)}
+.btn.quiet{--c:var(--line)}
+.btn.quiet:hover{--c:var(--ink)}
+.lbl{font-size:13px;color:var(--mute);display:flex;align-items:center;gap:10px}
+.lbl::before{content:"";width:22px;height:1px;background:var(--ha)}
+
+/* intro */
+#intro{position:fixed;inset:0;z-index:50;background:#000;display:grid;place-items:center;transition:opacity 1.2s ease,visibility 1.2s}
+#intro.gone{opacity:0;visibility:hidden}
+#intro video{width:min(560px,80vw);mix-blend-mode:screen}
+#intro small{position:absolute;bottom:32px;color:var(--mute);font-size:13px}
+
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;gap:20px;padding:10px max(4vw,16px);transition:background .4s}
+header.solid{background:linear-gradient(color-mix(in srgb,var(--bg) 90%,transparent),transparent)}
+header .sig{width:78px;height:44px;background:url(img/firma.png) center/contain no-repeat;flex:none}
+header nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+header nav a{text-decoration:none;font-size:14px;color:var(--mute);padding:10px 12px;--c:transparent}
+header nav a:hover,header nav a.on{color:var(--ink);--c:var(--ha)}
+@media(max-width:700px){header nav a:not(.keep){display:none}}
+
+/* reticle */
+.ret{position:absolute;pointer-events:none;aspect-ratio:1}
+.ret svg{width:100%;height:100%;overflow:visible}
+.ret circle,.ret line{fill:none;stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke}
+.ret text{fill:var(--mute);font:12px var(--fb)}
+.ret .ha{stroke:var(--ha)}
+
+/* hero */
+.hero{min-height:100svh;display:grid;align-items:end;position:relative;overflow:hidden;padding:0 max(5vw,16px) clamp(40px,8vh,90px)}
+.hero .bg{position:absolute;inset:-6%;background:url(img/andromeda.jpg) 50% 50%/cover;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse 70% 65% at 52% 50%,#000 35%,transparent 100%);mask-image:radial-gradient(ellipse 70% 65% at 52% 50%,#000 35%,transparent 100%);will-change:transform}
+.hero .ret{width:min(44vh,40vw);left:46.5%;top:48%;transform:translate(-50%,-50%);opacity:.75}
+.hero .copy{position:relative;z-index:2;max-width:760px}
+.hero h1{font-size:calc(clamp(46px,9vw,112px)*var(--ds));text-shadow:0 4px 40px rgba(0,0,0,.7)}
+.hero h1 i{color:var(--oiii)}
+.hero p{font-size:clamp(17px,2vw,20px);color:#d8d5cc;max-width:540px;margin:18px 0 26px;text-shadow:0 2px 20px #000}
+@media(max-width:700px){.hero .ret{width:62vw;left:50%;top:36%}}
+
+/* journey */
+.intro-band{padding:clamp(80px,14vh,160px) max(5vw,16px) 30vh;max-width:820px}
+.intro-band p{color:var(--mute);font-size:18px;margin-top:18px}
+.ch{height:300vh;position:relative}
+.ch:last-child{height:220vh}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:transform,opacity,filter}
+.art img{width:auto;height:auto;max-width:92vw;max-height:88vh;mix-blend-mode:screen;cursor:zoom-in;--r:100;-webkit-mask-image:radial-gradient(ellipse closest-side,#000 calc(var(--r)*.62%),transparent calc(var(--r)*1%));mask-image:radial-gradient(ellipse closest-side,#000 calc(var(--r)*.62%),transparent calc(var(--r)*1%))}
+.art img.small{max-height:56vh;-webkit-mask-image:radial-gradient(ellipse closest-side,#000 calc(var(--r)*.3%),transparent calc(var(--r)*.62%));mask-image:radial-gradient(ellipse closest-side,#000 calc(var(--r)*.3%),transparent calc(var(--r)*.62%))}
+.stage .ret{width:min(78vh,86vw);left:50%;top:50%;transform:translate(-50%,-50%)}
+.cap{position:absolute;left:max(5vw,16px);bottom:clamp(24px,7vh,72px);max-width:min(440px,80vw);text-shadow:0 2px 24px #000,0 0 2px #000}
+.cap h3{font-size:calc(clamp(30px,3.6vw,46px)*var(--ds));margin:10px 0 12px}
+.cap .then{font-size:15px;color:#d8d5cc;margin:0 0 16px}
+.cap .then b{color:var(--ha);font-weight:600}
+.cap dl{display:flex;flex-wrap:wrap;gap:4px 22px;margin:0 0 18px;font-size:13px;padding-top:12px;border-top:1px solid var(--line)}
+.cap dl div{display:flex;gap:6px}.cap dt{color:var(--mute)}.cap dd{margin:0;white-space:nowrap}
+@media(max-width:700px){.art{align-items:center;padding:72px 0 42vh}.art img{max-height:calc(58vh - 96px);max-width:94vw}.stage .ret{top:calc(36px + 29vh);width:min(82vw,calc(58vh - 60px))}.cap{left:16px;right:16px;max-width:none;bottom:24px}.cap .then{font-size:14px}}
+
+/* time machine */
+#tm{position:fixed;inset:0;z-index:12;display:grid;place-items:center;pointer-events:none;opacity:0}
+#tm .in{text-align:center;padding:0 16px}
+#tm .ago{font-size:14px;color:var(--mute)}
+#tm .num{font-family:var(--fd);font-weight:var(--dw);letter-spacing:var(--dl);font-size:calc(clamp(72px,20vw,190px)*var(--ds));line-height:.95;white-space:nowrap;text-shadow:0 0 60px var(--glow)}
+#tm .unit{font-family:var(--fd);font-style:italic;font-size:clamp(24px,3.4vw,44px);color:var(--oiii)}
+#tm .ev{margin-top:22px;font-size:16px;color:#d8d5cc;max-width:520px;margin-inline:auto}
+#tm .ev b{color:var(--ha);font-weight:600}
+
+/* thread gauge */
+#gauge{position:fixed;right:max(2.4vw,12px);top:50%;transform:translateY(-50%);height:56vh;width:90px;z-index:15;opacity:0;transition:opacity .5s;pointer-events:none}
+#gauge.on{opacity:1}
+#gauge .rail{position:absolute;right:0;top:0;bottom:0;width:1px;background:linear-gradient(var(--line),var(--ha))}
+#gauge .tick{position:absolute;right:0;font-size:11px;color:var(--mute);transform:translateY(-50%);display:flex;gap:8px;align-items:center;white-space:nowrap}
+#gauge .tick::after{content:"";width:6px;height:1px;background:var(--mute)}
+#gauge .dot{position:absolute;right:-6px;width:13px;height:13px;transform:translateY(-50%);border:1px solid var(--ha);border-radius:50%}
+#gauge .dot::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--ha);box-shadow:0 0 12px var(--ha)}
+@media(max-width:900px){#gauge{display:none}}
+
+/* bands */
+.band{padding:clamp(64px,10vw,130px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.head{display:grid;gap:16px;max-width:720px}
+.head p{color:var(--mute);margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:40px}
+.stats div{padding:22px 20px 18px}
+.stats b{display:block;font-family:var(--fd);font-weight:var(--dw);letter-spacing:var(--dl);font-size:calc(clamp(40px,5vw,64px)*var(--ds));line-height:1}
+.stats span{color:var(--mute);font-size:14px}
+@media(max-width:800px){.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+
+.earth{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,3vw,40px);margin-top:48px;align-items:center}
+.card{display:block;text-align:left;padding:0}
+.card .ph{overflow:hidden;cursor:zoom-in}
+.card img{width:100%;height:auto;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse closest-side,#000 62%,transparent);mask-image:radial-gradient(ellipse closest-side,#000 62%,transparent);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.card:hover img{transform:scale(1.06)}
+.card h3{font-size:28px;margin:6px 0 2px}
+.card span{font-size:13px;color:var(--mute)}
+.card .apod{color:var(--ha);font-size:13px;font-weight:600;display:block;margin-bottom:4px}
+.c1{grid-column:1/8}.c2{grid-column:8/13}.c3{grid-column:2/7}.c4{grid-column:7/13}
+@media(max-width:800px){.earth{grid-template-columns:minmax(0,1fr)}.c1,.c2,.c3,.c4{grid-column:auto}}
+
+.behind{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;margin-top:40px}
+.behind img{height:auto;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse closest-side,#000 55%,transparent);mask-image:radial-gradient(ellipse closest-side,#000 55%,transparent)}
+.behind figure{margin:0}.behind figcaption{font-size:13px;color:var(--mute);margin-top:6px}
+.gear{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:28px}
+.gear h3{font:600 13px var(--fb);color:var(--mute);margin-bottom:6px}
+.gear ul{list-style:none;margin:0;padding:0;font-size:15px}.gear li{padding:7px 0;border-bottom:1px solid var(--line)}
+@media(max-width:860px){.behind{grid-template-columns:minmax(0,1fr)}}
+
+.ed{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center}
+.wall{padding:clamp(28px,5vw,64px);display:grid;place-items:center;background:radial-gradient(ellipse closest-side,#1b1e2b,transparent)}
+.frame{background:#13100d;padding:12px;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px #2b241d;width:min(78%,330px)}
+.mat{background:#f4f1ea;padding:12% 12% 17%;position:relative}
+.mat .no{position:absolute;bottom:5%;left:12%;font-size:10px;color:#555}
+.mat .s{position:absolute;bottom:3%;right:10%;width:64px;height:34px;background:url(img/firma.png) center/contain no-repeat;filter:brightness(0) opacity(.75)}
+.ed ul{padding:0;list-style:none;margin:22px 0 30px}.ed li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:14px}
+.ed li b{color:var(--oiii);font-weight:600;min-width:7em}
+.fud{font-size:13px;color:var(--mute);margin-top:14px}
+@media(max-width:860px){.ed{grid-template-columns:minmax(0,1fr)}}
+
+footer{padding:90px max(5vw,16px) 48px;text-align:center}
+footer video{width:min(420px,76vw);mix-blend-mode:screen;margin:0 auto 10px;display:block}
+footer p{color:var(--mute);font-size:14px}
+
+/* viewer */
+#viewer{position:fixed;inset:0;z-index:60;display:none}
+#viewer.open{display:block}
+#viewer .veil{position:absolute;inset:0;background:var(--bg);opacity:0;transition:opacity .7s ease}
+#viewer.show .veil{opacity:1}
+#vp{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab}
+#vp.drag{cursor:grabbing}
+@property --r{syntax:'<number>';inherits:false;initial-value:100}
+#vp img{position:absolute;left:0;top:0;transform-origin:0 0;user-select:none;-webkit-user-drag:none;max-width:none;mix-blend-mode:screen;--r:100;--m:radial-gradient(ellipse closest-side,#000 calc(var(--r)*.62%),transparent calc(var(--r)*1%)),linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent),linear-gradient(transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:var(--m);mask-image:var(--m);-webkit-mask-composite:source-in;mask-composite:intersect;transition:opacity .35s ease,--r 1.1s ease}
+#vp img.solid{--r:240}
+#vp img.fly{transition:transform .9s cubic-bezier(.22,.8,.2,1),opacity .35s ease,--r 1.1s ease}
+#vp img.fade{opacity:0}
+#vring{position:absolute;pointer-events:none;aspect-ratio:1;opacity:0;transform:translate(-50%,-50%) rotate(calc(var(--h,0deg) - 30deg)) scale(1.25);transition:opacity .8s ease .25s,transform 1.4s cubic-bezier(.22,.8,.2,1)}
+#viewer.show #vring{opacity:.5;transform:translate(-50%,-50%) rotate(var(--h,0deg)) scale(1)}
+#viewer.zoomed #vring{opacity:0}
+.vui{opacity:0;transition:opacity .5s ease .45s}
+#viewer.show .vui{opacity:1}
+.vbar{position:absolute;top:12px;right:12px;display:flex;gap:6px;z-index:3;align-items:center}
+.vb{min-width:46px;height:46px;padding:0 14px;font-size:16px;background:color-mix(in srgb,var(--bg) 55%,transparent);--c:var(--line)}
+.vb:hover{--c:var(--ha)}
+#vzoom{font-size:13px;color:var(--mute);min-width:52px;text-align:center}
+.vnav{position:absolute;top:50%;transform:translateY(-50%);z-index:3}
+#vprev{left:12px}#vnext{right:12px}
+@media(min-width:901px){#viewer.info #vnext{right:492px}}
+#vinfo{position:absolute;top:0;right:0;bottom:0;width:min(480px,100%);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--bg) 92%,transparent) 64px);padding:84px 40px 40px 72px;overflow-y:auto;z-index:2;transform:translateX(30px);opacity:0;pointer-events:none;transition:transform .7s cubic-bezier(.22,.8,.2,1),opacity .5s}
+#viewer.show.info #vinfo{transform:none;opacity:1;pointer-events:auto}
+#vinfo>*{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .7s cubic-bezier(.22,.8,.2,1);transition-delay:calc(.35s + var(--i)*.06s)}
+#viewer.show.info #vinfo>*{opacity:1;transform:none}
+#vinfo h2{font-size:calc(clamp(34px,3.4vw,46px)*var(--ds));margin:12px 0 22px}
+.vlight{display:grid;gap:2px;padding:18px 0 18px 20px;border-left:1px solid var(--ha);margin-bottom:22px}
+.vlight span{font-size:13px;color:var(--mute)}
+.vlight b{font-family:var(--fd);font-weight:var(--dw);letter-spacing:var(--dl);font-size:calc(34px*var(--ds));line-height:1.05;color:var(--ink)}
+.vlight em{font-style:normal;font-size:14px;color:#d8d5cc;margin-top:8px}
+.vlight em b{all:unset;color:var(--ha);font-weight:600}
+.vstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:28px}
+.vstats div{padding:14px 12px 10px}
+.vstats b{display:block;font-family:var(--fd);font-weight:var(--dw);font-size:calc(22px*var(--ds));line-height:1.1;margin-bottom:4px}
+.vstats span{font-size:12px;color:var(--mute)}
+#vinfo .lede{font-size:18px;line-height:1.55;color:var(--ink)}
+#vinfo p{font-size:15px;color:#cfccc4}
+#vinfo blockquote{margin:26px 0;padding:0;font-family:var(--fd);font-style:italic;font-size:calc(24px*var(--ds));line-height:1.3;color:var(--oiii)}
+#vinfo blockquote::after{content:"";display:block;width:70px;height:36px;margin-top:10px;background:url(img/firma.png) left center/contain no-repeat;opacity:.8}
+#vinfo h3{font:600 13px var(--fb);color:var(--mute);margin:30px 0 4px}
+.spec{margin:0 0 30px}
+.spec div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.spec dt{color:var(--mute)}.spec dd{margin:0}
+.vcoord{font-size:13px;color:var(--mute);margin:-14px 0 28px;display:flex;gap:10px;align-items:center}
+.vcoord svg{width:14px;height:14px;color:var(--ha)}
+.vhint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:13px;color:var(--mute);white-space:nowrap}
+@media(min-width:901px){#viewer.info .vhint{left:calc(50% - 240px)}}
+@media(max-width:900px){
+ #vinfo{top:auto;left:0;width:100%;height:50svh;padding:28px 20px 32px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--bg) 95%,transparent) 40px);transform:translateY(40px)}
+ #vinfo::before{content:"";position:sticky;top:-16px;display:block;width:40px;height:3px;border-radius:2px;background:var(--line);margin:0 auto 14px}
+ #vinfo h2{margin:8px 0 16px}
+ .vnav{top:auto;bottom:calc(50svh + 10px);transform:none}#viewer:not(.info) .vnav{bottom:16px}
+ .vhint{display:none}
+ .vstats b{font-size:calc(19px*var(--ds));white-space:nowrap}.vstats div{padding:12px 10px 8px}
+}
+/* views */
+.view[hidden]{display:none}
+.acts{display:flex;flex-wrap:wrap;gap:10px 14px}
+.phead{padding-top:clamp(110px,14vh,150px)}
+.tools{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin:36px 0 28px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{min-height:44px;padding:0 16px;font-size:14px;color:var(--mute);--c:transparent}
+.chip small{font-size:12px;opacity:.7;margin-left:4px}
+.chip:hover{color:var(--ink);--c:var(--line)}.chip.on{color:var(--ink);--c:var(--ha)}
+.grid{columns:3 300px;column-gap:clamp(18px,3vw,40px)}
+.pc{display:block;width:100%;break-inside:avoid;margin:0 0 clamp(28px,4vw,48px);text-align:left;padding:0}
+.pc .ph,.ft .ph{display:block;overflow:hidden;padding:0;cursor:zoom-in;width:100%}
+.pc img,.ft img{width:100%;height:auto;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse closest-side,#000 62%,transparent);mask-image:radial-gradient(ellipse closest-side,#000 62%,transparent);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.pc:hover img,.ft .ph:hover img{transform:scale(1.05)}
+.pm{display:grid;gap:2px;margin-top:4px;padding-left:14px;border-left:1px solid var(--line);transition:border-color .3s}
+.pc:hover .pm{border-color:var(--ha)}
+.pm b{font-family:var(--fd);font-weight:var(--dw);font-size:calc(26px*var(--ds));line-height:1.15}
+.pm span{font-size:13px;color:var(--mute)}.pm i{font-style:normal;font-size:13px;color:var(--ink)}
+.pm em{font-style:normal;font-size:12px;font-weight:600;color:var(--ha)}
+.ft{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:center;margin-top:clamp(36px,6vw,72px)}
+.ft.rev .ph{order:2}
+.ftx h3{font-size:calc(clamp(30px,3.4vw,44px)*var(--ds));margin:10px 0 12px}
+.ftx p{color:#cfccc4}
+.ftx dl{display:flex;flex-wrap:wrap;gap:4px 22px;margin:0 0 20px;font-size:13px;padding-top:12px;border-top:1px solid var(--line)}
+.ftx dl div{display:flex;gap:6px}.ftx dt{color:var(--mute)}.ftx dd{margin:0;white-space:nowrap}
+.ruler{position:relative;height:140px;margin:40px 0 34px}
+.rl{position:absolute;left:0;right:0;top:74px;height:1px;background:linear-gradient(90deg,var(--line),var(--ha))}
+.rd{position:absolute;top:74px;width:9px;height:9px;margin:-4px 0 0 -4px;border:1px solid var(--ha);border-radius:50%;background:var(--bg)}
+.rd span{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:12px;color:var(--mute)}
+.rd.up span{bottom:16px}.rd.up2 span{bottom:36px}.rd.dn span{top:16px}
+.rt{position:absolute;left:0;right:0;bottom:-6px;display:flex;justify-content:space-between;font-size:12px;color:var(--mute)}
+@media(max-width:800px){.ft{grid-template-columns:minmax(0,1fr)}.ft.rev .ph{order:0}.rd span{display:none}.ruler{height:70px}.rl,.rd{top:30px}}
+/* editions */
+.edh{padding-top:clamp(110px,15vh,160px)}
+.edgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center}
+h2.big{font-size:calc(clamp(40px,5.6vw,72px)*var(--ds));margin:14px 0 20px}
+.lede{font-size:18px;color:#d6d6dc;max-width:560px}
+.wall.big{position:relative;aspect-ratio:4/5;background:radial-gradient(ellipse at 50% 35%,#1d1e24,transparent 72%)}
+.wall.big .frame{width:min(70%,360px)}
+.wl{position:absolute;bottom:4%;left:0;right:0;text-align:center;font-size:12px;color:var(--mute)}
+.incl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:900px;gap:16px;margin-top:36px}
+.incl>div{padding:24px 22px 18px}.incl h3{font-size:calc(26px*var(--ds));margin-bottom:10px}.incl p{font-size:15px;color:#cfcfd5;margin:0}
+.ladder{display:grid;gap:10px;margin:36px 0 18px}
+.rung{display:grid;grid-template-columns:90px repeat(3,minmax(0,1fr));gap:20px;align-items:center;padding:18px 22px}
+.rung b{display:block;font-family:var(--fd);font-weight:var(--dw);font-size:calc(30px*var(--ds));line-height:1.1}
+.rung span{font-size:13px;color:var(--mute)}
+.rsz{height:70px;display:flex;align-items:flex-end;justify-content:center}
+.rsz i{display:block;width:calc(var(--w)*.5);height:var(--h);border:1px solid var(--ink);background:linear-gradient(160deg,#1a1b22,#0c0c10)}
+.faqw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,5vw,80px)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--fd);font-size:calc(22px*var(--ds))}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--fb);color:var(--mute);font-size:22px;transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:#cfcfd5;font-size:15px;margin:0 0 18px;max-width:620px}
+#edgrid .pc i{font-size:15px}
+/* sheet */
+#sheet{position:fixed;inset:0;z-index:55}
+#sheet .sveil{position:absolute;inset:0;background:color-mix(in srgb,var(--bg) 88%,transparent);opacity:0;transition:opacity .45s}
+#sheet.on .sveil{opacity:1}
+.spanel{position:absolute;inset:max(3vh,16px) max(3vw,16px);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);background:var(--bg2);border:1px solid var(--line);overflow:hidden;opacity:0;transform:translateY(24px) scale(.985);transition:opacity .45s,transform .6s cubic-bezier(.22,.8,.2,1)}
+#sheet.on .spanel{opacity:1;transform:none}
+.sclose{position:absolute;top:12px;right:12px;z-index:3}
+.sroom{position:relative;background:linear-gradient(180deg,#1a1b21,#111216);display:flex;align-items:center;justify-content:center;padding:6% 7% 14%;overflow:hidden}
+.scene{position:relative;width:100%;aspect-ratio:260/200;max-height:100%}
+.scene::after{content:"";position:absolute;left:-50%;right:-50%;top:100%;height:60vh;background:#0b0b0e;border-top:1px solid #23242b}
+.sframe{position:absolute;left:50%;transform:translateX(-50%);width:var(--fw,20%);bottom:var(--fb,60%);background:#16120e;padding:1.1%;box-shadow:0 24px 50px rgba(0,0,0,.6),0 0 0 1px #2b241d;transition:width .7s cubic-bezier(.22,.8,.2,1),bottom .7s cubic-bezier(.22,.8,.2,1)}
+.smat{background:#f3f2ee;height:100%;padding:8%;display:grid;place-items:center}
+.smat img{width:100%;height:100%;object-fit:cover}
+.sofa{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:76.9%;height:42.5%;fill:#2a2b33}
+.scale{position:absolute;top:22px;left:0;right:0;text-align:center;font-size:12px;color:var(--mute);z-index:1}
+.sinfo{padding:56px clamp(22px,3vw,44px) 32px;overflow-y:auto}
+.sinfo h2{font-size:calc(clamp(30px,3vw,42px)*var(--ds));margin:10px 0 10px}
+.sdesc{color:#cfcfd5;font-size:15px}.sdesc b{color:var(--ink)}
+.sinfo h3{font:600 13px var(--fb);color:var(--mute);margin:22px 0 8px}
+.fmts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.fmt{position:relative;padding:14px 10px 12px;text-align:left;--c:var(--line);min-height:64px}
+.fmt b{display:block;font-family:var(--fd);font-weight:var(--dw);font-size:calc(24px*var(--ds))}.fmt span{font-size:12px;color:var(--mute)}
+.fmt em{position:absolute;top:-9px;right:8px;font-style:normal;font-size:11px;font-weight:600;background:var(--ink);color:var(--bg);padding:1px 7px}
+.fmt.on{--c:var(--ha)}.fmt:disabled{opacity:.35;cursor:not-allowed}
+.sum{margin:22px 0 20px;border-top:1px solid var(--line)}
+.sum div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.sum span{color:var(--mute)}
+.sbar{display:flex;align-items:center;gap:16px}.sbp{display:none;font-family:var(--fd);font-size:calc(26px*var(--ds))}.sum .tot b{font-family:var(--fd);font-weight:var(--dw);font-size:calc(30px*var(--ds))}
+.sinc{list-style:none;padding:0;margin:22px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:13px;color:#cfcfd5}
+.sinc li::before{content:"✓ ";color:var(--ha)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:70;background:var(--ink);color:var(--bg);padding:12px 18px;font-size:14px;max-width:calc(100vw - 32px);opacity:0;pointer-events:none;transition:all .35s}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.edgrid,.faqw{grid-template-columns:minmax(0,1fr)}
+ .spanel{inset:0;grid-template-columns:minmax(0,1fr);grid-template-rows:40svh auto;overflow-y:auto;border:0}.sinfo{overflow:visible;padding-top:24px;padding-bottom:110px}.sroom{padding:44px 5% 12%}
+ .sbar{position:fixed;left:0;right:0;bottom:0;z-index:4;justify-content:space-between;padding:12px 16px max(12px,env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg2) 94%,transparent);border-top:1px solid var(--line)}.sbp{display:block}}
+@media(max-width:600px){.incl{grid-template-columns:minmax(0,1fr)}.rung span{white-space:nowrap}.rung>div:last-child span{display:none}.rung{grid-template-columns:44px repeat(3,minmax(0,1fr));gap:10px;padding:14px}.rung b{font-size:calc(22px*var(--ds))}.rsz{height:50px}.sinc{grid-template-columns:1fr}.wall.big{aspect-ratio:1}}
+/* journey stepper */
+.jr{position:fixed;inset:0;z-index:5;overflow:hidden;touch-action:none;overscroll-behavior:none}
+.jr .jl{position:absolute;inset:0;height:auto;pointer-events:none}.jr .jl.on{pointer-events:auto}
+.jr .jl:empty{display:none}
+.jr .art,.jr .cap,.jr .ret{will-change:transform,opacity}
+.jr .cap{bottom:clamp(90px,12vh,120px)}
+.jscr{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:80px 20px 110px}
+.jscr[hidden]{display:none}.jscr>div{max-width:640px}.jscr h2{margin:14px 0 16px}.jscr p{color:var(--mute)}
+.jscr .btn{margin-top:14px}
+.jctl{position:absolute;right:max(4vw,16px);bottom:max(18px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:6px;z-index:13}
+.jdots{display:flex}
+.jd{width:26px;height:44px;display:grid;place-items:center;padding:0}
+.jd::after{content:"";width:7px;height:7px;border-radius:50%;border:1px solid var(--mute);transition:all .4s}
+.jd.past::after{background:var(--mute)}
+.jd.on::after{background:var(--ha);border-color:var(--ha);box-shadow:0 0 10px var(--ha);transform:scale(1.3)}
+body[data-view=viaggio] footer,body[data-view=viaggio] #gauge{display:none}
+@media(max-width:700px){.jctl{left:0;right:0;justify-content:center;gap:2px}.jd{width:24px}.jr .cap{bottom:78px}.jr .art{padding:64px 0 46vh}.jr .art img{max-height:calc(54vh - 80px)}.jr .ret{top:calc(32px + 27vh);width:min(80vw,calc(54vh - 50px))}}
+/* phone */
+.menu{display:none;margin-left:auto;min-height:44px;padding:0 16px;font-size:14px;--c:var(--line)}
+header nav a{min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:700px){
+ header.solid{background:linear-gradient(var(--bg) 70%,transparent)}
+ header{padding:6px 12px}header .sig{width:64px;height:40px}
+ .menu{display:inline-flex;align-items:center}
+ header nav{display:none;position:fixed;inset:0;background:color-mix(in srgb,var(--bg) 97%,transparent);flex-direction:column;justify-content:center;align-items:center;gap:8px;z-index:-1}
+ header.open nav{display:flex}header nav a,header nav a:not(.keep){display:inline-flex;font-size:22px;color:var(--ink);font-family:var(--fd)}
+ .ch{height:240vh}.ch:last-child{height:180vh}
+ .intro-band{padding-bottom:18vh}
+ .cap h3{margin:6px 0 8px}.cap dl{gap:2px 16px;margin-bottom:12px;padding-top:8px}.cap .then{margin-bottom:10px}
+ .btn{min-height:44px;padding:0 18px}
+ .band{padding:56px 16px}
+ .stats div{padding:16px 14px 12px}
+ .earth{gap:28px}
+ #tm .ev{font-size:15px}
+ .vb{min-width:44px;height:44px;padding:0 12px}
+ .wall{padding:12px 0}
+}
+@media(max-width:700px) and (orientation:landscape){.art{padding-top:56px}.art img{max-height:70vh}.stage .ret{display:none}.cap{max-width:46vw;left:auto;right:16px}}
+@media(pointer:coarse){.art{filter:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div id="intro" role="presentation"><video id="sigv" src="img/firma.mp4" muted playsinline autoplay preload="auto" aria-hidden="true"></video><small>Tocca per entrare</small></div>
+
+<header id="top">
+  <a class="sig" href="#home" aria-label="Home"></a>
+  <button class="menu fr" id="menu" aria-expanded="false" aria-controls="mnav">Menu</button>
+  <nav id="mnav">
+    <a href="#home" class="fr" data-nav="home">Home</a><a href="#portfolio" class="fr keep" data-nav="portfolio">Portfolio</a><a href="#viaggio" class="fr" data-nav="viaggio">Viaggio nel tempo</a><a href="#edizioni" class="fr" data-nav="edizioni">Edizioni</a><a href="#contatti" class="fr" data-nav="contatti">Contatti</a>
+  </nav>
+</header>
+
+<main>
+ <div class="view" data-view="home">
+  <section class="hero" id="hero">
+    <div class="bg" id="herobg"></div>
+    <div class="ret" id="heroret" aria-hidden="true"></div>
+    <div class="copy">
+      <div class="lbl">Astrofotografia da Brindisi</div>
+      <h1>Giovanni Esteban <i>Tedesco</i></h1>
+      <p>Ha diciotto anni e fotografa il cielo con un telescopio Newton e una montatura del 2004.</p>
+      <div class="acts"><a class="btn fr" href="#portfolio">ICON Guarda il portfolio</a><a class="btn fr quiet" href="#viaggio">Viaggio nel tempo</a></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head"><div class="lbl">L'archivio</div><h2>Galassie, nebulose, la Luna, Saturno, le eclissi.</h2><p>Quasi tutte le foto sono scattate dalla sua postazione a Brindisi, con strumentazione amatoriale.</p></div>
+      <div class="stats">
+        <div class="fr"><b>21 h</b><span>di esposizione sul cielo profondo</span></div>
+        <div class="fr"><b>230.000+</b><span>fotogrammi elaborati</span></div>
+        <div class="fr"><b>23 mln</b><span>di anni luce: M51, l'oggetto più lontano</span></div>
+        <div class="fr"><b>APOD</b><span>una foto ripubblicata dalla NASA su Instagram</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="evid">
+    <div class="wrap">
+      <div class="head"><div class="lbl">In evidenza</div><h2 id="evid">Tre opere.</h2></div>
+      <div id="feat"></div>
+      <div style="margin-top:48px"><a class="btn fr" href="#portfolio">ICON Tutte le 13 opere</a></div>
+    </div>
+  </section>
+
+  <section class="band tease">
+    <div class="wrap">
+      <div class="head"><div class="lbl">Viaggio nel tempo</div><h2>Nove opere in ordine di distanza.</h2><p>Un percorso a schermo intero: da un'opera alla successiva, la luce che vedi è sempre più antica.</p></div>
+      <div class="ruler" id="ruler" aria-hidden="true"></div>
+      <a class="btn fr" href="#viaggio">ICON Inizia il viaggio</a><p class="fud">Consigliato su computer o tablet.</p>
+    </div>
+  </section>
+
+  <section class="band" id="dietro">
+    <div class="wrap">
+      <div class="head"><div class="lbl">Dietro lo scatto</div><h2>Strumenti e software.</h2></div>
+      <div class="behind">
+        <figure><img src="img/setup.jpg" alt="Giovanni al portatile sotto gli alberi, accanto al telescopio puntato verso il cielo stellato, illuminato da luce rossa" loading="lazy" width="1600" height="900"><figcaption>Una sessione di ripresa.</figcaption></figure>
+        <div>
+          <p>Per il cielo profondo usa una Canon EOS 500D modificata full-spectrum su un Newton 150/750 e una montatura Celestron CG5 GT del 2004. Per la Luna e Saturno, una camera planetaria ZWO ASI120.</p>
+          <p>Durante la ripresa un portatile gestisce l'acquisizione e l'autoguida. Poi le singole pose vengono sommate ed elaborate.</p>
+          <div class="gear">
+            <div><h3>Strumenti</h3><ul><li>Newton 150/750 mm</li><li>Celestron CG5 GT</li><li>Canon EOS 500D full-spectrum</li><li>Filtro Optolong L-Pro</li><li>Correttore Baader MPCC Mark II</li><li>Guida 60 mm + ZWO ASI120</li></ul></div>
+            <div><h3>Software</h3><ul><li>N.I.N.A. · PHD2</li><li>Siril</li><li>FireCapture · PIPP</li><li>AutoStakkert! · RegiStax</li><li>Photoshop · GIMP</li><li>RawTherapee · Microsoft ICE</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="ed-home">
+    <div class="wrap ed">
+      <div class="wall" aria-hidden="true"><div class="frame"><div class="mat"><img src="img/pleiadi.jpg" alt=""><span class="no">1 / 30</span><span class="s"></span></div></div></div>
+      <div>
+        <div class="lbl">Edizioni d'artista</div>
+        <h2 style="margin-top:14px">Stampe fine art in tiratura limitata.</h2>
+        <ul>
+          <li><b>Tiratura</b><span>Numerata, diversa per ogni formato</span></li>
+          <li><b>Firma</b><span>A mano, sul margine della stampa</span></li>
+          <li><b>Opere</b><span>Otto soggetti nella prima edizione</span></li>
+        </ul>
+        <a class="btn fr" href="#edizioni">ICON Scopri le edizioni</a>
+        <p class="fud">Si prenota con un messaggio, senza pagamento anticipato.</p>
+      </div>
+    </div>
+  </section>
+ </div>
+
+ <div class="view" data-view="portfolio" hidden>
+  <section class="band phead">
+    <div class="wrap">
+      <div class="head"><div class="lbl">Portfolio</div><h2>Tredici opere.</h2><p>Tocca un'opera per vederla a schermo intero e leggerne la scheda.</p></div>
+      <div class="tools">
+        <div class="chips" role="group" aria-label="Filtra per tipo" id="chips"></div>
+        <div class="chips" role="group" aria-label="Ordina" id="sort"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+ </div>
+
+ <div class="view" data-view="edizioni" hidden>
+  <section class="band edh">
+   <div class="wrap edgrid">
+    <div>
+     <div class="lbl">Prima edizione</div>
+     <h2 class="big">Edizioni d'artista.</h2>
+     <p class="lede">Stampe fine art in tiratura limitata, numerate e firmate a mano da Giovanni.</p>
+     <div class="acts"><a class="btn fr" href="#ed-coll">ICON Scegli la tua stampa</a></div>
+         </div>
+    <div class="wall big" aria-hidden="true"><div class="frame"><div class="mat"><img src="img/andromeda.jpg" alt=""><span class="no">3 / 15</span><span class="s"></span></div></div><span class="wl">Andromeda · formato A3, cornice esclusa</span></div>
+   </div>
+  </section>
+
+  <section class="band">
+   <div class="wrap">
+    <div class="head"><h2>Cosa ricevi.</h2></div>
+    <div class="incl">
+     <div class="fr"><h3>Stampa fine art</h3><p>Stampa giclée con inchiostri a pigmento su carta fine art, con un margine bianco pronto per la cornice.</p></div>
+     <div class="fr"><h3>Firma e numero</h3><p>Scritti a mano sul margine: il numero della copia sulla tiratura e la firma di Giovanni.</p></div>
+    </div>
+   </div>
+  </section>
+
+  <section class="band" id="ed-coll">
+   <div class="wrap">
+    <div class="head"><div class="lbl">La collezione</div><h2>Otto opere.</h2><p>Tocca un'opera per vedere formati, tirature e dimensioni su una parete.</p></div>
+    <div class="grid" id="edgrid"></div>
+   </div>
+  </section>
+
+  <section class="band">
+   <div class="wrap">
+    <div class="head"><div class="lbl">Formati e tirature</div><h2>Più è grande, meno copie esistono.</h2></div>
+    <div class="ladder" id="ladder"></div>
+    <p class="fud">Prezzi della prima edizione, stampa senza cornice. Spedizione esclusa, calcolata alla conferma.</p>
+   </div>
+  </section>
+
+  <section class="band">
+   <div class="wrap faqw">
+    <div class="head"><h2>Domande.</h2></div>
+    <div class="faq">
+     <details><summary>Come funziona la prenotazione?</summary><p>Scegli opera e formato, copi la richiesta già scritta e la mandi a Giovanni su Instagram. Lui ti risponde con la disponibilità e il numero della tua copia. Si paga solo dopo la conferma.</p></details>
+     <details><summary>Quando arriva la stampa?</summary><p>Ogni copia viene stampata su ordinazione, poi firmata e numerata. Giovanni ti indica tempi e costo di spedizione quando conferma la prenotazione.</p></details>
+     <details><summary>Cosa succede quando una tiratura finisce?</summary><p>Quel formato non verrà più stampato. Gli altri formati della stessa opera restano disponibili fino al loro esaurimento.</p></details>
+     <details><summary>La stampa è incorniciata?</summary><p>No, arriva senza cornice e con un margine bianco, pronta da incorniciare. Il margine serve anche per firma e numero, che restano visibili sotto il passe-partout.</p></details>
+    </div>
+   </div>
+  </section>
+
+  <section class="band" style="text-align:center"><div class="acts" style="justify-content:center"><a class="btn fr" href="#ed-coll">ICON Scegli la tua stampa</a></div></section>
+ </div>
+
+ <div class="view jr" data-view="viaggio" hidden aria-roledescription="presentazione" aria-label="Viaggio nel tempo">
+  <div class="stage jl" id="jA"></div><div class="stage jl" id="jB"></div>
+  <div class="jscr" id="jintro"><div><div class="lbl" style="justify-content:center">Viaggio nel tempo</div><h2>Più vai avanti, più indietro nel tempo.</h2><p>Dalla Luna, a poco più di un secondo luce, fino a M51, la cui luce è partita 23 milioni di anni fa.</p><button class="btn fr" id="jstart">ICON Parti dalla Luna</button><p class="fud">Scorri o usa le frecce per passare all'opera successiva.</p></div></div>
+  <div class="jscr" id="jend" hidden><div><div class="lbl" style="justify-content:center">Fine del viaggio</div><h2>Sei arrivato a M51.</h2><div class="acts" style="justify-content:center;margin-top:26px"><a class="btn fr" href="#portfolio">ICON Vai al portfolio</a><button class="btn fr quiet" id="jagain">Ricomincia</button></div></div></div>
+  <div class="jctl"><button class="vb fr" id="jprev" aria-label="Opera precedente">↑</button><div class="jdots" id="jdots"></div><button class="vb fr" id="jnext" aria-label="Opera successiva">↓</button></div>
+ </div>
+</main>
+
+<footer id="contatti">
+  <video id="sigf" src="img/firma.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+  <h2 style="font-size:clamp(30px,4vw,44px)">Contatti</h2>
+  <p style="margin:16px 0 26px">Per collaborazioni, mostre e stampe, Giovanni risponde su Instagram.</p>
+  <a class="btn fr" href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">ICON @g.tedesco_ su Instagram</a>
+  <p style="margin-top:44px">© 2026 Giovanni Esteban Tedesco · Brindisi, Puglia · Tutte le immagini sono dell'autore.</p>
+</footer>
+
+<div id="tm" aria-hidden="true"><div class="in"><div class="ago">la luce che stai per vedere è partita</div><div class="num" id="tmn">0</div><div class="unit" id="tmu">secondi fa</div><div class="ev" id="tme"></div></div></div>
+<div id="gauge" aria-hidden="true"><div class="rail"></div><div id="ticks"></div><div class="dot" id="gdot"></div></div>
+
+<div id="sheet" role="dialog" aria-modal="true" aria-labelledby="shT" hidden>
+  <div class="sveil" data-close></div>
+  <div class="spanel">
+   <button class="vb fr sclose" data-close aria-label="Chiudi">✕</button>
+   <div class="sroom"><span class="scale" id="sscale"></span><div class="scene" id="swall"><div class="sframe" id="sframe"><div class="smat"><img id="simg" alt=""></div></div><svg class="sofa" viewBox="0 0 200 85" preserveAspectRatio="none" aria-hidden="true"><rect x="10" y="10" width="180" height="48" rx="8"/><rect x="0" y="30" width="24" height="45" rx="7"/><rect x="176" y="30" width="24" height="45" rx="7"/><rect x="18" y="50" width="164" height="25" rx="5" opacity=".8"/><rect x="22" y="75" width="5" height="10"/><rect x="173" y="75" width="5" height="10"/></svg></div></div>
+   <div class="sinfo">
+    <div class="lbl" id="sK"></div><h2 id="shT"></h2><p class="sdesc" id="sD"></p>
+    <h3>Formato</h3><div class="fmts" id="sF" role="radiogroup" aria-label="Formato"></div>
+    <div class="sum" id="sS"></div>
+    <div class="sbar"><span class="sbp" id="sBp"></span><a class="btn fr" id="sCta" href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">ICON Prenota la mia copia</a></div>
+    <p class="fud" id="sNote">Il pulsante copia un messaggio già pronto da incollare su Instagram a @g.tedesco_.</p>
+    <ul class="sinc"><li>Stampa fine art a pigmenti</li><li>Firmata e numerata a mano</li><li>Spedizione calcolata alla conferma</li></ul>
+   </div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<div id="viewer" role="dialog" aria-modal="true" aria-label="Opera a schermo intero">
+  <div class="veil"></div>
+  <div id="vp"><img id="vimg" alt=""></div>
+  <div id="vring" class="ret" aria-hidden="true"></div>
+  <div class="vbar vui"><span id="vzoom" aria-live="polite">1,0×</span><button class="vb fr" id="vout" aria-label="Riduci">−</button><button class="vb fr" id="vin" aria-label="Ingrandisci">+</button><button class="vb fr" id="vinfob" aria-pressed="true">Scheda</button><button class="vb fr" id="vclose" aria-label="Chiudi">✕</button></div>
+  <button class="vb fr vnav vui" id="vprev" aria-label="Opera precedente">‹</button><button class="vb fr vnav vui" id="vnext" aria-label="Opera successiva">›</button>
+  <aside id="vinfo"></aside>
+  <div class="vhint vui">Rotella o pizzico per ingrandire · trascina per muoverti · frecce per sfogliare</div>
+</div>
+
+<script>
+{
+const Y=3.156e7;
+const W=[
+ {id:'luna',img:'luna-colori.jpg',w:1564,h:1600,t:'I colori minerali della Luna',k:'Mosaico lunare',d:'24 ottobre 2026',secs:1.3,look:'1,3 secondi',then:'',
+  dl:[['Pannelli','52'],['Fotogrammi','182.000'],['Lavoro','~1 settimana']],
+  tab:[['Mosaico','52 pannelli da 650 × 450 px'],['Fotogrammi','~3.500 per pannello, 182.000 in totale'],['Camera','ZWO ASI120'],['Telescopio','Newton 150/750 su CG5 GT'],['Software','PIPP, AutoStakkert, RegiStax, RawTherapee, Microsoft ICE, GIMP']],
+  p:[`Le diverse tonalità corrispondono alla composizione minerale del suolo lunare.`,`I video sono stati registrati con la Luna alla massima altezza, per ridurre la turbolenza dell'atmosfera. Ogni pannello è stato stabilizzato e sommato, poi tutti e 52 sono stati uniti in un unico mosaico. L'elaborazione ha richiesto circa una settimana.`]},
+ {id:'saturno',img:'saturno.jpg',w:448,h:448,t:'Saturno',k:'Gigante gassoso',d:'17 ottobre 2026',secs:4300,look:'poco più di un\'ora',then:'',
+  dl:[['Video','22 min'],['Fotogrammi','~50.000'],['Barlow','3×']],
+  tab:[['Tecnica','Lucky imaging da circa 22 minuti di video'],['Fotogrammi','circa 50.000'],['Ottica','Newton 150/750 con Barlow 3×'],['Camera','ZWO ASI120'],['Software','FireCapture, PIPP, AutoStakkert!, RegiStax, Photoshop']],
+  p:[`Gli anelli di Saturno sono fatti soprattutto di particelle di ghiaccio, polvere e detriti rocciosi.`,`Da circa 50.000 fotogrammi sono stati scelti e sommati solo i più nitidi: è la tecnica del lucky imaging.`]},
+ {id:'pleiadi',img:'pleiadi.jpg',w:1053,h:1536,t:'Le Pleiadi · M45',k:'Ammasso aperto · Toro',d:'13 novembre 2026',secs:444*Y,look:'circa 440 anni',then:'In Europa entrava in vigore il <b>calendario gregoriano</b>.',
+  dl:[['Pose','110 × 180 s'],['ISO','800'],['Totale','5 h 30 min']],
+  tab:[['Pose','110 da 180 s, ISO 800'],['Integrazione','5 ore e 30 minuti'],['Elaborazione','Siril, separazione starless'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro']],
+  p:[`Le Sette Sorelle sono uno degli ammassi aperti più riconoscibili del cielo. Le loro stelle blu illuminano la polvere intorno, creando le nebulose a riflessione azzurre.`,`Stelle e nebulosità sono state separate ed elaborate in modo indipendente: così le nubi più deboli emergono senza snaturare le stelle.`]},
+ {id:'velo',img:'velo.jpg',w:1065,h:1600,t:'Nebulosa Velo Orientale · C33',k:'Resto di supernova · Cigno',d:'1 luglio 2026',secs:2400*Y,look:'circa 2.400 anni',then:'Ad Atene <b>Platone</b> insegnava nella sua Accademia.',
+  dl:[['Oggetto','NGC 6992'],['Distanza','~2.400 a.l.']],
+  tab:[['Oggetto','C33 · NGC 6992'],['Costellazione','Cigno'],['Distanza','circa 2.400 anni luce'],['Ottica','Newton 150/750 su CG5 GT, Canon 500D full-spectrum, Optolong L-Pro']],
+  p:[`Questi filamenti sono ciò che resta di una stella massiccia esplosa migliaia di anni fa. L'onda d'urto continua ancora oggi ad avanzare nel gas interstellare.`]},
+ {id:'ic1396',img:'ic1396.jpg',w:986,h:1600,t:'Proboscide d’Elefante · IC 1396',k:'Regione di formazione stellare · Cefeo',d:'5 luglio 2026',secs:2400*Y,look:'circa 2.400 anni',then:'Qui in Salento fiorivano le città dei <b>Messapi</b>.',
+  dl:[['Pose','20 × 300 s'],['ISO','1600'],['Totale','1 h 40 min']],
+  tab:[['Pose','20 da 300 s, ISO 1600'],['Integrazione','1 ora e 40 minuti'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro'],['Guida','60 mm + ZWO ASI120, N.I.N.A. e PHD2']],
+  p:[`Una densa nube di gas e polveri a forma di proboscide, dentro una vasta regione dove nascono nuove stelle.`,`Il rosso è l'idrogeno ionizzato dalla luce delle stelle più calde; le strutture scure sono polvere che si staglia contro la nebulosa.`]},
+ {id:'andromeda',img:'andromeda.jpg',w:1600,h:1005,t:'La Galassia di Andromeda · M31',k:'Galassia a spirale · Andromeda',d:'24 agosto 2026',secs:2.5e6*Y,look:'circa 2,5 milioni di anni',then:'In Africa comparivano i primi esseri del <b>genere Homo</b>.',
+  dl:[['Pose','300 × 120 s'],['ISO','400'],['Totale','10 h']],
+  tab:[['Pose','300 da 2 minuti, ISO 400'],['Integrazione','10 ore'],['Elaborazione','Siril, rifinitura in Photoshop'],['Ottica','Newton 150/750 su CG5 GT (2004), Optolong L-Pro']],
+  p:[`Una delle grandi galassie più vicine alla Via Lattea. Dieci ore di posa hanno fatto emergere le regioni esterne più deboli, le bande di polvere e le strutture del disco.`,`«Per me, fotografare Andromeda significa molto più che immortalare una galassia lontana.»`]},
+ {id:'m81',img:'m81-m82.jpg',w:842,h:535,t:'Galassia di Bode e Galassia Sigaro · M81 e M82',k:'Coppia di galassie · Orsa Maggiore',d:'14 giugno 2026',secs:12e6*Y,look:'circa 12 milioni di anni',then:'Gli antenati dell’uomo non si erano ancora separati da quelli degli scimpanzé.',
+  dl:[['Pose','35 × 60 s'],['ISO','800'],['Totale','35 min']],
+  tab:[['Pose','35 da 60 s, ISO 800'],['Integrazione','35 minuti'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro'],['Guida','60 mm + ZWO ASI120, N.I.N.A. e PHD2']],
+  p:[`Due galassie molto diverse nella stessa inquadratura: M81, spirale regolare dal nucleo luminoso, e M82, allungata e irregolare, dove le stelle nascono a un ritmo molto più alto che nella Via Lattea.`,`Le loro interazioni gravitazionali hanno acceso l'intensa formazione stellare di M82.`]},
+ {id:'m101',img:'m101.jpg',w:1600,h:1042,t:'Galassia Girandola · M101',k:'Galassia a spirale · Orsa Maggiore',d:'25 luglio 2026',secs:21e6*Y,look:'circa 21 milioni di anni',then:'Le <b>Alpi</b> stavano ancora sollevandosi.',
+  dl:[['Pose','14 × 300 s'],['ISO','800'],['Totale','1 h 10 min']],
+  tab:[['Pose','14 da 300 s, ISO 800'],['Integrazione','1 ora e 10 minuti'],['Diametro','circa 170.000 anni luce'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro']],
+  p:[`Più grande della Via Lattea e vista quasi di fronte: per questo mostra così bene i suoi bracci, ricchi di regioni rossastre di idrogeno e di stelle giovani azzurre.`]},
+ {id:'m51',img:'m51.jpg',w:1600,h:1135,t:'Galassia Vortice · M51',k:'Galassie in interazione · Cani da Caccia',d:'16 luglio 2026',secs:23e6*Y,look:'circa 23 milioni di anni',then:'',
+  dl:[['Pose','25 × 300 s'],['ISO','800'],['Totale','2 h 05 min']],
+  tab:[['Pose','25 da 300 s, ISO 800'],['Integrazione','2 ore e 5 minuti'],['Oggetti','NGC 5194 e la compagna NGC 5195'],['Ottica','Newton 150/750, Baader MPCC II, Optolong L-Pro']],
+  p:[`Due grandi bracci a spirale attorno a un nucleo luminoso, e accanto la piccola NGC 5195. La loro attrazione reciproca ha accentuato la spirale e acceso nuove stelle.`,`«La luce raccolta dal sensore della mia fotocamera ha viaggiato attraverso lo spazio per circa 23 milioni di anni.»`]}
+];
+const E=[
+ {id:'eclissi',img:'eclissi-lunare.jpg',w:1590,h:1590,c:'c1',t:'Le fasi di un’eclissi lunare parziale',k:'Brindisi · 28 agosto 2026',badge:'Ripubblicata da NASA APOD',
+  tab:[['Scatto','Canon EOS 500D su Newton 150/750, montatura motorizzata'],['Composizione','Fasi in ordine cronologico, disposte in cerchio, in Photoshop'],['Riconoscimento','Ripubblicata dal profilo Instagram ufficiale APOD NASA il 31 agosto 2026']],
+  p:[`Durante un'eclissi lunare la Terra si mette tra il Sole e la Luna, e la sua ombra copre parte della superficie lunare.`,`Giovanni ha scelto gli scatti più nitidi di ogni fase, ha scontornato la Luna e li ha disposti in cerchio per raccontare l'eclissi dall'inizio alla fine.`]},
+ {id:'sahagun',img:'eclissi-sahagun.jpg',w:828,h:858,c:'c2',t:'Sahagún, 12 agosto',k:'León, Spagna',
+  tab:[['Dispositivo','iPhone 11 su treppiede con bastone da selfie'],['Elaborazione','Solo Adobe Photoshop, nessuna intelligenza artificiale']],
+  p:[`Scattata con un iPhone 11 su un treppiede con bastone da selfie.`]},
+ {id:'collage',img:'luna-collage.jpg',w:1440,h:1080,c:'c3',t:'Collage lunare',k:'',
+  tab:[],
+  p:[]},
+ {id:'decorazione',img:'decorazione.jpg',w:1600,h:1044,c:'c4',t:'Decorazione natalizia',k:'Brindisi · 27 settembre',
+  tab:[['Fotocamera','Canon EOS 500D'],['Elaborazione','Photoshop']],
+  p:[`La Luna, rosata, sospesa tra i rami come una decorazione appesa a un grande albero.`,`Giovanni ha studiato il luogo e aspettato che la Luna arrivasse nel punto esatto tra la vegetazione.`]}
+];
+
+const RD={luna:['Luna','384.400 km'],saturno:['Saturno',''],pleiadi:['AR 03h 47m','Dec +24° 07′'],velo:['AR 20h 56m','Dec +31° 43′'],ic1396:['AR 21h 39m','Dec +57° 30′'],andromeda:['AR 00h 42m','Dec +41° 16′'],m81:['AR 09h 55m','Dec +69° 04′'],m101:['AR 14h 03m','Dec +54° 21′'],m51:['AR 13h 30m','Dec +47° 12′']};
+const ALL=[...W,...E];
+const $=s=>document.querySelector(s);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ICON='<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor"/><path d="M8 0v4M8 12v4M0 8h4M12 8h4" stroke="currentColor"/></svg>';
+document.querySelectorAll('.btn').forEach(b=>b.innerHTML=b.innerHTML.replace('ICON',ICON));
+const ring=(a,b)=>`<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="99" opacity=".35"/><circle cx="100" cy="100" r="93" opacity=".12"/>
+ ${Array.from({length:72},(_,i)=>{const t=i*5*Math.PI/180,l=i%18===0?8:i%6===0?4:2;return`<line x1="${100+99*Math.sin(t)}" y1="${100-99*Math.cos(t)}" x2="${100+(99-l)*Math.sin(t)}" y2="${100-(99-l)*Math.cos(t)}" opacity=".5"/>`}).join('')}
+ <line x1="100" y1="-6" x2="100" y2="10" class="ha"/><line x1="100" y1="190" x2="100" y2="206" class="ha"/><line x1="-6" y1="100" x2="10" y2="100" class="ha"/><line x1="190" y1="100" x2="206" y2="100" class="ha"/>
+ <text x="106" y="-7" style="font-size:4.6px">${a}</text><text x="106" y="211" style="font-size:4.6px">${b}</text></svg>`;
+$('#heroret').innerHTML=ring('M31 · AR 00h 42m · Dec +41° 16′','');
+
+/* chapters */
+
+let VIEW='home';
+/* catalogue */
+const Yr=3.156e7,lg=s=>Math.max(0,Math.log10(s))/15*100;
+const META={luna:['sole','2026-10-24'],saturno:['sole','2026-10-17'],pleiadi:['deep','2026-11-13'],velo:['deep','2026-07-01'],ic1396:['deep','2026-07-05'],andromeda:['deep','2026-08-24'],m81:['deep','2026-06-14'],m101:['deep','2026-07-25'],m51:['deep','2026-07-16'],eclissi:['sole','2026-08-28'],sahagun:['terra','2026-08-12'],collage:['sole',''],decorazione:['terra','2026-09-27']};
+ALL.forEach(x=>{x.cat=META[x.id][0];x.iso=META[x.id][1]});
+const CATS=[['all','Tutte'],['deep','Cielo profondo'],['sole','Luna e pianeti'],['terra','Paesaggi notturni']];
+let F='all',SO='date';
+const card=x=>`<button class="pc" data-open="${x.id}" aria-label="Apri ${x.t}"><span class="ph"><img src="img/${x.img}" alt="" loading="lazy" width="${x.w}" height="${x.h}"></span>
+ <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${x.k}${x.d?' · '+x.d:''}</span>${x.look?`<i>Luce partita ${x.look} fa</i>`:''}</span></button>`;
+const renderGrid=()=>{let L=ALL.filter(x=>F==='all'||x.cat===F);
+ L=SO==='date'?L.sort((a,b)=>(b.iso||'').localeCompare(a.iso||'')):L.sort((a,b)=>(b.secs||0)-(a.secs||0));
+ $('#grid').innerHTML=L.map(card).join('');
+ $('#chips').innerHTML=CATS.map(([k,l])=>`<button class="chip fr${k===F?' on':''}" data-f="${k}" aria-pressed="${k===F}">${l} <small>${k==='all'?ALL.length:ALL.filter(x=>x.cat===k).length}</small></button>`).join('');
+ $('#sort').innerHTML=[['date','Più recenti'],['dist','Più lontane']].map(([k,l])=>`<button class="chip fr${k===SO?' on':''}" data-s="${k}" aria-pressed="${k===SO}">${l}</button>`).join('')};
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(b){F=b.dataset.f;renderGrid()}});
+$('#sort').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b){SO=b.dataset.s;renderGrid()}});
+renderGrid();
+const FT=[['andromeda','Trecento pose da due minuti, dieci ore in tutto: la grande galassia a spirale più vicina alla Via Lattea.'],['eclissi','Le fasi dell’eclissi del 28 agosto, disposte in cerchio. Il profilo Instagram di APOD della NASA l’ha ripubblicata.'],['luna','Un mosaico di 52 pannelli e 182.000 fotogrammi. Le tonalità corrispondono ai minerali del suolo.']];
+$('#feat').innerHTML=FT.map(([id,t],k)=>{const x=ALL.find(y=>y.id===id);return`<article class="ft${k%2?' rev':''}"><button class="ph" data-open="${id}" aria-label="Apri ${x.t}"><img src="img/${x.img}" alt="${x.t}" loading="lazy" width="${x.w}" height="${x.h}"></button>
+ <div class="ftx"><div class="lbl">${x.k}</div><h3>${x.t}</h3><p>${t}</p>${x.dl?`<dl>${x.dl.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>`:''}<button class="btn fr quiet" data-open="${id}">${ICON} Apri l’opera</button></div></article>`}).join('');
+$('#ruler').innerHTML='<div class="rl"></div>'+W.map((w,k)=>`<div class="rd ${['up','dn','up2'][k%3]}" style="left:${(lg(w.secs)/lg(W[W.length-1].secs)*100).toFixed(2)}%"><span>${['Luna','Saturno','M45','C33','IC 1396','M31','M81','M101','M51'][k]}</span></div>`).join('')+'<div class="rt"><span>1,3 secondi fa</span><span>23 milioni di anni fa</span></div>';
+
+const BG='#08080a';
+/* menu */
+const hd=$('#top'),mb=$('#menu');mb.onclick=()=>{const o=hd.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Chiudi':'Menu'};
+document.querySelectorAll('#mnav a').forEach(a=>a.addEventListener('click',()=>{hd.classList.remove('open');mb.textContent='Menu';mb.setAttribute('aria-expanded','false')}));
+
+/* intro */
+const intro=$('#intro'),v=$('#sigv');
+const enter=()=>{intro.classList.add('gone');setTimeout(()=>{try{v.pause()}catch(e){}},1300)};
+if(reduce)intro.remove();else{intro.addEventListener('click',enter);v.addEventListener('ended',()=>setTimeout(enter,500));v.addEventListener('error',()=>setTimeout(enter,800));setTimeout(enter,6500)}
+const vf=$('#sigf');new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){vf.currentTime=0;vf.play().catch(()=>{})}}),{threshold:.6}).observe(vf);
+
+/* compass: device heading when allowed, pointer otherwise */
+let head=0,gyro=null,tdx=0,tdy=0;
+const onOri=e=>{const h=e.webkitCompassHeading!=null?e.webkitCompassHeading:(e.alpha!=null?360-e.alpha:null);if(h!=null)gyro=h};
+const listen=()=>{addEventListener('deviceorientationabsolute',onOri);addEventListener('deviceorientation',onOri)};
+if(window.DeviceOrientationEvent){listen();
+ if(typeof DeviceOrientationEvent.requestPermission==='function')addEventListener('click',()=>{try{DeviceOrientationEvent.requestPermission().catch(()=>{})}catch(e){}},{once:true})}
+addEventListener('touchmove',e=>{const t=e.touches[0];tdx=t.clientX/innerWidth-.5;tdy=t.clientY/innerHeight-.5},{passive:true});
+const compass=()=>{const tgt=gyro!=null?-gyro:(mx+tdx)*110+(my+tdy)*30;let d=((tgt-head)%360+540)%360-180;head+=d*.06;
+ document.documentElement.style.setProperty('--h',head.toFixed(2)+'deg')};
+/* sky: 3D starfield, warp driven by the journey */
+const cv=$('#sky'),cx=cv.getContext('2d');let S=[],mx=0,my=0,warp=0,warpT=0,vel=0,lastY=scrollY,cw=0,ch=0;
+const spawn=s=>{s.x=(Math.random()*2-1);s.y=(Math.random()*2-1);s.z=Math.random()*.95+.05;s.c=Math.random()<.1?'#ffb3a3':Math.random()<.3?'#c6d9ff':'#fff';return s};
+const size=()=>{const d=Math.min(devicePixelRatio||1,2);cw=innerWidth;ch=innerHeight;cv.width=cw*d;cv.height=ch*d;cx.setTransform(d,0,0,d,0,0);S=Array.from({length:Math.round(cw*ch/3200)},()=>spawn({}))};
+size();addEventListener('resize',size);
+addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+const sky=()=>{const dy=scrollY-lastY;lastY=scrollY;vel+=(Math.abs(dy)-vel)*.1;warp+=(warpT-warp)*.08;
+ const sp=.0007+warp*.035+Math.min(vel,80)*.00004,f=Math.max(cw,ch)*.55,ox=cw/2-mx*40,oy=ch/2-my*40;
+ cx.globalAlpha=warp>.05?.35:1;cx.fillStyle=BG;cx.fillRect(0,0,cw,ch);cx.globalAlpha=1;
+ for(const s of S){const pz=s.z;s.z-=sp;if(s.z<.03){spawn(s);s.z=1;continue}
+  const x=ox+s.x/s.z*f*.5,y=oy+s.y/s.z*f*.5;if(x<-50||x>cw+50||y<-50||y>ch+50){spawn(s);s.z=1;continue}
+  const a=Math.min(1,(1-s.z)*1.4),r=(1-s.z)*1.6+.2;cx.globalAlpha=a;cx.strokeStyle=cx.fillStyle=s.c;
+  const L=Math.min(1,warp*1.2+Math.min(vel,80)*.004);
+  if(L>.05){const px=ox+s.x/(pz+sp*14*L)*f*.5,py=oy+s.y/(pz+sp*14*L)*f*.5;cx.lineWidth=r;cx.beginPath();cx.moveTo(px,py);cx.lineTo(x,y);cx.stroke()}
+  else{cx.beginPath();cx.arc(x,y,r,0,6.28);cx.fill()}}
+ cx.globalAlpha=1;compass();if(!reduce)requestAnimationFrame(sky)};
+sky();
+
+/* time formatting */
+const fmt=s=>{const n=(x,d=0)=>x.toLocaleString('it-IT',{maximumFractionDigits:d,minimumFractionDigits:d});
+ if(s<60)return[n(s,1),'secondi fa'];if(s<7200)return[n(s/60),'minuti fa'];if(s<86400*2)return[n(s/3600),'ore fa'];if(s<Y)return[n(s/86400),'giorni fa'];
+ if(s<1e6*Y)return[n(s/Y),'anni fa'];return[n(s/Y/1e6,1),'milioni di anni fa']};
+const MAXL=15,pos=s=>Math.max(0,Math.log10(s))/MAXL*100;
+$('#ticks').innerHTML=[[1,'1 s'],[3600,'1 ora'],[1000*Y,'1.000 anni'],[1e6*Y,'1 mln'],[2e7*Y,'20 mln']].map(([s,l])=>`<div class="tick" style="top:${pos(s)}%">${l}</div>`).join('');
+
+/* scroll choreography */
+const hb=$('#herobg'),hr=$('#heroret'),hdr=$('#top'),chs=[...document.querySelectorAll('.ch')],tm=$('#tm'),tmn=$('#tmn'),tmu=$('#tmu'),tme=$('#tme'),gauge=$('#gauge'),gdot=$('#gdot');
+const cl=(x,a=0,b=1)=>Math.min(Math.max(x,a),b),ease=t=>t*t*(3-2*t);
+const navs=[...document.querySelectorAll('header nav a')];
+const frame=()=>{const vh=innerHeight,y=scrollY;
+ hdr.classList.toggle('solid',y>vh*.5);
+ if(!reduce){hb.style.transform=`scale(${1+y/vh*.35}) translate3d(${mx*-16}px,${my*-16}px,0)`;hb.style.opacity=1-cl(y/vh*.9);hr.style.transform=`translate(-50%,-50%) rotate(calc(var(--h,0deg) + ${y*.03}deg)) scale(${1+y/vh*.5})`;hr.style.opacity=.75*(1-cl(y/vh*1.2))}
+ let w=0,show=null,gL=null;
+ const J=false;
+ if(J){const t=cl(1-(ib.bottom-vh*.2)/(vh*.9));w=Math.max(w,Math.sin(t*Math.PI));show=[0,W[0].secs,t,W[0]]}
+ if(J)chs.forEach((c,i)=>{const r=c.getBoundingClientRect(),last=i===chs.length-1;
+  const pre=cl(1-r.top/vh),p=cl(-r.top/(r.height-vh));
+  if(r.bottom<0||r.top>vh)return;
+  const arrive=ease(cl(pre)),fly=last?0:ease(cl((p-.62)/.38));
+  const img=c.querySelector('.art img'),art=c.querySelector('.art'),ret=c.querySelector('.ret'),cap=c.querySelector('.cap');
+  if(!reduce){
+   const sc=(.25+.75*arrive)*(1+p*.06)*(1+fly*2.4);
+   art.style.transform=`scale(${sc}) translate3d(${mx*-12}px,${my*-12}px,0)`;
+   art.style.opacity=arrive*(1-fly);art.style.filter=`blur(${(1-arrive)*8+fly*10}px)`;
+   img.style.setProperty('--r',(arrive*100).toFixed(1));
+   ret.style.transform=`translate(-50%,-50%) rotate(calc(var(--h,0deg) + ${(p*40-20).toFixed(2)}deg)) scale(${(1.4-.4*arrive)*(1+fly*.8)})`;
+   ret.style.opacity=(arrive*.7*(1-fly)).toFixed(3);
+   const ci=ease(cl((p-.04)/.12))*(1-ease(cl((p-.5)/.12)));cap.style.opacity=ci;cap.style.transform=`translateY(${(1-ci)*30}px)`;
+  }
+  if(r.top<=vh*.5&&r.bottom>vh*.5){gL=pos(W[i].secs)+(last?0:(pos(W[i+1].secs)-pos(W[i].secs))*fly)}
+  if(!last&&fly>0){w=Math.max(w,Math.sin(fly*Math.PI)*1.1);const a=Math.log10(W[i].secs),b=Math.log10(W[i+1].secs);show=[i+1,10**(a+(b-a)*fly),fly,W[i+1]]}
+ });
+ if(VIEW!=='viaggio'){warpT=reduce?0:cl(w);
+ if(VIEW==='viaggio'){}else if(show&&!reduce){const[tx,un]=fmt(show[1]);tmn.textContent=tx;tmu.textContent=un;tme.innerHTML=`<b>${show[3].t.split(' · ')[0]}</b> · ${show[3].then}`;
+  tm.style.opacity=cl(w*1.6).toFixed(3);tm.style.transform=`scale(${.92+w*.08})`}else tm.style.opacity=0;
+ }gauge.classList.toggle('on',false);
+ let on=VIEW;
+ if(VIEW!=='viaggio'&&$('#contatti').getBoundingClientRect().top<vh*.6)on='contatti';navs.forEach(a=>a.classList.toggle('on',a.dataset.nav===on));
+};
+let tk=false;const onS=()=>{if(!tk){tk=true;requestAnimationFrame(()=>{frame();tk=false})}};
+addEventListener('scroll',onS,{passive:true});addEventListener('resize',onS);addEventListener('pointermove',onS);frame();
+/* journey: one gesture, one artwork */
+const jA=$('#jA'),jB=$('#jB'),jI=$('#jintro'),jE=$('#jend');let jIdx=-1,jBusy=false,jCur=jA,jNext=jB,jLock=0;
+const coarse=matchMedia('(pointer:coarse)').matches;
+const lay=(el,w)=>{el.innerHTML=`<div class="art"><img src="img/${w.img}" width="${w.w}" height="${w.h}" alt="${w.t}" data-open="${w.id}" class="${w.w<600?'small':''}"></div>
+ <div class="ret">${ring(...RD[w.id])}</div>
+ <div class="cap"><div class="lbl">${w.k} · ${w.d}</div><h3>${w.t}</h3><p class="then">Luce partita <b>${w.look}</b> fa.${w.then?' '+w.then:''}</p>
+ <dl>${w.dl.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl><button class="btn fr quiet" data-open="${w.id}">${ICON} Esplora da vicino</button></div>`};
+const set=(el,{sc=1,op=1,r=100,bl=0,ro=1,rs=1,rr=0,co=1,cy=0})=>{const a=el.querySelector('.art');if(!a)return;const i=a.querySelector('img'),g=el.querySelector('.ret'),c=el.querySelector('.cap');
+ a.style.transform=`scale(${sc})`;a.style.opacity=op;a.style.filter=bl&&!coarse?`blur(${bl}px)`:'none';i.style.setProperty('--r',r);
+ g.style.opacity=ro*.7;g.style.transform=`translate(-50%,-50%) rotate(calc(var(--h,0deg) + ${rr}deg)) scale(${rs})`;c.style.opacity=co;c.style.transform=`translateY(${cy}px)`};
+$('#jdots').innerHTML=W.map((w,k)=>`<button class="jd" data-j="${k}" aria-label="${w.t}"></button>`).join('');
+const dots=()=>document.querySelectorAll('.jd').forEach((d,k)=>{d.classList.toggle('on',k===jIdx);d.classList.toggle('past',k<jIdx)});
+const jReset=()=>{jIdx=-1;jBusy=false;jA.innerHTML=jB.innerHTML='';jA.className=jB.className='stage jl';jCur=jA;jNext=jB;jI.hidden=false;jI.style.opacity=1;jE.hidden=true;dots();tm.style.opacity=0;warpT=0};
+const tween=(d,f)=>new Promise(res=>{const t0=performance.now();const k=now=>{const t=cl((now-t0)/d);f(t);t<1?requestAnimationFrame(k):res()};requestAnimationFrame(k)});
+const go=async n=>{if(jBusy||n===jIdx||n<-1||n>W.length)return;if(n===-1){jReset();return}
+ jBusy=true;const from=jIdx,fwd=n>from,A=jCur,B=jNext;
+ if(n<W.length){lay(B,W[n]);B.classList.add('on');set(B,{op:0,r:0,co:0})}
+ const fs=from>=0&&from<W.length?W[from].secs:.05,ts=n<W.length?W[n].secs:W[W.length-1].secs,la=Math.log10(fs),lb=Math.log10(ts);
+ if(n<W.length){const[tx,un]=fmt(ts);}
+ tme.innerHTML=n<W.length?`<b>${W[n].t.split(' · ')[0]}</b>${W[n].then?' · '+W[n].then:''}`:'';
+ const D=reduce?10:(n===W.length?1300:2600),A0=A.querySelector('.art');
+ await tween(D,t=>{const out=ease(cl(t/.42)),inn=ease(cl((t-.52)/.48));
+  if(from===-1)jI.style.opacity=1-cl(t/.25);
+  if(A0)set(A,{sc:fwd?1+out*2.4:1-out*.75,op:1-out,bl:out*10,ro:1-out,rs:1+out*(fwd?.8:-.4),rr:out*30,co:1-cl(t/.15)});
+  if(n<W.length)set(B,{sc:fwd?.25+.75*inn:2.6-1.6*inn,op:inn,r:inn*100,bl:(1-inn)*8,ro:inn,rs:1.4-.4*inn,rr:(1-inn)*-30,co:ease(cl((t-.82)/.18)),cy:(1-ease(cl((t-.82)/.18)))*24});
+  else{jE.hidden=false;jE.style.opacity=cl((t-.4)/.6)}
+  if(!reduce&&n<W.length){warpT=Math.sin(Math.PI*cl(t/.8));const tv=ease(cl((t-.08)/.6));const[tx,un]=fmt(10**(la+(lb-la)*tv));tmn.textContent=tx;tmu.textContent=un;
+   const vis=cl(Math.sin(Math.PI*cl((t-.04)/.72))*1.7);tm.style.opacity=vis;tm.style.transform=`scale(${.94+vis*.06})`}});
+ warpT=0;tm.style.opacity=0;if(from===-1)jI.hidden=true;if(from===W.length)jE.hidden=true;
+ A.innerHTML='';A.classList.remove('on');jCur=B;jNext=A;jIdx=n;dots();jBusy=false;jLock=performance.now()+450};
+const jr=$('[data-view=viaggio]');let acc=0;
+const can=()=>VIEW==='viaggio'&&!V.classList.contains('open')&&!jBusy&&performance.now()>jLock;
+jr.addEventListener('wheel',e=>{e.preventDefault();if(!can()){acc=0;return}acc+=e.deltaY;if(Math.abs(acc)>40){go(jIdx+(acc>0?1:-1));acc=0}},{passive:false});
+let ty0=null,tx0=0;jr.addEventListener('touchstart',e=>{ty0=e.touches[0].clientY;tx0=e.touches[0].clientX},{passive:true});
+jr.addEventListener('touchend',e=>{if(ty0==null)return;const t=e.changedTouches[0],dy=ty0-t.clientY,dx=tx0-t.clientX;ty0=null;if(!can())return;
+ if(Math.abs(dy)>40&&Math.abs(dy)>Math.abs(dx))go(jIdx+(dy>0?1:-1));else if(Math.abs(dx)>50)go(jIdx+(dx>0?1:-1))},{passive:true});
+addEventListener('keydown',e=>{if(!can())return;if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(jIdx+1)}if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(jIdx-1)}});
+$('#jstart').onclick=()=>go(0);$('#jagain').onclick=()=>{jReset();go(0)};
+$('#jnext').onclick=()=>can()&&go(jIdx+1);$('#jprev').onclick=()=>can()&&go(jIdx-1);
+$('#jdots').addEventListener('click',e=>{const d=e.target.closest('[data-j]');if(d&&can())go(+d.dataset.j)});
+/* editions */
+const FMT=[{k:'A4',cm:[21,29.7],n:30,p:45},{k:'A3',cm:[29.7,42],n:15,p:85},{k:'A2',cm:[42,59.4],n:5,p:160}];
+const ED=[['andromeda',3],['luna',3],['eclissi',3],['pleiadi',3],['m51',2],['ic1396',2],['velo',2],['m81',2]];
+const eur=n=>n.toLocaleString('it-IT')+' €';
+$('#edgrid').innerHTML=ED.map(([id,m])=>{const x=ALL.find(y=>y.id===id);return`<button class="pc" data-ed="${id}" aria-label="Formati e tirature di ${x.t}"><span class="ph"><img src="img/${x.img}" alt="" loading="lazy" width="${x.w}" height="${x.h}"></span>
+ <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${FMT.slice(0,m).map(f=>f.k).join(' · ')} · tirature da ${FMT[m-1].n} a ${FMT[0].n} copie</span><i>da ${eur(FMT[0].p)}</i></span></button>`}).join('');
+$('#ladder').innerHTML=FMT.map((f,i)=>`<div class="rung fr"><div class="rsz" style="--w:${f.cm[0]/42*100}%;--h:${f.cm[1]/59.4*100}%"><i></i></div><div><b>${f.k}</b><span>${String(f.cm[0]).replace('.',',')} × ${String(f.cm[1]).replace('.',',')} cm</span></div><div><b>${f.n}</b><span>copie in tutto</span></div><div><b>${eur(f.p)}</b><span>${i===2?'solo per quattro opere':''}</span></div></div>`).join('');
+const sheet=$('#sheet');let sId=null,sF=1,sLast=null;
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),3200)};
+const sRender=()=>{const x=ALL.find(y=>y.id===sId),m=ED.find(e=>e[0]===sId)[1],f=FMT[sF],land=x.w>x.h;
+ $('#sF').innerHTML=FMT.map((g,i)=>`<button class="fmt fr${i===sF?' on':''}" role="radio" aria-checked="${i===sF}" data-fi="${i}" ${i>=m?'disabled':''}><b>${g.k}</b><span>${i>=m?'non disponibile':g.n+' copie'}</span></button>`).join('');
+ const L=land?f.cm[1]:f.cm[0],H=land?f.cm[0]:f.cm[1];
+ const fr=$('#sframe');fr.style.setProperty('--fw',(L+8)/260*100+'%');fr.style.setProperty('--fb',(150-(H+8)/2)/200*100+'%');fr.style.aspectRatio=`${L+8}/${H+8}`;$('#sBp').textContent=eur(f.p);
+ $('#sscale').textContent=`${String(L).replace('.',',')} × ${String(H).replace('.',',')} cm sopra un divano da 2 metri`;
+ $('#sS').innerHTML=`<div><span>Tiratura</span><b>${f.n} copie</b></div><div><span>Formato</span><b>${f.k} · ${String(L).replace('.',',')} × ${String(H).replace('.',',')} cm</b></div><div class="tot"><span>Prima edizione</span><b>${eur(f.p)}</b></div>`};
+const sOpen=id=>{sLast=document.activeElement;sId=id;const x=ALL.find(y=>y.id===id),m=ED.find(e=>e[0]===id)[1];sF=Math.min(1,m-1);
+ $('#simg').src='img/'+x.img;$('#simg').alt=x.t;$('#sK').textContent=x.k;$('#shT').textContent=x.t;
+ $('#sD').innerHTML=x.look?`Luce partita <b>${x.look}</b> fa. ${x.d?'Scattata il '+x.d+'.':''}`:`${x.k}.`;
+ sRender();sheet.hidden=false;document.documentElement.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>sheet.classList.add('on')));setTimeout(()=>sheet.querySelector('.sclose').focus({preventScroll:true}),50)};
+const sClose=()=>{sheet.classList.remove('on');setTimeout(()=>{sheet.hidden=true;if(VIEW!=='viaggio')document.documentElement.style.overflow='';sLast&&sLast.focus({preventScroll:true})},450)};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-ed]');if(b)sOpen(b.dataset.ed);if(e.target.closest('[data-close]'))sClose()});
+$('#sF').addEventListener('click',e=>{const b=e.target.closest('[data-fi]');if(b&&!b.disabled){sF=+b.dataset.fi;sRender()}});
+$('#sCta').addEventListener('click',()=>{const x=ALL.find(y=>y.id===sId),f=FMT[sF];const msg=`Ciao Giovanni! Vorrei prenotare una copia di "${x.t}" in formato ${f.k} (tiratura di ${f.n} copie, ${eur(f.p)}). Mi dici disponibilità e tempi? Grazie!`;
+ try{navigator.clipboard.writeText(msg).then(()=>toast('Richiesta copiata: incollala nel messaggio a @g.tedesco_'),()=>toast('Scrivi a @g.tedesco_: "'+msg+'"'))}catch(err){toast('Scrivi a @g.tedesco_ indicando opera e formato')}});
+addEventListener('keydown',e=>{if(!sheet.hidden&&e.key==='Escape')sClose()});
+/* views */
+const VIEWS=['home','portfolio','viaggio','edizioni'],INHOME=['dietro','ed-home','hero'],INED=['ed-coll'];
+const route=()=>{const h=location.hash.slice(1)||'home';let v=VIEWS.includes(h)?h:INHOME.includes(h)?'home':INED.includes(h)?'edizioni':h==='contatti'?VIEW:'home';
+ const changed=v!==VIEW;VIEW=v;document.querySelectorAll('.view').forEach(e=>e.hidden=e.dataset.view!==v);
+ document.body.dataset.view=v;document.documentElement.style.overflow=v==='viaggio'?'hidden':'';if(v==='viaggio'&&changed)jReset();if(v!=='viaggio'){warpT=0;tm.style.opacity=0}
+ if(VIEWS.includes(h)||!h)scrollTo({top:0,behavior:'instant'});else{const t=document.getElementById(h);t&&t.scrollIntoView({behavior:changed?'instant':'smooth'})}
+ frame()};
+addEventListener('hashchange',route);route();
+
+/* viewer */
+const V=$('#viewer'),vp=$('#vp'),vi=$('#vimg'),info=$('#vinfo'),vr=$('#vring'),vz=$('#vzoom');let cur=0,sc=1,tx=0,ty=0,fit=1,src=null,busy=false;
+const mob=()=>innerWidth<=900;
+const area=()=>{const r=vp.getBoundingClientRect(),inf=V.classList.contains('info');return{w:r.width-(inf&&!mob()?480:0),h:r.height-(inf&&mob()?r.height*.5:0)}};
+const apply=()=>{vi.style.transform=`translate(${tx}px,${ty}px) scale(${sc})`;const z=sc/fit;vz.textContent=z.toLocaleString('it-IT',{minimumFractionDigits:1,maximumFractionDigits:1})+'×';V.classList.toggle('zoomed',z>1.15)};
+const target=()=>{const a=area(),it=ALL[cur];const f=Math.min(a.w/it.w,a.h/it.h)*(mob()?.96:.9);return{f,x:(a.w-it.w*f)/2,y:(a.h-it.h*f)/2}};
+const placeRing=()=>{const t=target(),it=ALL[cur],w=it.w*t.f,h=it.h*t.f,d=Math.min(Math.max(w,h)*.92,Math.min(area().w,area().h)*.96);vr.style.width=d+'px';vr.style.left=(t.x+w/2)+'px';vr.style.top=(t.y+h/2)+'px'};
+const reset=(anim)=>{const t=target();fit=t.f;sc=t.f;tx=t.x;ty=t.y;vi.classList.toggle('fly',!!anim);apply();placeRing()};
+const zoomAt=(k,px,py)=>{vi.classList.remove('fly');const n=cl(sc*k,fit*.8,fit*8);tx=px-(px-tx)*n/sc;ty=py-(py-ty)*n/sc;sc=n;apply()};
+const fill=()=>{const it=ALL[cur],coord=RD[it.id];let i=0;const n=()=>`style="--i:${i++}"`;
+ const quotes=it.p.filter(x=>x.startsWith('«')),paras=it.p.filter(x=>!x.startsWith('«'));
+ info.innerHTML=`<div class="lbl" ${n()}>${it.k}${it.d?' · '+it.d:''}</div><h2 ${n()}>${it.t}</h2>
+ ${it.look?`<div class="vlight" ${n()}><span>la luce che vedi è partita</span><b>${it.look} fa</b>${it.then?`<em>${it.then}</em>`:''}</div>`:''}
+ ${coord&&coord[0].startsWith('AR')?`<div class="vcoord" ${n()}>${ICON}${coord[0]} · ${coord[1]}</div>`:''}
+ ${it.dl?`<div class="vstats" ${n()}>${it.dl.map(([a,b])=>`<div class="fr"><b>${b}</b><span>${a}</span></div>`).join('')}</div>`:''}
+ ${it.badge?`<div class="vlight" ${n()}><span>riconoscimento</span><b>NASA APOD</b><em>Ripubblicata dal profilo Instagram ufficiale il 31 agosto 2026</em></div>`:''}
+ ${paras.map((x,j)=>`<p class="${j?'':'lede'}" ${n()}>${x}</p>`).join('')}
+ ${quotes.map(x=>`<blockquote ${n()}>${x}</blockquote>`).join('')}
+ ${it.tab.length?`<h3 ${n()}>Scheda tecnica</h3>`:''}<dl class="spec" ${n()}>${it.tab.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>
+ <a class="btn fr" ${n()} href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">${ICON} Scrivi a Giovanni</a>`;
+ info.scrollTop=0;vr.innerHTML=ring(...(coord||[it.k,'']))};
+const srcRect=id=>{const c=[...document.querySelectorAll(`img[data-open="${id}"],[data-open="${id}"] img`)].find(e=>{const r=e.getBoundingClientRect();return r.width>40&&r.bottom>0&&r.top<innerHeight});return c?c.getBoundingClientRect():null};
+const load=()=>new Promise(r=>{if(vi.complete&&vi.naturalWidth)r();else{vi.onload=vi.onerror=()=>r()}});
+let ORDER=null;const step=d=>{const L=ORDER||ALL.map(x=>x.id);const k=L.indexOf(ALL[cur].id);const n=L[(k+d+L.length)%L.length];show(ALL.findIndex(x=>x.id===n),d)};
+const show=async(i,dir)=>{if(busy)return;busy=true;vi.classList.remove('fly');vi.classList.add('fade');await new Promise(r=>setTimeout(r,300));
+ cur=(i+ALL.length)%ALL.length;const it=ALL[cur];vi.src='img/'+it.img;vi.width=it.w;vi.height=it.h;vi.alt=it.t;await load();
+ const t=target();fit=t.f;sc=t.f*.96;tx=t.x+(dir||0)*40;ty=t.y;apply();fill();
+ requestAnimationFrame(()=>{vi.classList.add('fly','solid');vi.classList.remove('fade');reset(true);busy=false})};
+let lastFocus=null;
+const open=async id=>{if(V.classList.contains('open'))return;lastFocus=document.activeElement;cur=ALL.findIndex(x=>x.id===id);const it=ALL[cur];
+ src=srcRect(id);ORDER=VIEW==='portfolio'?[...document.querySelectorAll('#grid [data-open]')].map(e=>e.dataset.open):VIEW==='viaggio'?W.map(x=>x.id):ALL.map(x=>x.id);V.classList.add('open','info');$('#vinfob').setAttribute('aria-pressed','true');document.body.style.overflow='hidden';
+ vi.classList.remove('fly','solid','fade');vi.src='img/'+it.img;vi.width=it.w;vi.height=it.h;vi.alt=it.t;fill();
+ if(src&&!reduce){const k=src.width/it.w;sc=k;fit=target().f;tx=src.left;ty=src.top;apply()}else{reset();vi.classList.add('fade')}
+ await load();
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{V.classList.add('show');vi.classList.remove('fade');reset(!reduce);setTimeout(()=>vi.classList.add('solid'),500)}));
+ $('#vclose').focus({preventScroll:true})};
+const close=()=>{V.classList.remove('show');vi.classList.remove('solid');const r=srcRect(ALL[cur].id);
+ if(r&&!reduce){vi.classList.add('fly');sc=r.width/ALL[cur].w;tx=r.left;ty=r.top;apply()}else vi.classList.add('fade');
+ setTimeout(()=>{V.classList.remove('open','info','zoomed');document.body.style.overflow='';lastFocus&&lastFocus.focus({preventScroll:true})},reduce?0:750)};
+document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(o)open(o.dataset.open)});
+$('#vclose').onclick=close;$('#vprev').onclick=()=>step(-1);$('#vnext').onclick=()=>step(1);
+$('#vinfob').onclick=()=>{const o=V.classList.toggle('info');$('#vinfob').setAttribute('aria-pressed',o);reset(true)};
+const ctr=()=>{const a=area();return[a.w/2,a.h/2]};
+$('#vin').onclick=()=>zoomAt(1.5,...ctr());$('#vout').onclick=()=>zoomAt(1/1.5,...ctr());
+vp.addEventListener('wheel',e=>{e.preventDefault();const r=vp.getBoundingClientRect();zoomAt(Math.exp(-e.deltaY*.0015),e.clientX-r.left,e.clientY-r.top)},{passive:false});
+vp.addEventListener('dblclick',e=>{const r=vp.getBoundingClientRect();sc>fit*1.2?reset(true):zoomAt(2.5,e.clientX-r.left,e.clientY-r.top)});
+const pts=new Map();let pd=0;
+vp.addEventListener('pointerdown',e=>{vi.classList.remove('fly');vp.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);vp.classList.add('drag');if(pts.size===2){const[a,b]=[...pts.values()];pd=Math.hypot(a[0]-b[0],a[1]-b[1])}});
+vp.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return;const p=pts.get(e.pointerId);
+ if(pts.size===1){tx+=e.clientX-p[0];ty+=e.clientY-p[1];apply()}
+ pts.set(e.pointerId,[e.clientX,e.clientY]);
+ if(pts.size===2){const[a,b]=[...pts.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]),r=vp.getBoundingClientRect();if(pd)zoomAt(d/pd,(a[0]+b[0])/2-r.left,(a[1]+b[1])/2-r.top);pd=d}});
+const up=e=>{pts.delete(e.pointerId);if(pts.size<2)pd=0;if(!pts.size)vp.classList.remove('drag')};
+vp.addEventListener('pointerup',up);vp.addEventListener('pointercancel',up);
+addEventListener('keydown',e=>{if(!V.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)});
+addEventListener('resize',()=>{if(V.classList.contains('open'))reset()});
+}
+</script>
+</body>
+</html>
