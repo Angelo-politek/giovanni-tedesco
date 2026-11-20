@@ -239,6 +239,10 @@ header nav{margin-left:18px}
 .bdg svg{width:14px;height:14px}
 .bnote{font-size:13px!important;color:var(--mute)!important;margin:0 0 24px!important}
 a.pc{color:inherit;text-decoration:none}
+.pc.folder .ph{position:relative;overflow:visible}
+.pc.folder .ph::before,.pc.folder .ph::after{content:"";position:absolute;inset:8% 10%;border:1px solid var(--line);transform:rotate(-4deg);pointer-events:none}
+.pc.folder .ph::after{transform:rotate(3deg);inset:10% 12%}
+.pc.folder .pm b::after{content:" →";font-family:var(--fb);font-size:.7em;color:var(--mute)}
 .cur{font-family:var(--fb);font-size:.86em;font-weight:400;margin:0 .08em}
 #edgrid{columns:2 300px;max-width:980px}
 /* views */
@@ -420,7 +424,7 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
     <div class="wrap">
       <div class="head"><div class="lbl">In evidenza</div><h2 id="evid">Tre opere.</h2></div>
       <div id="feat"></div>
-      <div style="margin-top:48px"><a class="btn fr" href="#portfolio">ICON Tutte le 13 opere</a></div>
+      <div style="margin-top:48px"><a class="btn fr" href="#portfolio">ICON Tutte le opere</a></div>
     </div>
   </section>
 
@@ -470,7 +474,7 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
  <div class="view" data-view="portfolio" hidden>
   <section class="band phead">
     <div class="wrap">
-      <div class="head"><div class="lbl">Portfolio</div><h2>Tredici opere.</h2><p>Tocca un'opera per vederla a schermo intero e leggerne la scheda.</p></div>
+      <div class="head"><div class="lbl">Portfolio</div><h2>Le opere.</h2><p>Tocca un'opera per vederla a schermo intero e leggerne la scheda.</p></div>
       <div class="tools">
         <div class="chips" role="group" aria-label="Filtra per tipo" id="chips"></div>
         <div class="chips" role="group" aria-label="Ordina" id="sort"></div>
@@ -615,7 +619,7 @@ const Yr=3.156e7,lg=s=>Math.max(0,Math.log10(s))/15*100;
 
 const CATS=[['all','Tutte'],['deep','Cielo profondo'],['sole','Luna e pianeti'],['terra','Paesaggi notturni']];
 let F='all',SO='date';
-const card=x=>`<a class="pc" href="${WU(x.id)}"><span class="ph"><img src="/img/t/${x.img}" alt="${x.t}, foto di Giovanni Esteban Tedesco" loading="lazy" width="${x.w}" height="${x.h}"></span>
+const card=x=>`<a class="pc${x.folder?' folder':''}" href="${WU(x.id)}"><span class="ph"><img src="/img/t/${x.img}" alt="${x.t}, foto di Giovanni Esteban Tedesco" loading="lazy" width="${x.w}" height="${x.h}"></span>
  <span class="pm">${x.badge?'<em>★ NASA APOD</em>':''}<b>${x.t}</b><span>${x.k}${x.d?' · '+x.d:''}</span>${x.look?`<i>Luce partita ${x.look} fa</i>`:''}</span></a>`;
 const renderGrid=()=>{let L=ALL.filter(x=>F==='all'||x.cat===F);
  L=SO==='date'?L.sort((a,b)=>(b.iso||'').localeCompare(a.iso||'')):L.sort((a,b)=>(b.secs||0)-(a.secs||0));

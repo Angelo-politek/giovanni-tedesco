@@ -6,7 +6,7 @@ Produce: / (inglese), /it/ (italiano), /works/<slug>/ e /it/opere/<slug>/, sitem
 """
 import html, json, os, re, shutil, sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
-from works import WORKS, DEEP_GEAR, Y
+from works import WORKS, DEEP_GEAR, Y, MOON
 from i18n_en import PAIRS
 
 SITE = 'https://giovannitedesco.it'
@@ -39,11 +39,15 @@ def data_js(lang):
             o['secs'] = w['secs']; W.append(o)
         else:
             E.append(o)
+    mt = MOON[lang]
+    E.append(dict(id='moon', folder=True, img=MOON['cover'], w=908, h=1600, t=mt['t'], k=mt['k'] + ' · ' + mt['count'].format(n=len(MOON['items'])),
+                  d='', look='', then='', tab=[], p=[], cat='sole', iso='', secs=1.3))
     rd = {w['id']: list(w['ra']) for w in WORKS if w.get('ra')}
     if lang == 'en':
         rd['luna'] = ['Moon', '384,400 km']; rd['saturno'] = ['Saturn', '']
         rd = {k: [x.replace('AR ', 'RA ') for x in v] for k, v in rd.items()}
     slugs = {w['id']: w['slug'][lang] for w in WORKS}
+    slugs['moon'] = MOON['slug'][lang]
     j = lambda x: json.dumps(x, ensure_ascii=False)
     return (f"const Y={Y};\nconst W={j(W)};\nconst E={j(E)};\nconst RD={j(rd)};\n", j(slugs)[1:-1])
 
@@ -112,7 +116,7 @@ WORK_CSS = """
 .wnav img{width:72px;height:72px;object-fit:cover;border-radius:50%;flex:none}
 .wnav small{display:block;font-size:12px;color:var(--mute)}.wnav b{font-family:var(--fd);font-weight:var(--dw);font-size:calc(20px*var(--ds))}
 #zoom{position:fixed;inset:0;z-index:60;background:var(--bg);display:none;touch-action:none;cursor:grab}
-#zoom.open{display:block}#zoom img{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;user-select:none;-webkit-user-drag:none}
+#zoom.open{display:block}#zoom img{mix-blend-mode:screen;position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;user-select:none;-webkit-user-drag:none}
 #zoom .vb{position:absolute;top:12px;right:12px;z-index:2}
 #zoom .zh{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:13px;color:var(--mute);white-space:nowrap}
 @media(max-width:900px){.wk{grid-template-columns:minmax(0,1fr)}.side{position:static}}
@@ -301,8 +305,105 @@ const up=e=>{{P.delete(e.pointerId);if(P.size<2)pd=0}};Z.addEventListener('point
 </html>
 '''
 
+MOON_CSS = """
+.mh{padding:clamp(110px,16vh,170px) max(5vw,16px) 30px;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end}
+.mh h1{font-size:calc(clamp(48px,7vw,96px)*var(--ds));margin:12px 0 18px}
+.mh p{color:#cfcfd5;font-size:17px;max-width:560px}
+.tn{display:flex;align-items:center;gap:22px;padding:22px}
+.tn .big{width:92px;height:92px;border-radius:50%;background:url(/img/moon-96.png) center/cover;flex:none;overflow:hidden;box-shadow:0 0 40px rgba(233,233,236,.12)}
+.tn svg{width:100%;height:100%;display:block}.tn path{fill:rgba(6,6,9,.86)}
+.tn b{display:block;font-family:var(--fd);font-weight:var(--dw);font-size:calc(34px*var(--ds));line-height:1.1}
+.tn span{font-size:13px;color:var(--mute)}
+.mg{columns:3 280px;column-gap:clamp(18px,3vw,40px)}
+.mg button{display:block;width:100%;break-inside:avoid;margin:0 0 clamp(24px,3vw,40px);padding:0;text-align:left;cursor:zoom-in}
+.mg img{width:100%;height:auto;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse closest-side,#000 64%,transparent);mask-image:radial-gradient(ellipse closest-side,#000 64%,transparent);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.mg button:hover img{transform:scale(1.04)}
+.mg .cp{display:block;margin-top:4px;padding-left:14px;border-left:1px solid var(--line);font-family:var(--fd);font-size:calc(22px*var(--ds))}
+.rel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}
+.rel a{display:flex;align-items:center;gap:18px;padding:16px;text-decoration:none;color:inherit;--c:var(--line)}.rel a:hover{--c:var(--ha)}
+.rel img{width:84px;height:84px;object-fit:cover;border-radius:50%;flex:none}
+.rel small{display:block;font-size:12px;color:var(--mute)}.rel b{font-family:var(--fd);font-weight:var(--dw);font-size:calc(22px*var(--ds))}
+#zoom .zc{position:absolute;left:50%;top:22px;transform:translateX(-50%);font-family:var(--fd);font-size:20px;white-space:nowrap}
+#zoom .zn{top:50%;bottom:auto;transform:translateY(-50%);z-index:2}#zoom #zprev{left:12px;right:auto}#zoom #znext{right:12px;left:auto}
+@media(max-width:800px){.mh{grid-template-columns:minmax(0,1fr)}.rel{grid-template-columns:minmax(0,1fr)}}
+"""
+
+def moon_page(lang):
+    l = L[lang]; t = MOON[lang]; h = HOME[lang]
+    other = 'it' if lang == 'en' else 'en'
+    url = SITE + work_url(MOON, lang); alt_href = work_url(MOON, other)
+    items = MOON['items']
+    title = f"{t['t']} · {l['title_suffix']}"
+    desc = t['intro']
+    grid = ''.join(f'<button data-i="{i}" aria-label="{l["zoom"]}: {esc(it[lang])}"><img src="/img/t/{it["img"]}" alt="{esc(it[lang])}, {l["by"]}" width="{it["w"]}" height="{it["h"]}" loading="lazy"><span class="cp">{esc(it[lang])}</span></button>' for i, it in enumerate(items))
+    byid = {w['id']: w for w in WORKS}
+    rel = ''.join(f'<a class="fr" href="{work_url(byid[r], lang)}"><img src="/img/t/{byid[r]["img"]}" alt="" loading="lazy"><span><small>{esc(byid[r][lang]["k"])}</small><b>{esc(strip(byid[r][lang]["t"]))}</b></span></a>' for r in MOON['related'])
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "CollectionPage", "@id": url, "name": t['t'], "url": url, "description": desc, "inLanguage": lang,
+         "hasPart": [{"@type": "Photograph", "name": it[lang], "image": SITE + '/img/' + it['img'], "creator": {"@id": SITE + "/#giovanni"}} for it in items]},
+        {"@type": "Person", "@id": SITE + "/#giovanni", "name": "Giovanni Esteban Tedesco", "jobTitle": l['creator_job'], "url": SITE + "/", "sameAs": ["https://www.instagram.com/g.tedesco_/"]}]}
+    data = json.dumps([[f"/img/{it['img']}", it['w'], it['h'], it[lang]] for it in items], ensure_ascii=False)
+    phases = l['phases']
+    page = work_page(WORKS[0], lang, WORKS[0], WORKS[0])
+    head_end = page.index('</head>')
+    body_start = page.index('<main>'); body_end = page.index('</main>') + len('</main>')
+    zoom_s = page.index('<div id="zoom"'); zoom_e = page.index('</div>', page.index('class="zh"', zoom_s)) + len('</div></div>') - 0
+    script_s = page.index('<script>\n{'); script_e = page.index('</script>', script_s)
+    head = page[:head_end]
+    # head: own title, description, canonical, alternates, og, ld+json
+    head = re.sub(r'<title>.*?</title>', f'<title>{esc(title)}</title>', head, count=1)
+    head = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{esc(desc)}">', head, count=1)
+    head = re.sub(r'<link rel="canonical" href="[^"]*">\n<link rel="alternate" hreflang="\w+" href="[^"]*">\n<link rel="alternate" hreflang="\w+" href="[^"]*">\n<link rel="alternate" hreflang="x-default" href="[^"]*">',
+                  f'<link rel="canonical" href="{url}">\n<link rel="alternate" hreflang="{lang}" href="{url}">\n<link rel="alternate" hreflang="{other}" href="{SITE + alt_href}">\n<link rel="alternate" hreflang="x-default" href="{SITE + work_url(MOON, "en")}">', head, count=1)
+    head = re.sub(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{esc(title)}">', head, count=1)
+    head = re.sub(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{esc(desc)}">', head, count=1)
+    head = re.sub(r'<meta property="og:image" content="[^"]*">', f'<meta property="og:image" content="{SITE}/img/{MOON["cover"]}">', head, count=1)
+    head = re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{url}">', head, count=1)
+    head = re.sub(r'<script type="application/ld\+json">.*?</script>', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>', head, count=1, flags=re.S)
+    head = head.replace('</style>', MOON_CSS + '</style>')
+    pre_main = page[head_end:body_start]
+    pre_main = pre_main.replace(f'href="{work_url(WORKS[0], other)}"', f'href="{alt_href}"')
+    main = f"""<main>
+ <section class="mh">
+  <div><div class="crumb"><a href="{h}#portfolio">{l['back']}</a></div><div class="lbl">{t['k']} · {t['count'].format(n=len(items))}</div><h1>{t['t']}</h1><p>{t['intro']}</p></div>
+  <div class="tn fr"><div class="big"><svg viewBox="-1 -1 2 2" aria-hidden="true"><path id="tnP" d=""/></svg></div><div><span>{t['tonight']}</span><b id="tnB"></b><span id="tnS"></span></div></div>
+ </section>
+ <section class="band" style="padding-top:20px"><div class="wrap"><div class="mg" id="mg">{grid}</div>
+  <div class="head" style="margin-top:40px"><h2 style="font-size:calc(32px*var(--ds))">{t['related']}</h2></div><div class="rel">{rel}</div></div></section>
+</main>"""
+    footer = page[body_end:zoom_s]
+    zoom = f'<div id="zoom" role="dialog" aria-modal="true" aria-label="{esc(t["t"])}"><img id="zimg" alt=""><div class="zc" id="zcap"></div><button class="vb fr zn" id="zprev" aria-label="{l["prev"]}">‹</button><button class="vb fr zn" id="znext" aria-label="{l["next"]}">›</button><button class="vb fr" id="zclose" aria-label="{l["close"]}">✕</button><div class="zh">{l["hint"]}</div></div>'
+    script = page[script_s:script_e]
+    # remove the single-work reticle + zoom parts and add gallery zoom
+    script = script[:script.index('/* reticle tilt */')] + f"""/* tonight */
+{{const pth=$('#moonP').getAttribute('d');$('#tnP').setAttribute('d',pth);const tx=$('#moonT').textContent.split('·');$('#tnB').textContent=(tx[0]||'').replace(/^\\S+\\s*/,'').trim();$('#tnS').textContent=(tx[1]||'').trim()}}
+/* gallery zoom */
+const G={data};let gi=0;
+const Z=$('#zoom'),zi=$('#zimg');let sc=1,tx=0,ty=0,fit=1;
+const ap=()=>zi.style.transform=`translate(${{tx}}px,${{ty}}px) scale(${{sc}})`;
+const rs=()=>{{const[,w,h]=G[gi];fit=Math.min(innerWidth/w,innerHeight/h)*.9;sc=fit;tx=(innerWidth-w*sc)/2;ty=(innerHeight-h*sc)/2;ap()}};
+const show=i=>{{gi=(i+G.length)%G.length;const[s,w,h,c]=G[gi];zi.src=s;zi.width=w;zi.height=h;zi.alt=c;$('#zcap').textContent=c;rs()}};
+const za=(f,px,py)=>{{const n=Math.max(fit*.8,Math.min(fit*8,sc*f));tx=px-(px-tx)*n/sc;ty=py-(py-ty)*n/sc;sc=n;ap()}};
+let lastB=null;
+$('#mg').addEventListener('click',e=>{{const b=e.target.closest('[data-i]');if(!b)return;lastB=b;Z.classList.add('open');document.documentElement.style.overflow='hidden';show(+b.dataset.i);$('#zclose').focus()}});
+const zc=()=>{{Z.classList.remove('open');document.documentElement.style.overflow='';lastB&&lastB.focus()}};
+$('#zclose').onclick=zc;$('#zprev').onclick=()=>show(gi-1);$('#znext').onclick=()=>show(gi+1);
+addEventListener('keydown',e=>{{if(!Z.classList.contains('open'))return;if(e.key==='Escape')zc();if(e.key==='ArrowRight')show(gi+1);if(e.key==='ArrowLeft')show(gi-1)}});
+addEventListener('resize',()=>{{if(Z.classList.contains('open'))rs()}});
+Z.addEventListener('wheel',e=>{{e.preventDefault();za(Math.exp(-e.deltaY*.0015),e.clientX,e.clientY)}},{{passive:false}});
+Z.addEventListener('dblclick',e=>{{sc>fit*1.2?rs():za(2.5,e.clientX,e.clientY)}});
+const P=new Map();let pd=0;
+Z.addEventListener('pointerdown',e=>{{if(e.target.closest('button'))return;Z.setPointerCapture(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);if(P.size===2){{const[a,b]=[...P.values()];pd=Math.hypot(a[0]-b[0],a[1]-b[1])}}}});
+Z.addEventListener('pointermove',e=>{{if(!P.has(e.pointerId))return;const p=P.get(e.pointerId);if(P.size===1){{tx+=e.clientX-p[0];ty+=e.clientY-p[1];ap()}}P.set(e.pointerId,[e.clientX,e.clientY]);
+ if(P.size===2){{const[a,b]=[...P.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd)za(d/pd,(a[0]+b[0])/2,(a[1]+b[1])/2);pd=d}}}});
+const up=e=>{{P.delete(e.pointerId);if(P.size<2)pd=0}};Z.addEventListener('pointerup',up);Z.addEventListener('pointercancel',up);
+}}
+"""
+    script = script.replace("requestAnimationFrame(()=>$('#hero').classList.add('in'));\n", '')
+    return head + pre_main + main + footer + zoom + '\n' + script + '</script>\n</body>\n</html>\n'
+
 def sitemap():
-    urls = [(HOME['en'], HOME['it'])] + [(work_url(w, 'en'), work_url(w, 'it')) for w in WORKS if w['en']['body']]
+    urls = [(HOME['en'], HOME['it'])] + [(work_url(w, 'en'), work_url(w, 'it')) for w in WORKS if w['en']['body']] + [(work_url(MOON, 'en'), work_url(MOON, 'it'))]
     out = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for en, it in urls:
         for u in (en, it):
@@ -321,6 +422,7 @@ if __name__ == '__main__':
         write(HOME[lang] + 'index.html', build_main(lang))
         for i, w in enumerate(WORKS):
             write(work_url(w, lang) + 'index.html', work_page(w, lang, WORKS[i - 1], WORKS[(i + 1) % len(WORKS)]))
+        write(work_url(MOON, lang) + 'index.html', moon_page(lang))
     write('sitemap.xml', sitemap())
     write('robots.txt', f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
     write('CNAME', 'giovannitedesco.it\n')

@@ -25,7 +25,7 @@ PAIRS = [
  ("<b>23 mln</b><span>di anni luce: M51, l'oggetto più lontano</span>", "<b>23 mln</b><span>light years: M51, the most distant object</span>"),
  ('<span>una foto ripubblicata dalla NASA su Instagram</span>', '<span>a photo reposted by NASA on Instagram</span>'),
  ('<div class="lbl">In evidenza</div><h2 id="evid">Tre opere.</h2>', '<div class="lbl">Featured</div><h2 id="evid">Three works.</h2>'),
- ('ICON Tutte le 13 opere', 'ICON All 13 works'),
+ ('ICON Tutte le opere', 'ICON All works'),
  # journey teaser
  ("<div class=\"lbl\">Viaggio nel tempo</div><h2>Nove opere in ordine di distanza.</h2><p>Un percorso a schermo intero: da un'opera alla successiva, la luce che vedi è sempre più antica.</p>",
   "<div class=\"lbl\">Journey in time</div><h2>Nine works in order of distance.</h2><p>A full-screen sequence: from one work to the next, the light you see is older and older.</p>"),
@@ -47,7 +47,7 @@ PAIRS = [
   '<li><b>Edition</b><span>Numbered, different for each size</span></li>\n          <li><b>Signature</b><span>By hand, on the margin of the print</span></li>\n          <li><b>Works</b><span>Two subjects in the first edition</span></li>'),
  ('ICON Scopri le edizioni</a>\n        <p class="fud">Si prenota con un messaggio, senza pagamento anticipato.</p>', 'ICON Discover the editions</a>\n        <p class="fud">Reserve with a message, no payment up front.</p>'),
  # portfolio
- ("<div class=\"lbl\">Portfolio</div><h2>Tredici opere.</h2><p>Tocca un'opera per vederla a schermo intero e leggerne la scheda.</p>", "<div class=\"lbl\">Portfolio</div><h2>Thirteen works.</h2><p>Open a work to see it in full and read its story.</p>"),
+ ("<div class=\"lbl\">Portfolio</div><h2>Le opere.</h2><p>Tocca un'opera per vederla a schermo intero e leggerne la scheda.</p>", "<div class=\"lbl\">Portfolio</div><h2>The works.</h2><p>Open a work to see it in full and read its story.</p>"),
  ('aria-label="Filtra per tipo"', 'aria-label="Filter by type"'),
  ('aria-label="Ordina"', 'aria-label="Sort"'),
  # editions page

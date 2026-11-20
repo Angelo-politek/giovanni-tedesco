@@ -168,10 +168,6 @@ WORKS = [
     tab=[['Device', 'iPhone 11 on a tripod with a selfie stick'], ['Processing', 'Adobe Photoshop only, no artificial intelligence']],
     body=['Taken on 12 August in Sahagún, in the province of León, Spain, with an iPhone 11 and a tripod with a selfie stick.',
           'No artificial intelligence was used: only traditional processing techniques in Adobe Photoshop.'])),
- dict(id='collage', img='luna-collage.jpg', w=1440, h=1080, cat='sole', iso='', ed=0,
-  slug={'it': 'collage-lunare', 'en': 'lunar-collage'},
-  it=dict(t='Collage lunare', k='', d='', look='', then='', tab=[], body=[]),
-  en=dict(t='Lunar Collage', k='', d='', look='', then='', tab=[], body=[])),
  dict(id='decorazione', img='decorazione.jpg', w=2135, h=1394, cat='terra', iso='2026-09-27', ed=0,
   slug={'it': 'decorazione-natalizia', 'en': 'christmas-ornament'},
   it=dict(t='Decorazione natalizia', k='Brindisi · 27 settembre', d='', look='', then='',
@@ -185,3 +181,18 @@ WORKS = [
           'The dark silhouettes of the trees framing the sky become the branches of an imaginary Christmas tree, with the Moon as the glowing ornament at its centre.',
           'Giovanni studied the location and waited for the right moment to catch the Moon in exactly that spot among the leaves.'])),
 ]
+
+# Collezione Luna: scatti singoli e collage, in una sola pagina
+MOON = dict(id='moon', slug={'it': 'luna', 'en': 'moon'}, cover='luna-piena.jpg',
+  it=dict(t='Luna', k='Collezione', intro='Scatti singoli della Luna: Canon EOS 500D con filtro Optolong L-Pro, telescopio Newton 150/750 e montatura equatoriale.',
+          related='Altre opere sulla Luna', tonight='La Luna stasera', count='{n} scatti'),
+  en=dict(t='The Moon', k='Collection', intro='Single shots of the Moon: Canon EOS 500D with an Optolong L-Pro filter, a 150/750 Newtonian telescope and an equatorial mount.',
+          related='More works on the Moon', tonight='The Moon tonight', count='{n} shots'),
+  items=[
+    dict(img='luna-piena.jpg', w=908, h=1600, it='Luna piena', en='Full Moon'),
+    dict(img='luna-gibbosa.jpg', w=1528, h=2408, it='Luna gibbosa', en='Gibbous Moon'),
+    dict(img='luna-arancione.jpg', w=828, h=502, it='Luna, toni caldi', en='Moon, warm tones'),
+    dict(img='luna-crateri.jpg', w=484, h=427, it='Crateri lunari · 30 luglio 2026', en='Lunar craters · 30 July 2026'),
+    dict(img='luna-collage.jpg', w=1440, h=1080, it='Collage lunare', en='Lunar collage'),
+  ],
+  related=['luna', 'eclissi'])

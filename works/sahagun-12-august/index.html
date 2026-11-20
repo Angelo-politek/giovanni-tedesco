@@ -239,6 +239,10 @@ header nav{margin-left:18px}
 .bdg svg{width:14px;height:14px}
 .bnote{font-size:13px!important;color:var(--mute)!important;margin:0 0 24px!important}
 a.pc{color:inherit;text-decoration:none}
+.pc.folder .ph{position:relative;overflow:visible}
+.pc.folder .ph::before,.pc.folder .ph::after{content:"";position:absolute;inset:8% 10%;border:1px solid var(--line);transform:rotate(-4deg);pointer-events:none}
+.pc.folder .ph::after{transform:rotate(3deg);inset:10% 12%}
+.pc.folder .pm b::after{content:" →";font-family:var(--fb);font-size:.7em;color:var(--mute)}
 .cur{font-family:var(--fb);font-size:.86em;font-weight:400;margin:0 .08em}
 #edgrid{columns:2 300px;max-width:980px}
 /* views */
@@ -402,7 +406,7 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
 .wnav img{width:72px;height:72px;object-fit:cover;border-radius:50%;flex:none}
 .wnav small{display:block;font-size:12px;color:var(--mute)}.wnav b{font-family:var(--fd);font-weight:var(--dw);font-size:calc(20px*var(--ds))}
 #zoom{position:fixed;inset:0;z-index:60;background:var(--bg);display:none;touch-action:none;cursor:grab}
-#zoom.open{display:block}#zoom img{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;user-select:none;-webkit-user-drag:none}
+#zoom.open{display:block}#zoom img{mix-blend-mode:screen;position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;user-select:none;-webkit-user-drag:none}
 #zoom .vb{position:absolute;top:12px;right:12px;z-index:2}
 #zoom .zh{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:13px;color:var(--mute);white-space:nowrap}
 @media(max-width:900px){.wk{grid-template-columns:minmax(0,1fr)}.side{position:static}}
@@ -434,7 +438,7 @@ header nav a{min-height:44px;display:inline-flex;align-items:center}
    </article>
    <aside class="side"><div><h2>Technical details</h2><dl class="spec"><div><dt>Device</dt><dd>iPhone 11 on a tripod with a selfie stick</dd></div><div><dt>Processing</dt><dd>Adobe Photoshop only, no artificial intelligence</dd></div></dl></div><div><a class="btn fr quiet" href="https://www.instagram.com/g.tedesco_/" target="_blank" rel="noopener">Write to Giovanni</a></div></aside>
   </div>
-  <div class="wrap wnav"><a class="fr pv" href="/works/partial-lunar-eclipse-phases/"><img src="/img/t/eclissi-lunare.jpg" alt="" loading="lazy"><span><small>Previous work</small><b>The Phases of a Partial Lunar Eclipse</b></span></a><a class="fr nx" href="/works/lunar-collage/"><img src="/img/t/luna-collage.jpg" alt="" loading="lazy"><span><small>Next work</small><b>Lunar Collage</b></span></a></div>
+  <div class="wrap wnav"><a class="fr pv" href="/works/partial-lunar-eclipse-phases/"><img src="/img/t/eclissi-lunare.jpg" alt="" loading="lazy"><span><small>Previous work</small><b>The Phases of a Partial Lunar Eclipse</b></span></a><a class="fr nx" href="/works/christmas-ornament/"><img src="/img/t/decorazione.jpg" alt="" loading="lazy"><span><small>Next work</small><b>Christmas Ornament</b></span></a></div>
  </section>
 </main>
 <footer id="contatti">
