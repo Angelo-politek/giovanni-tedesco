@@ -659,15 +659,19 @@ const enter=()=>{intro.classList.add('gone');setTimeout(()=>{try{v.pause()}catch
 if(reduce)intro.remove();else{intro.addEventListener('click',enter);v.addEventListener('ended',()=>setTimeout(enter,500));v.addEventListener('error',()=>setTimeout(enter,800));setTimeout(enter,6500)}
 const vf=$('#sigf');new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){vf.currentTime=0;vf.play().catch(()=>{})}}),{threshold:.6}).observe(vf);
 
-/* compass: device heading when allowed, pointer otherwise */
-let head=0,gyro=null,tdx=0,tdy=0;
-const onOri=e=>{const h=e.webkitCompassHeading!=null?e.webkitCompassHeading:(e.alpha!=null?360-e.alpha:null);if(h!=null)gyro=h};
-const listen=()=>{addEventListener('deviceorientationabsolute',onOri);addEventListener('deviceorientation',onOri)};
-if(window.DeviceOrientationEvent){listen();
+/* reticle motion: gentle tilt from the device or the pointer, spring-smoothed */
+let rTgt=0,rCur=0,rVel=0,oTx=0,oTy=0,oX=0,oY=0,sR=0,sX=0,sY=0,gyroOn=false,lastT=performance.now();
+const clampN=(v,a)=>Math.max(-a,Math.min(a,v));
+const onTilt=e=>{if(e.gamma==null)return;gyroOn=true;const g=clampN(e.gamma,30),bt=clampN((e.beta||45)-45,30);
+ sR+=(g*.5-sR)*.12;sX+=(g/30*7-sX)*.12;sY+=(bt/30*7-sY)*.12};
+if(window.DeviceOrientationEvent&&!reduce){addEventListener('deviceorientation',onTilt);
  if(typeof DeviceOrientationEvent.requestPermission==='function')addEventListener('click',()=>{try{DeviceOrientationEvent.requestPermission().catch(()=>{})}catch(e){}},{once:true})}
-addEventListener('touchmove',e=>{const t=e.touches[0];tdx=t.clientX/innerWidth-.5;tdy=t.clientY/innerHeight-.5},{passive:true});
-const compass=()=>{const tgt=gyro!=null?-gyro:(mx+tdx)*110+(my+tdy)*30;let d=((tgt-head)%360+540)%360-180;head+=d*.06;
- document.documentElement.style.setProperty('--h',head.toFixed(2)+'deg')};
+const finePtr=matchMedia('(pointer:fine)').matches;
+const compass=()=>{const now=performance.now(),dt=Math.min(.05,(now-lastT)/1000);lastT=now;
+ if(gyroOn){rTgt=sR;oTx=sX;oTy=sY}else if(finePtr){rTgt=mx*16;oTx=mx*8;oTy=my*8}else{rTgt=0;oTx=oTy=0}
+ const k=60*dt;rVel=rVel*Math.pow(.84,k)+(rTgt-rCur)*.03*k;rCur+=rVel*k;oX+=(oTx-oX)*Math.min(1,.08*k);oY+=(oTy-oY)*Math.min(1,.08*k);
+ const h=rCur.toFixed(2)+'deg',t=oX.toFixed(1)+'px '+oY.toFixed(1)+'px';
+ for(const el of document.querySelectorAll('.ret')){if(el.offsetParent===null&&el.id!=='heroret')continue;el.style.setProperty('--h',h);el.style.translate=t}};
 /* sky: 3D starfield, warp driven by the journey */
 const cv=$('#sky'),cx=cv.getContext('2d');let S=[],mx=0,my=0,warp=0,warpT=0,vel=0,lastY=scrollY,cw=0,ch=0;
 const spawn=s=>{s.x=(Math.random()*2-1);s.y=(Math.random()*2-1);s.z=Math.random()*.95+.05;s.c=Math.random()<.1?'#ffb3a3':Math.random()<.3?'#c6d9ff':'#fff';return s};
